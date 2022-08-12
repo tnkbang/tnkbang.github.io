@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Chúc Mừng Năm Mới</title>
+        <link rel="shortcut icon" href='/img/LogoM.gif' />
+		<!--Thêm các font chữ ngoài-->
+        <link href='css/font.css' rel="stylesheet">
+        <!--Bootstrap-->
+		<link rel="stylesheet" href="css/bootstrap.4.3.1.min.css">
+        <!--Định dạng cho nội dung web-->
+        <link href="css/style.css" rel="stylesheet">
+        <!--Các js cần có-->
+        <script src="js/sweetalert.min.js"></script>
+        <script src="js/jquery.min.js"></script>
+    </head>
+    <body>
+        <!--Loader-->
+        <div class="loader">
+            <div class="spinner">
+                <img src="/img/LogoM.gif">
+            </div>
+        </div>
+        <!--Bao phủ khi nhấn các phần tử nổi-->
+        <div id='baophu'></div>
+        <div id="main_web">
+            <!--Phần thân chính-->
+            <div class="row col-12" style="height: 98vh;">
+                <!--Phần chứa pháo hoa-->
+                <div id='phaohoa'></div>
+                <!--Chữ chạy phía trên-->
+                <div style="width: 100%;">
+                    <div class="ml">
+                        <b>CHÚC MỪNG</b>
+                    </div>
+                    <div class="mr">
+                        <b>NĂM MỚI</b>
+                    </div>
+                </div>
+                <!--Tiêu đề chính-->
+                <div class="col-md-12">
+                    <div class="tieude">
+                        <b>Chúc Mừng Năm Mới</b>
+                    </div>
+                </div>
+                <!--Hiển thị ngày tháng và năm âm lịch-->
+                <div class="col-md-12">
+                    <b>
+                        <div id='loainam'>Loading....</div>
+                        <div id="ngaythang"></div>
+                    </b>
+                </div>
+                <!--Câu đối 2 bên web-->
+                <div id='caudoi'>
+                    <div class="left">
+                        <div id="caudoi_trai">
+                            <p class="p1">Tân</p>
+                            <p class="p2">Niên</p>
+                            <p class="p3">Phú</p>
+                            <p class="p4">Quý</p>
+                        </div>
+                    </div>
+                    <div class="right">
+                        <div id="caudoi_phai">
+                            <p class="p1">Vạn</p>
+                            <p class="p2">Sự</p>
+                            <p class="p3">Bình</p>
+                            <p class="p4">An</p>
+                        </div>
+                    </div>
+                </div>
+                <!--các biểu tượng chức năng-->
+                <div class="game">
+                    <div class="popup" id="popup_game">
+                        Mini game Ma pháp sư
+                    </div>
+                    <img id="game" src="img/minigame.png">
+                </div>
+                <div class="dotphao">
+                    <div class="popup" id="popup_dotphao">
+                        Nhấn vào để kích hoạt pháo hoa
+                    </div>
+                    <img id="dotphao" src="img/phaohoa.png">
+                </div>
+                <div class="dongho">
+                    <b><div class="popup" id="popup_dongho">00:00:00</div></b>
+                    <img id="dongho" src="img/dongho.png">
+                </div>
+                <div class="phatnhac">
+                    <div class="popup" id="popup_phatnhac">Nhấn để mở điều khiển nhạc</div>
+                    <img id="phatnhac" src="img/phatnhac.png">
+                </div>
+            </div>
+            <!--Phần thiệp chúc tết-->
+            <div class="thiep" id="thiep">
+                <button id="dongthiep" type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <img src="img/topleft.png" style="width: 46%; height:30%; float: left;">
+                <img src="img/topright.png" style="width: 50%; height:30%; float: right;">
+                <img src="img/bottomleft.png" style="width: 50%; height:30%; top: 40%; position: relative;">
+                <img src="img/bottomright.png" style="width: 50%; height:30%; float: right; top: 40%; position: relative;">
+                <p class="noidung" id="noidungthiep">
+                    Nội dung thiệp
+                </p>
+            </div>
+            <!--Phần menu chỉnh nhạc-->
+            <div id="play">
+                <button id="dongphatnhac" type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <div id="player">
+                    <div class="ctrl">
+                        <!--Tên bài hát và ca sĩ-->
+                        <div class="tag">
+                            <div class="song">Loading...</div>
+                            <div class="sing">Loading...</div>
+                        </div>
+                        <div class="control">
+                            <!--Các chức năng lùi, tạm dừng, tiếp-->
+                            <div class="left">
+                                <div class="rewind icon"></div>
+                                <div class="playback icon"></div>
+                                <div class="fastforward icon"></div>
+                            </div>
+                            <!--Âm lượng-->
+                            <div class="volume right">
+                                <div class="mute icon left"></div>
+                                <div class="slider left">
+                                    <div class="pace"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--Tiến trình phát của bài hát-->
+                        <div class="this_play">
+                            <div class="slider">
+                                <div class="loaded"></div>
+                                <div class="pace"></div>
+                            </div>
+                            <div class="timer left">0:00</div>
+                            <!--Các chế độ lặp và đảo bài-->
+                            <div class="right">
+                                <div class="repeat icon"></div>
+                                <div class="shuffle icon"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--Phần mini game-->
+        <div class="game_mage">
+            <canvas id="game_mage"></canvas>
+        </div>
+        <!--Các liên kết javascript-->
+        <!--Phần js tính ngày âm-->
+        <script src="lib/moment.js"></script>
+        <script src="lib/moment-timezone-with-data.js"></script>
+        <script src="lib/amlich-ntt.js"></script> 
+        <!--Js xử lý hiển thị ngày tháng âm-->
+        <script src="js/time.js"></script>
+        <!--Js xử lý chính của web--> 
+        <script src="js/script.js"></script>
+        <!--Js xử lý phần âm nhạc-->
+        <script src="/choinhac/js/jquery-1.7.2.min.js"></script>
+        <script src="/choinhac/js/jquery-ui-1.8.17.custom.min.js"></script>
+        <script src="js/music.js"></script>
+        <!--Js xử lý của game mage--> 
+        <script src="js/game_mage.js"></script>
+        <!--Js của pháo hoa-->
+        <script src="js/firework.js"></script>
+        <!--Js của hiệu ứng di chuột-->
+        <script type="text/javascript" src="js/mousehoa.js"></script>
+        <!--Xử lý loader-->
+        <script>
+            window.onload = function (){
+                document.querySelector('.loader').remove();
+            }
+        </script>
+    </body>
+</html>
