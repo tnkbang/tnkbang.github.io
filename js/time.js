@@ -59,6 +59,9 @@ function printTime() {
             case 4:
                 document.getElementById('ngaythang').innerHTML = 'Mồng bốn tết';
                 break;
+            default:
+                document.getElementById('ngaythang').innerHTML = ld.day + "-" + ld.month + "-" + ld.year;
+                break;
         }
     }
     else{
