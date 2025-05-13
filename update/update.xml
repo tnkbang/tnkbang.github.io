@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<item>
+	<version>2.0.0.4</version>
+	<url>https://yourdomain.com/CiT Dictionary Setup.exe</url>
+	<changelog>https://yourdomain.com/changelog.txt</changelog>
+	<mandatory>false</mandatory>
+</item>
