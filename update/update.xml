@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <item>
-	<version>2.0.0.4</version>
+	<version>2.0.0.3</version>
 	<url>https://tnkbang.github.io/update/CiT%20Dictionary%20Setup.exe</url>
-	<changelog>https://yourdomain.com/changelog.txt</changelog>
+	<changelog>https://tnkbang.github.io/update/changelog.txt</changelog>
 	<mandatory>false</mandatory>
 </item>
