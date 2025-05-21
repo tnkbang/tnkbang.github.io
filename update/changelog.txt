@@ -1,4 +1,2 @@
-Phiên bản 2.0.0.3
-- Sửa lỗi hokey bị reset.
-- Thay đổi bộ cài đặt thành iss.
-- Thêm tính năng tự động cập nhật.
+Phiên bản 2.0.0.4
+- Tăng thời gian chờ của hotkey
