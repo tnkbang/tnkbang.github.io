@@ -1,2 +1,2 @@
-Phiên bản 2.0.0.4
-- Tăng thời gian chờ của hotkey
+Phiên bản 2.0.0.5
+- Sửa lỗi hotkey không hoạt động ở một số thiết bị
