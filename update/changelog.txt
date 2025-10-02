@@ -1,2 +1,5 @@
+Phiên bản 2.0.0.6
+- Cập nhật nhật model gemini thành: models/gemini-flash-latest
+
 Phiên bản 2.0.0.5
 - Sửa lỗi hotkey không hoạt động ở một số thiết bị
