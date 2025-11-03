@@ -496,6 +496,50 @@ footer {
     display: block;
 }
 
+/* Footer language switching - inline elements */
+.footer-section .content-lang {
+    display: none;
+}
+
+.footer-section .content-lang.active {
+    display: block;
+}
+
+.footer-section a.content-lang {
+    display: none;
+}
+
+.footer-section a.content-lang.active {
+    display: block;
+}
+
+.footer-section h3.content-lang {
+    display: none;
+}
+
+.footer-section h3.content-lang.active {
+    display: block;
+}
+
+.footer-section p.content-lang {
+    display: none;
+}
+
+.footer-section p.content-lang.active {
+    display: block;
+}
+
+/* Hero section language switching - inline elements */
+.badge .content-lang,
+.btn .content-lang {
+    display: none;
+}
+
+.badge .content-lang.active,
+.btn .content-lang.active {
+    display: inline;
+}
+
 /* Smooth scroll */
 html {
     scroll-behavior: smooth;

@@ -43,13 +43,26 @@
             <div class="badges">
                 <span class="badge"><i class="fas fa-code"></i> .NET 8</span>
                 <span class="badge"><i class="fab fa-windows"></i> Windows</span>
-                <span class="badge"><i class="fas fa-certificate"></i> MIT License</span>
-                <span class="badge"><i class="fas fa-language"></i> Multi-language</span>
+                <span class="badge">
+                    <i class="fas fa-certificate"></i>
+                    <span class="content-lang active" data-lang="vi">Giấy Phép MIT</span>
+                    <span class="content-lang" data-lang="en">MIT License</span>
+                    <span class="content-lang" data-lang="ja">MITライセンス</span>
+                </span>
+                <span class="badge">
+                    <i class="fas fa-language"></i>
+                    <span class="content-lang active" data-lang="vi">Đa Ngôn Ngữ</span>
+                    <span class="content-lang" data-lang="en">Multi-language</span>
+                    <span class="content-lang" data-lang="ja">多言語対応</span>
+                </span>
             </div>
             
             <div class="cta-buttons">
                 <a href="https://github.com/tnkbang/CSVEditor/releases" class="btn btn-primary">
-                    <i class="fas fa-download"></i> Tải Xuống Miễn Phí
+                    <i class="fas fa-download"></i>
+                    <span class="content-lang active" data-lang="vi">Tải Xuống Miễn Phí</span>
+                    <span class="content-lang" data-lang="en">Download Free</span>
+                    <span class="content-lang" data-lang="ja">無料ダウンロード</span>
                 </a>
                 <a href="https://github.com/tnkbang/CSVEditor" class="btn btn-secondary">
                     <i class="fab fa-github"></i> GitHub
@@ -899,34 +912,59 @@
     <footer>
         <div class="container">
             <div class="footer-content">
+                <!-- Vietnamese Footer -->
                 <div class="footer-section">
                     <h3>CSV Editor</h3>
-                    <p>Ứng dụng chỉnh sửa CSV mạnh mẽ được xây dựng bằng .NET 8 cho Windows</p>
+                    <p class="content-lang active" data-lang="vi">Ứng dụng chỉnh sửa CSV mạnh mẽ được xây dựng bằng .NET 8 cho Windows</p>
+                    <p class="content-lang" data-lang="en">Powerful CSV editor built with .NET 8 for Windows</p>
+                    <p class="content-lang" data-lang="ja">Windows用.NET 8で構築された強力なCSVエディタ</p>
                     <div class="social-links">
                         <a href="https://github.com/tnkbang/CSVEditor"><i class="fab fa-github"></i></a>
                     </div>
                 </div>
                 <div class="footer-section">
-                    <h3>Liên Kết</h3>
+                    <h3 class="content-lang active" data-lang="vi">Liên Kết</h3>
+                    <h3 class="content-lang" data-lang="en">Links</h3>
+                    <h3 class="content-lang" data-lang="ja">リンク</h3>
                     <a href="https://github.com/tnkbang/CSVEditor">GitHub Repository</a>
-                    <a href="https://github.com/tnkbang/CSVEditor/releases">Tải Xuống</a>
-                    <a href="https://github.com/tnkbang/CSVEditor/issues">Báo Lỗi</a>
-                    <a href="README.md">Documentation</a>
+                    <a href="https://github.com/tnkbang/CSVEditor/releases" class="content-lang active" data-lang="vi">Tải Xuống</a>
+                    <a href="https://github.com/tnkbang/CSVEditor/releases" class="content-lang" data-lang="en">Download</a>
+                    <a href="https://github.com/tnkbang/CSVEditor/releases" class="content-lang" data-lang="ja">ダウンロード</a>
+                    <a href="https://github.com/tnkbang/CSVEditor/issues" class="content-lang active" data-lang="vi">Báo Lỗi</a>
+                    <a href="https://github.com/tnkbang/CSVEditor/issues" class="content-lang" data-lang="en">Report Issues</a>
+                    <a href="https://github.com/tnkbang/CSVEditor/issues" class="content-lang" data-lang="ja">問題を報告</a>
+                    <a href="README.md" class="content-lang active" data-lang="vi">Tài liệu</a>
+                    <a href="README.md" class="content-lang" data-lang="en">Documentation</a>
+                    <a href="README.md" class="content-lang" data-lang="ja">書類</a>
                 </div>
                 <div class="footer-section">
-                    <h3>Tài Nguyên</h3>
-                    <a href="README_Vi.md">Hướng Dẫn Tiếng Việt</a>
-                    <a href="README.md">English Guide</a>
-                    <a href="README_Ja.md">日本語ガイド</a>
+                    <h3 class="content-lang active" data-lang="vi">Tài Nguyên</h3>
+                    <h3 class="content-lang" data-lang="en">Resources</h3>
+                    <h3 class="content-lang" data-lang="ja">リソース</h3>
+                    <a href="README_Vi.md" class="content-lang active" data-lang="vi">Hướng Dẫn Tiếng Việt</a>
+                    <a href="README_Vi.md" class="content-lang" data-lang="en">Vietnamese Guide</a>
+                    <a href="README_Vi.md" class="content-lang" data-lang="ja">ベトナム語ガイド</a>
+                    <a href="README.md" class="content-lang active" data-lang="vi">English Guide</a>
+                    <a href="README.md" class="content-lang" data-lang="en">English Guide</a>
+                    <a href="README.md" class="content-lang" data-lang="ja">英語ガイド</a>
+                    <a href="README_Ja.md" class="content-lang active" data-lang="vi">日本語ガイド</a>
+                    <a href="README_Ja.md" class="content-lang" data-lang="en">Japanese Guide</a>
+                    <a href="README_Ja.md" class="content-lang" data-lang="ja">日本語ガイド</a>
                 </div>
                 <div class="footer-section">
-                    <h3>Giấy Phép</h3>
-                    <p>Dự án này được cấp phép theo giấy phép MIT</p>
+                    <h3 class="content-lang active" data-lang="vi">Giấy Phép</h3>
+                    <h3 class="content-lang" data-lang="en">License</h3>
+                    <h3 class="content-lang" data-lang="ja">ライセンス</h3>
+                    <p class="content-lang active" data-lang="vi">Dự án này được cấp phép theo giấy phép MIT</p>
+                    <p class="content-lang" data-lang="en">This project is licensed under the MIT License</p>
+                    <p class="content-lang" data-lang="ja">このプロジェクトはMITライセンスの下でライセンスされています</p>
                     <p>© 2025 CSV Editor</p>
                 </div>
             </div>
             <div class="copyright">
-                <p>Được tạo với ❤️ sử dụng .NET 8 | <a href="https://github.com/tnkbang" style="color: var(--primary-color);">@tnkbang</a></p>
+                <p class="content-lang active" data-lang="vi">Được tạo với ❤️ sử dụng .NET 8 | <a href="https://github.com/tnkbang" style="color: var(--primary-color);">@tnkbang</a></p>
+                <p class="content-lang" data-lang="en">Made with ❤️ using .NET 8 | <a href="https://github.com/tnkbang" style="color: var(--primary-color);">@tnkbang</a></p>
+                <p class="content-lang" data-lang="ja">.NET 8で❤️を込めて作成 | <a href="https://github.com/tnkbang" style="color: var(--primary-color);">@tnkbang</a></p>
             </div>
         </div>
     </footer>
