@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="CSV Editor - Ứng dụng chỉnh sửa file CSV mạnh mẽ được xây dựng bằng .NET 8">
+    <meta name="keywords" content="CSV Editor, .NET 8, Windows, CSV, Excel, Data Editor">
+    <title>CSV Editor - Powerful CSV File Editor for Windows</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav class="container">
+            <div class="logo">
+                <i class="fas fa-file-csv"></i>
+                CSV Editor
+            </div>
+            <ul class="nav-links">
+                <li><a href="#features">Tính Năng</a></li>
+                <li><a href="#shortcuts">Phím Tắt</a></li>
+                <li><a href="#details">Chi Tiết</a></li>
+                <li><a href="#download">Tải Xuống</a></li>
+                <li class="lang-selector">
+                    <button class="lang-btn active" data-lang="vi">VI</button>
+                    <button class="lang-btn" data-lang="en">EN</button>
+                    <button class="lang-btn" data-lang="ja">JA</button>
+                </li>
+                <li><button class="theme-toggle" onclick="toggleTheme()"><i class="fas fa-moon"></i></button></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1><i class="fas fa-table"></i> CSV Editor</h1>
+            <p class="subtitle content-lang active" data-lang="vi">Ứng dụng chỉnh sửa file CSV mạnh mẽ và đầy đủ tính năng</p>
+            <p class="subtitle content-lang" data-lang="en">Powerful, feature-rich CSV file editor</p>
+            <p class="subtitle content-lang" data-lang="ja">強力で機能豊富なCSVファイルエディタ</p>
+            
+            <div class="badges">
+                <span class="badge"><i class="fas fa-code"></i> .NET 8</span>
+                <span class="badge"><i class="fab fa-windows"></i> Windows</span>
+                <span class="badge"><i class="fas fa-certificate"></i> MIT License</span>
+                <span class="badge"><i class="fas fa-language"></i> Multi-language</span>
+            </div>
+            
+            <div class="cta-buttons">
+                <a href="https://github.com/tnkbang/CSVEditor/releases" class="btn btn-primary">
+                    <i class="fas fa-download"></i> Tải Xuống Miễn Phí
+                </a>
+                <a href="https://github.com/tnkbang/CSVEditor" class="btn btn-secondary">
+                    <i class="fab fa-github"></i> GitHub
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Vietnamese Content -->
+    <div class="content-lang active" data-lang="vi">
+        <!-- Features Section -->
+        <section id="features" class="section">
+            <div class="container">
+                <h2 class="section-title">✨ Điểm Mạnh Nổi Bật</h2>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon"><i class="fas fa-rocket"></i></div>
+                        <h3>Hiệu Suất Cao</h3>
+                        <p>Tối ưu hóa để xử lý các bộ dữ liệu lớn (hàng triệu ô) với quản lý bộ nhớ hiệu quả và xử lý song song</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon"><i class="fas fa-th"></i></div>
+                        <h3>DataGrid Nâng Cao</h3>
+                        <p>Triển khai DataGrid tùy chỉnh với chế độ ảo hóa cho cuộn và chỉnh sửa mượt mà</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon"><i class="fas fa-memory"></i></div>
+                        <h3>Quản Lý Bộ Nhớ Thông Minh</h3>
+                        <p>StringPool và PooledStringTable để khử trùng lặp chuỗi hiệu quả về bộ nhớ</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon"><i class="fas fa-undo"></i></div>
+                        <h3>Hoàn Tác/Làm Lại Hoàn Chỉnh</h3>
+                        <p>Triển khai mẫu lệnh đầy đủ với lịch sử hoàn tác/làm lại không giới hạn (lên đến 100 bước)</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon"><i class="fas fa-language"></i></div>
+                        <h3>Hỗ Trợ Đa Ngôn Ngữ</h3>
+                        <p>Bản địa hóa tích hợp (Tiếng Việt, Tiếng Anh & Tiếng Nhật)</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon"><i class="fas fa-paint-brush"></i></div>
+                        <h3>Giao Diện Hiện Đại</h3>
+                        <p>Giao diện sạch sẽ, trực quan với nhận thức DPI và khả năng thu phóng</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Keyboard Shortcuts -->
+        <section id="shortcuts" class="section" style="background: var(--surface-color);">
+            <div class="container">
+                <h2 class="section-title">⌨️ Phím Tắt</h2>
+                <div class="shortcuts-grid">
+                    <div class="shortcut-category">
+                        <h3><i class="fas fa-file"></i> Thao Tác File</h3>
+                        <div class="shortcut-item">
+                            <span>Tạo File Mới</span>
+                            <span class="shortcut-key">Ctrl + N</span>
+                        </div>
+                        <div class="shortcut-item">
+                            <span>Mở File</span>
+                            <span class="shortcut-key">Ctrl + O</span>
+                        </div>
+                        <div class="shortcut-item">
+                            <span>Lưu</span>
+                            <span class="shortcut-key">Ctrl + S</span>
+                        </div>
+                        <div class="shortcut-item">
+                            <span>Lưu Thành</span>
+                            <span class="shortcut-key">Ctrl + Shift + S</span>
+                        </div>
+                        <div class="shortcut-item">
+                            <span>Xuất Excel</span>
+                            <span class="shortcut-key">Ctrl + E</span>
+                        </div>
+                        <div class="shortcut-item">
+                            <span>Đóng File</span>
+                            <span class="shortcut-key">Ctrl + W</span>
+                        </div>
+                    </div>
+
+                    <div class="shortcut-category">
+                        <h3><i class="fas fa-edit"></i> Chỉnh Sửa</h3>
+                        <div class="shortcut-item">
+                            <span>Hoàn Tác</span>
+                            <span class="shortcut-key">Ctrl + Z</span>
+                        </div>
+                        <div class="shortcut-item">
+                            <span>Làm Lại</span>
+                            <span class="shortcut-key">Ctrl + Y</span>
+                        </div>
+                        <div class="shortcut-item">
+                            <span>Sao Chép</span>
+                            <span class="shortcut-key">Ctrl + C</span>
+                        </div>
+                        <div class="shortcut-item">
+                            <span>Cắt</span>
+                            <span class="shortcut-key">Ctrl + X</span>
+                        </div>
+                        <div class="shortcut-item">
+                            <span>Dán</span>
+                            <span class="shortcut-key">Ctrl + V</span>
+                        </div>
+                        <div class="shortcut-item">
+                            <span>Xóa</span>
+                            <span class="shortcut-key">Delete</span>
+                        </div>
+                    </div>
+
+                    <div class="shortcut-category">
+                        <h3><i class="fas fa-search"></i> Xem & Tìm</h3>
+                        <div class="shortcut-item">
+                            <span>Tìm & Thay Thế</span>
+                            <span class="shortcut-key">Ctrl + F</span>
+                        </div>
+                        <div class="shortcut-item">
+                            <span>Tìm Tiếp</span>
+                            <span class="shortcut-key">F3</span>
+                        </div>
+                        <div class="shortcut-item">
+                            <span>Tự Động Điều Chỉnh Cột</span>
+                            <span class="shortcut-key">Ctrl + R</span>
+                        </div>
+                        <div class="shortcut-item">
+                            <span>Dấu Ngoặc Kép</span>
+                            <span class="shortcut-key">Ctrl + Q</span>
+                        </div>
+                    </div>
+
+                    <div class="shortcut-category">
+                        <h3><i class="fas fa-search-plus"></i> Thu Phóng</h3>
+                        <div class="shortcut-item">
+                            <span>Phóng To</span>
+                            <span class="shortcut-key">Ctrl + +</span>
+                        </div>
+                        <div class="shortcut-item">
+                            <span>Thu Nhỏ</span>
+                            <span class="shortcut-key">Ctrl + -</span>
+                        </div>
+                        <div class="shortcut-item">
+                            <span>Đặt Lại</span>
+                            <span class="shortcut-key">Ctrl + 0</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Detailed Features -->
+        <section id="details" class="section">
+            <div class="container">
+                <h2 class="section-title">🚀 Tính Năng Chi Tiết</h2>
+                
+                <div class="feature-detail">
+                    <h3><i class="fas fa-file-alt"></i> Thao Tác File</h3>
+                    <h4>Các tính năng:</h4>
+                    <ul>
+                        <li>Tạo file CSV mới với kích thước tùy chỉnh</li>
+                        <li>Mở file với tự động phát hiện mã hóa (UTF-8, Shift-JIS, v.v.)</li>
+                        <li>Hỗ trợ nhiều định dạng: CSV, TSV, và dấu phân cách tùy chỉnh</li>
+                        <li>Xuất ra Excel (.xlsx) với độ rộng cột tối ưu</li>
+                        <li>Gộp nhiều file CSV thành một với căn chỉnh cột tự động</li>
+                        <li>Mã hóa file với bảo vệ mật khẩu</li>
+                        <li>Kéo và thả file để mở nhanh</li>
+                    </ul>
+                </div>
+
+                <div class="feature-detail">
+                    <h3><i class="fas fa-table"></i> Thao Tác Dữ Liệu</h3>
+                    <h4>Tìm và Thay Thế:</h4>
+                    <ul>
+                        <li>Tìm kiếm chính xác, chứa, bắt đầu với, hoặc kết thúc với</li>
+                        <li>Tìm chỉ trong cột hiện tại</li>
+                        <li>Đánh dấu tất cả kết quả</li>
+                        <li>Thay thế một hoặc tất cả</li>
+                        <li>Tìm kiếm song song nhanh cho dữ liệu lớn</li>
+                    </ul>
+                    <h4>Lọc và Sắp Xếp:</h4>
+                    <ul>
+                        <li>Lọc cột kiểu Excel với chọn nhiều</li>
+                        <li>Tìm kiếm trong giá trị lọc</li>
+                        <li>Sắp xếp tăng dần, giảm dần, tự nhiên, hoặc ngẫu nhiên</li>
+                        <li>Kết hợp bộ lọc trên nhiều cột</li>
+                    </ul>
+                </div>
+
+                <div class="feature-detail">
+                    <h3><i class="fas fa-columns"></i> Thao Tác Hàng & Cột</h3>
+                    <h4>Các tính năng:</h4>
+                    <ul>
+                        <li>Chèn/Xóa hàng và cột ở bất kỳ vị trí nào</li>
+                        <li>Ẩn/Hiện hàng và cột với undo/redo</li>
+                        <li>Đóng băng hàng và cột để cuộn dễ dàng</li>
+                        <li>Tự động điều chỉnh độ rộng cột theo nội dung</li>
+                        <li>3 kiểu tiêu đề cột: Số, Excel (A, B, C...), hoặc CSV Header</li>
+                        <li>Chọn nhiều hàng/cột với Shift và Ctrl</li>
+                    </ul>
+                </div>
+
+                <div class="feature-detail">
+                    <h3><i class="fas fa-cog"></i> Cài Đặt & Tùy Chỉnh</h3>
+                    <h4>Các tùy chọn:</h4>
+                    <ul>
+                        <li>Thu phóng từ 50% đến 500% (bước nhảy 25%)</li>
+                        <li>Chọn mã hóa: UTF-8, Shift-JIS, v.v.</li>
+                        <li>Dấu phân cách: Phẩy, Tab, Chấm phẩy, Gạch đứng, hoặc tùy chỉnh</li>
+                        <li>Đa ngôn ngữ: Tiếng Việt, Tiếng Anh, Tiếng Nhật</li>
+                        <li>Đánh dấu ô quan trọng với màu nền</li>
+                        <li>Thêm/Xóa dấu ngoặc kép</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- System Requirements -->
+        <section id="download" class="section" style="background: var(--surface-color);">
+            <div class="container">
+                <div class="requirements">
+                    <h3>🛠️ Yêu Cầu Hệ Thống</h3>
+                    <div class="requirements-grid">
+                        <div class="requirement-item">
+                            <i class="fab fa-windows"></i>
+                            <h4>Hệ Điều Hành</h4>
+                            <p>Windows 10 trở lên</p>
+                        </div>
+                        <div class="requirement-item">
+                            <i class="fas fa-code"></i>
+                            <h4>Framework</h4>
+                            <p>.NET 8.0 Runtime</p>
+                        </div>
+                        <div class="requirement-item">
+                            <i class="fas fa-memory"></i>
+                            <h4>RAM</h4>
+                            <p>4 GB (8 GB khuyến nghị)</p>
+                        </div>
+                        <div class="requirement-item">
+                            <i class="fas fa-hdd"></i>
+                            <h4>Dung Lượng</h4>
+                            <p>50 MB</p>
+                        </div>
+                    </div>
+                    <div style="margin-top: 3rem;">
+                        <a href="https://github.com/tnkbang/CSVEditor/releases" class="btn btn-primary">
+                            <i class="fas fa-download"></i> Tải Xuống Phiên Bản Mới Nhất
+                        </a>
+                        <p style="margin-top: 1rem; opacity: 0.9;">Không cần cài đặt! Ứng dụng có thể di động</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- English Content -->
+    <div class="content-lang" data-lang="en">
+        <!-- Features Section -->
+        <section id="features-en" class="section">
+            <div class="container">
+                <h2 class="section-title">✨ Key Strengths</h2>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon"><i class="fas fa-rocket"></i></div>
+                        <h3>High Performance</h3>
+                        <p>Optimized for handling large datasets (millions of cells) with efficient memory management and parallel processing</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon"><i class="fas fa-th"></i></div>
+                        <h3>Advanced Data Grid</h3>
+                        <p>Custom DataGrid implementation with virtual mode for smooth scrolling and editing</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon"><i class="fas fa-memory"></i></div>
+                        <h3>Intelligent Memory</h3>
+                        <p>StringPool and PooledStringTable for memory-efficient string deduplication</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon"><i class="fas fa-undo"></i></div>
+                        <h3>Complete Undo/Redo</h3>
+                        <p>Full command pattern implementation with unlimited undo/redo history (up to 100 steps)</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon"><i class="fas fa-language"></i></div>
+                        <h3>Multi-language Support</h3>
+                        <p>Built-in localization (Vietnamese, English & Japanese)</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon"><i class="fas fa-paint-brush"></i></div>
+                        <h3>Modern UI</h3>
+                        <p>Clean, intuitive interface with DPI awareness and zoom capabilities</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Other English sections would be similar... -->
+        <section class="section" style="background: var(--surface-color);">
+            <div class="container">
+                <h2 class="section-title">🚀 Main Features</h2>
+                <div class="feature-detail">
+                    <h3><i class="fas fa-file-alt"></i> File Operations</h3>
+                    <ul>
+                        <li>Create new CSV files with custom dimensions</li>
+                        <li>Open files with automatic encoding detection</li>
+                        <li>Support for CSV, TSV, and custom delimiters</li>
+                        <li>Export to Excel (.xlsx) format</li>
+                        <li>Merge multiple CSV files</li>
+                        <li>File encryption with password protection</li>
+                    </ul>
+                </div>
+                <div class="feature-detail">
+                    <h3><i class="fas fa-edit"></i> Editing Operations</h3>
+                    <ul>
+                        <li>Full undo/redo support (up to 100 steps)</li>
+                        <li>Copy/Cut/Paste with multi-cell support</li>
+                        <li>Find and Replace with multiple search modes</li>
+                        <li>Excel-like column filtering</li>
+                        <li>Multiple sort algorithms</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Japanese Content -->
+    <div class="content-lang" data-lang="ja">
+        <!-- Features Section -->
+        <section id="features-ja" class="section">
+            <div class="container">
+                <h2 class="section-title">✨ 主な強み</h2>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon"><i class="fas fa-rocket"></i></div>
+                        <h3>高性能</h3>
+                        <p>効率的なメモリ管理と並列処理により、大規模なデータセット（数百万セル）の処理に最適化</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon"><i class="fas fa-th"></i></div>
+                        <h3>高度なデータグリッド</h3>
+                        <p>スムーズなスクロールと編集のための仮想化モードを備えたカスタムDataGrid実装</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon"><i class="fas fa-memory"></i></div>
+                        <h3>インテリジェントメモリ</h3>
+                        <p>メモリ効率的な文字列重複排除のためのStringPoolとPooledStringTable</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon"><i class="fas fa-undo"></i></div>
+                        <h3>完全な元に戻す/やり直し</h3>
+                        <p>無制限の元に戻す/やり直し履歴（最大100ステップ）を備えた完全なコマンドパターン実装</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon"><i class="fas fa-language"></i></div>
+                        <h3>多言語サポート</h3>
+                        <p>組み込みのローカライゼーション（ベトナム語、英語、日本語）</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon"><i class="fas fa-paint-brush"></i></div>
+                        <h3>モダンUI</h3>
+                        <p>DPI認識とズーム機能を備えたクリーンで直感的なインターフェイス</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" style="background: var(--surface-color);">
+            <div class="container">
+                <h2 class="section-title">🚀 主な機能</h2>
+                <div class="feature-detail">
+                    <h3><i class="fas fa-file-alt"></i> ファイル操作</h3>
+                    <ul>
+                        <li>カスタムサイズの新しいCSVファイルを作成</li>
+                        <li>自動エンコーディング検出でファイルを開く</li>
+                        <li>CSV、TSV、カスタム区切り文字をサポート</li>
+                        <li>Excel形式（.xlsx）へのエクスポート</li>
+                        <li>複数のCSVファイルの結合</li>
+                        <li>パスワード保護付きファイル暗号化</li>
+                    </ul>
+                </div>
+                <div class="feature-detail">
+                    <h3><i class="fas fa-edit"></i> 編集操作</h3>
+                    <ul>
+                        <li>完全な元に戻す/やり直しサポート（最大100ステップ）</li>
+                        <li>複数セルサポート付きコピー/切り取り/貼り付け</li>
+                        <li>複数の検索モードを備えた検索と置換</li>
+                        <li>Excelライクな列フィルタリング</li>
+                        <li>複数のソートアルゴリズム</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>CSV Editor</h3>
+                    <p>Ứng dụng chỉnh sửa CSV mạnh mẽ được xây dựng bằng .NET 8 cho Windows</p>
+                    <div class="social-links">
+                        <a href="https://github.com/tnkbang/CSVEditor"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Liên Kết</h3>
+                    <a href="https://github.com/tnkbang/CSVEditor">GitHub Repository</a>
+                    <a href="https://github.com/tnkbang/CSVEditor/releases">Tải Xuống</a>
+                    <a href="https://github.com/tnkbang/CSVEditor/issues">Báo Lỗi</a>
+                    <a href="README.md">Documentation</a>
+                </div>
+                <div class="footer-section">
+                    <h3>Tài Nguyên</h3>
+                    <a href="README_Vi.md">Hướng Dẫn Tiếng Việt</a>
+                    <a href="README.md">English Guide</a>
+                    <a href="README_Ja.md">日本語ガイド</a>
+                </div>
+                <div class="footer-section">
+                    <h3>Giấy Phép</h3>
+                    <p>Dự án này được cấp phép theo giấy phép MIT</p>
+                    <p>© 2025 CSV Editor</p>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>Được tạo với ❤️ sử dụng .NET 8 | <a href="https://github.com/tnkbang" style="color: var(--primary-color);">@tnkbang</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
