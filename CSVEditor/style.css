@@ -37,21 +37,9 @@ body {
 }
 
 .container {
-    max-width: 90%;
+    max-width: 100%;
     margin: 0 auto;
     padding: 0 20px;
-}
-
-@media (min-width: 1400px) {
-    .container {
-        max-width: 85%;
-    }
-}
-
-@media (min-width: 1920px) {
-    .container {
-        max-width: 1600px;
-    }
 }
 
 /* Header */
@@ -315,12 +303,18 @@ nav {
 }
 
 /* Detailed Features */
+.details-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+    gap: 2rem;
+}
+
 .feature-detail {
     background: var(--surface-color);
     padding: 2rem;
     border-radius: 15px;
-    margin-bottom: 2rem;
     border: 1px solid var(--border-color);
+    height: 100%;
 }
 
 .feature-detail h3 {
@@ -477,6 +471,10 @@ footer {
     }
 
     .shortcuts-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .details-grid {
         grid-template-columns: 1fr;
     }
 
