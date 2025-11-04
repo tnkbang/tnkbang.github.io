@@ -230,6 +230,11 @@
         display: grid;
         grid-template-columns: 1fr;
         gap: 2rem;
+        overflow-y: hidden;
+    }
+    
+    .doc-section {
+        overflow-y: hidden;
     }
     
     /* Use 2-column layout for feature details on very large screens */
@@ -238,6 +243,14 @@
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         gap: 2rem;
+        overflow-y: hidden;
+        overflow-x: visible;
+    }
+    
+    /* Ensure feature-detail boxes don't cause overflow */
+    .doc-section > div.content-lang.active > .feature-detail {
+        overflow: visible;
+        min-height: 0;
     }
     
     /* Keep certain elements full width within the grid */
