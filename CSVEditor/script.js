@@ -72,23 +72,42 @@ document.querySelectorAll('.lang-btn').forEach(btn => {
             content.classList.add('active');
         });
 
-        // Update nav links
+        // Update nav links with correct IDs and text
         const navLinks = document.querySelector('.nav-links');
+        const suffix = lang === 'vi' ? '' : `-${lang}`;
+
+        const featuresLink = navLinks.querySelector('a[href^="#features"]');
+        const shortcutsLink = navLinks.querySelector('a[href^="#shortcuts"]');
+        const detailsLink = navLinks.querySelector('a[href^="#details"]');
+        const downloadLink = navLinks.querySelector('a[href^="#download"]');
+
         if (lang === 'vi') {
-            navLinks.querySelector('a[href="#features"]').textContent = 'Tính Năng';
-            navLinks.querySelector('a[href="#shortcuts"]').textContent = 'Phím Tắt';
-            navLinks.querySelector('a[href="#details"]').textContent = 'Chi Tiết';
-            navLinks.querySelector('a[href="#download"]').textContent = 'Tải Xuống';
+            featuresLink.href = '#features';
+            featuresLink.textContent = 'Tính Năng';
+            shortcutsLink.href = '#shortcuts';
+            shortcutsLink.textContent = 'Phím Tắt';
+            detailsLink.href = '#details';
+            detailsLink.textContent = 'Chi Tiết';
+            downloadLink.href = '#download';
+            downloadLink.textContent = 'Tải Xuống';
         } else if (lang === 'en') {
-            navLinks.querySelector('a[href="#features"]').textContent = 'Features';
-            navLinks.querySelector('a[href="#shortcuts"]').textContent = 'Shortcuts';
-            navLinks.querySelector('a[href="#details"]').textContent = 'Details';
-            navLinks.querySelector('a[href="#download"]').textContent = 'Download';
+            featuresLink.href = '#features-en';
+            featuresLink.textContent = 'Features';
+            shortcutsLink.href = '#shortcuts-en';
+            shortcutsLink.textContent = 'Shortcuts';
+            detailsLink.href = '#details-en';
+            detailsLink.textContent = 'Details';
+            downloadLink.href = '#download-en';
+            downloadLink.textContent = 'Download';
         } else if (lang === 'ja') {
-            navLinks.querySelector('a[href="#features"]').textContent = '機能';
-            navLinks.querySelector('a[href="#shortcuts"]').textContent = 'ショートカット';
-            navLinks.querySelector('a[href="#details"]').textContent = '詳細';
-            navLinks.querySelector('a[href="#download"]').textContent = 'ダウンロード';
+            featuresLink.href = '#features-ja';
+            featuresLink.textContent = '機能';
+            shortcutsLink.href = '#shortcuts-ja';
+            shortcutsLink.textContent = 'ショートカット';
+            detailsLink.href = '#details-ja';
+            detailsLink.textContent = '詳細';
+            downloadLink.href = '#download-ja';
+            downloadLink.textContent = 'ダウンロード';
         }
     });
 });
