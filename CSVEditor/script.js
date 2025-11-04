@@ -218,18 +218,7 @@ const sectionObserver = new IntersectionObserver((entries) => {
         currentActiveSection = targetSection.id;
         const sectionId = targetSection.id;
 
-        // Remove active class from all nav cards
-        document.querySelectorAll('.nav-card').forEach(card => {
-            card.classList.remove('active');
-        });
-
-        // Add active class to corresponding nav card
-        const activeCard = document.querySelector(`.nav-card[href="#${sectionId}"]`);
-        if (activeCard) {
-            activeCard.classList.add('active');
-        }
-
-        // Also update sidebar TOC if exists
+        // Update sidebar TOC only
         document.querySelectorAll('.toc a').forEach(link => {
             link.classList.remove('active');
         });
