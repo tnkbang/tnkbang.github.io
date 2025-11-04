@@ -192,3 +192,55 @@ document.querySelectorAll('.feature-card, .feature-detail, .shortcut-category').
     el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
     observer.observe(el);
 });
+
+// Active section highlighting for quick-nav
+const sectionObserverOptions = {
+    threshold: [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1],
+    rootMargin: '-80px 0px -80px 0px'
+};
+
+let currentActiveSection = null;
+
+const sectionObserver = new IntersectionObserver((entries) => {
+    // Find the section with the highest intersection ratio
+    let maxRatio = 0;
+    let targetSection = null;
+
+    entries.forEach(entry => {
+        if (entry.isIntersecting && entry.intersectionRatio > maxRatio) {
+            maxRatio = entry.intersectionRatio;
+            targetSection = entry.target;
+        }
+    });
+
+    // If we found a section and it's different from current
+    if (targetSection && targetSection.id !== currentActiveSection) {
+        currentActiveSection = targetSection.id;
+        const sectionId = targetSection.id;
+
+        // Remove active class from all nav cards
+        document.querySelectorAll('.nav-card').forEach(card => {
+            card.classList.remove('active');
+        });
+
+        // Add active class to corresponding nav card
+        const activeCard = document.querySelector(`.nav-card[href="#${sectionId}"]`);
+        if (activeCard) {
+            activeCard.classList.add('active');
+        }
+
+        // Also update sidebar TOC if exists
+        document.querySelectorAll('.toc a').forEach(link => {
+            link.classList.remove('active');
+        });
+        const activeTocLink = document.querySelector(`.toc a[href="#${sectionId}"]`);
+        if (activeTocLink) {
+            activeTocLink.classList.add('active');
+        }
+    }
+}, sectionObserverOptions);
+
+// Observe all doc sections
+document.querySelectorAll('.doc-section').forEach(section => {
+    sectionObserver.observe(section);
+});

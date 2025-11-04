@@ -50,6 +50,18 @@
     box-shadow: var(--shadow);
 }
 
+.nav-card.active {
+    border-color: var(--primary-color);
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-lg);
+}
+
+.nav-card.active i {
+    color: white;
+}
+
 .nav-card i {
     font-size: 2rem;
     color: var(--primary-color);
@@ -100,6 +112,13 @@
 .toc a:hover {
     background: var(--surface-color);
     border-left-color: var(--primary-color);
+}
+
+.toc a.active {
+    background: var(--surface-color);
+    border-left-color: var(--primary-color);
+    color: var(--primary-color);
+    font-weight: 600;
 }
 
 /* Main Documentation Content */
