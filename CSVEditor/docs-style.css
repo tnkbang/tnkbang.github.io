@@ -429,6 +429,11 @@ kbd {
     margin-bottom: 0.75rem;
 }
 
+/* Remove checkmark from ordered lists in feature details */
+.feature-detail ol li::before {
+    content: none;
+}
+
 /* Step-by-Step Instructions */
 .steps {
     counter-reset: step-counter;
