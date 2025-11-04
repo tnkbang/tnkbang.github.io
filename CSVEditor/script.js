@@ -47,18 +47,31 @@ document.addEventListener('click', (e) => {
     }
 });
 
-// Load saved theme
+// Load saved theme and language
 window.addEventListener('DOMContentLoaded', () => {
+    // Load theme
     const savedTheme = localStorage.getItem('theme') || 'light';
     document.documentElement.setAttribute('data-theme', savedTheme);
     const icon = document.querySelector('.theme-toggle i');
-    icon.className = savedTheme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
+    if (icon) {
+        icon.className = savedTheme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
+    }
+
+    // Load language
+    const savedLang = localStorage.getItem('selectedLanguage') || 'vi';
+    const langBtn = document.querySelector(`.lang-btn[data-lang="${savedLang}"]`);
+    if (langBtn) {
+        langBtn.click(); // Trigger the language switch
+    }
 });
 
 // Language Switcher
 document.querySelectorAll('.lang-btn').forEach(btn => {
     btn.addEventListener('click', () => {
         const lang = btn.getAttribute('data-lang');
+
+        // Save language to localStorage
+        localStorage.setItem('selectedLanguage', lang);
 
         // Update active button
         document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
