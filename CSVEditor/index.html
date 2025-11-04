@@ -17,11 +17,14 @@
                 <i class="fas fa-file-csv"></i>
                 CSV Editor
             </div>
+            <button class="mobile-menu-toggle" onclick="toggleMobileMenu()" aria-label="Toggle menu">
+                <i class="fas fa-bars"></i>
+            </button>
             <ul class="nav-links">
-                <li><a href="#features">Tính Năng</a></li>
-                <li><a href="#shortcuts">Phím Tắt</a></li>
-                <li><a href="#details">Chi Tiết</a></li>
-                <li><a href="#download">Tải Xuống</a></li>
+                <li><a href="#features" onclick="closeMobileMenu()">Tính Năng</a></li>
+                <li><a href="#shortcuts" onclick="closeMobileMenu()">Phím Tắt</a></li>
+                <li><a href="#details" onclick="closeMobileMenu()">Chi Tiết</a></li>
+                <li><a href="#download" onclick="closeMobileMenu()">Tải Xuống</a></li>
                 <li class="lang-selector">
                     <button class="lang-btn active" data-lang="vi">VI</button>
                     <button class="lang-btn" data-lang="en">EN</button>

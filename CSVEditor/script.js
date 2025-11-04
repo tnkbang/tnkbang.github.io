@@ -10,6 +10,43 @@ function toggleTheme() {
     icon.className = newTheme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
 }
 
+// Mobile Menu Toggle
+function toggleMobileMenu() {
+    const navLinks = document.querySelector('.nav-links');
+    const menuToggle = document.querySelector('.mobile-menu-toggle i');
+    navLinks.classList.toggle('active');
+
+    // Change icon
+    if (navLinks.classList.contains('active')) {
+        menuToggle.className = 'fas fa-times';
+    } else {
+        menuToggle.className = 'fas fa-bars';
+    }
+}
+
+// Close Mobile Menu
+function closeMobileMenu() {
+    const navLinks = document.querySelector('.nav-links');
+    const menuToggle = document.querySelector('.mobile-menu-toggle i');
+    if (window.innerWidth <= 768) {
+        navLinks.classList.remove('active');
+        menuToggle.className = 'fas fa-bars';
+    }
+}
+
+// Close menu when clicking outside
+document.addEventListener('click', (e) => {
+    const navLinks = document.querySelector('.nav-links');
+    const menuToggle = document.querySelector('.mobile-menu-toggle');
+    const nav = document.querySelector('nav');
+
+    if (navLinks.classList.contains('active') &&
+        !nav.contains(e.target)) {
+        navLinks.classList.remove('active');
+        menuToggle.querySelector('i').className = 'fas fa-bars';
+    }
+});
+
 // Load saved theme
 window.addEventListener('DOMContentLoaded', () => {
     const savedTheme = localStorage.getItem('theme') || 'light';
