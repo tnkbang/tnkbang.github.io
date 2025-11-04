@@ -1,0 +1,797 @@
+/* Documentation Specific Styles */
+
+.docs-hero {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    color: white;
+    padding: 4rem 0 3rem;
+    text-align: center;
+}
+
+.docs-hero h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.docs-hero p {
+    font-size: 1.2rem;
+    opacity: 0.95;
+}
+
+/* Quick Navigation Cards */
+.quick-nav {
+    padding: 3rem 0;
+    background: var(--surface-color);
+}
+
+.nav-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1.5rem;
+}
+
+.nav-card {
+    background: var(--bg-color);
+    padding: 1.5rem;
+    border-radius: 10px;
+    text-align: center;
+    text-decoration: none;
+    color: var(--text-color);
+    border: 2px solid var(--border-color);
+    transition: all 0.3s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.nav-card:hover {
+    border-color: var(--primary-color);
+    transform: translateY(-3px);
+    box-shadow: var(--shadow);
+}
+
+.nav-card i {
+    font-size: 2rem;
+    color: var(--primary-color);
+}
+
+/* Documentation Layout */
+.docs-content {
+    padding: 3rem 0;
+}
+
+.docs-layout {
+    display: grid;
+    grid-template-columns: 250px 1fr;
+    gap: 3rem;
+}
+
+/* Sidebar */
+.docs-sidebar {
+    position: relative;
+}
+
+.sidebar-sticky {
+    position: sticky;
+    top: 100px;
+}
+
+.docs-sidebar h3 {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+}
+
+.toc {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.toc a {
+    color: var(--text-color);
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    transition: all 0.3s;
+    border-left: 3px solid transparent;
+}
+
+.toc a:hover {
+    background: var(--surface-color);
+    border-left-color: var(--primary-color);
+}
+
+/* Main Documentation Content */
+.docs-main {
+    max-width: none; /* Allow full width usage */
+    width: 100%;
+}
+
+.doc-section {
+    margin-bottom: 4rem;
+    scroll-margin-top: 100px;
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+.doc-section h2 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    color: var(--text-color);
+    border-bottom: 3px solid var(--primary-color);
+    padding-bottom: 0.5rem;
+    word-wrap: break-word;
+}
+
+.doc-section h3 {
+    font-size: 1.5rem;
+    margin: 2rem 0 1rem;
+    color: var(--text-color);
+    word-wrap: break-word;
+}
+
+.doc-section h4 {
+    font-size: 1.2rem;
+    margin: 1.5rem 0 0.75rem;
+    color: var(--secondary-color);
+}
+
+.doc-section p {
+    line-height: 1.8;
+    margin-bottom: 1rem;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    max-width: 100%;
+}
+
+.doc-section ul {
+    margin: 1rem 0;
+    padding-left: 2rem;
+    max-width: 100%;
+}
+
+.doc-section ol {
+    margin: 1rem 0;
+    padding-left: 2rem;
+    max-width: 100%;
+}
+
+.doc-section li {
+    margin-bottom: 0.5rem;
+    line-height: 1.6;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+/* Feature Detail Boxes - Add spacing between boxes */
+.feature-detail {
+    background: var(--surface-color);
+    padding: 1.5rem;
+    border-radius: 10px;
+    border: 1px solid var(--border-color);
+    margin-bottom: 2rem; /* Add spacing between feature boxes */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s;
+    max-width: 100%;
+    box-sizing: border-box;
+    overflow-x: hidden;
+}
+
+.feature-detail:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border-color: var(--primary-color);
+}
+
+.feature-detail h3 {
+    margin-top: 0;
+    color: var(--primary-color);
+}
+
+.feature-detail ul,
+.feature-detail ol {
+    padding-left: 1.5rem;
+}
+
+.feature-detail p,
+.feature-detail li {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+/* Multi-column layout for large screens */
+@media (min-width: 1600px) {
+    .docs-layout {
+        grid-template-columns: 250px 1fr;
+        gap: 3rem;
+        max-width: none;
+    }
+    
+    .docs-main {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    
+    /* Use 2-column layout for feature details on very large screens */
+    /* Only apply grid to div.content-lang, not h2.content-lang */
+    .doc-section > div.content-lang.active {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+    }
+    
+    /* Keep certain elements full width within the grid */
+    .doc-section > div.content-lang.active > .shortcut-table,
+    .doc-section > div.content-lang.active > p:first-child,
+    .doc-section > div.content-lang.active > h3,
+    .doc-section > div.content-lang.active > ul,
+    .doc-section > div.content-lang.active > ol {
+        grid-column: 1 / -1;
+    }
+    
+    /* Exception: Overview section should stay single column due to its structure */
+    #overview > div.content-lang.active {
+        display: block;
+        max-width: 1100px;
+    }
+    
+    /* Hidden language content stays hidden */
+    .doc-section .content-lang:not(.active) {
+        display: none !important;
+    }
+    
+    /* h2 headings should remain block, not affected by grid */
+    .doc-section > h2.content-lang {
+        display: none;
+    }
+    
+    .doc-section > h2.content-lang.active {
+        display: block;
+    }
+}
+
+@media (min-width: 2000px) {
+    .container {
+        max-width: 1800px;
+    }
+    
+    .docs-layout {
+        gap: 4rem;
+    }
+    
+    #overview > div.content-lang.active {
+        max-width: 1200px;
+    }
+}
+
+/* Shortcut Tables */
+.shortcut-table {
+    margin: 2rem 0;
+}
+
+.shortcut-table h3 {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+}
+
+.shortcut-table table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--surface-color);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+}
+
+.shortcut-table thead {
+    background: var(--primary-color);
+    color: white;
+}
+
+.shortcut-table th {
+    padding: 1rem;
+    text-align: left;
+    font-weight: 600;
+}
+
+.shortcut-table td {
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.shortcut-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.shortcut-table tbody tr:hover {
+    background: var(--bg-color);
+}
+
+/* Keyboard Key Styling */
+kbd {
+    background: var(--bg-color);
+    border: 2px solid var(--border-color);
+    border-radius: 5px;
+    padding: 0.2rem 0.5rem;
+    font-family: 'Courier New', monospace;
+    font-weight: bold;
+    font-size: 0.9rem;
+    box-shadow: 0 2px 0 var(--border-color);
+    display: inline-block;
+    margin: 0 0.2rem;
+}
+
+/* Code Blocks */
+.doc-section code {
+    background: var(--surface-color);
+    padding: 0.2rem 0.5rem;
+    border-radius: 3px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.9rem;
+    color: var(--primary-color);
+}
+
+/* Info Boxes */
+.info-box {
+    background: var(--surface-color);
+    border-left: 4px solid var(--primary-color);
+    padding: 1rem 1.5rem;
+    margin: 1.5rem 0;
+    border-radius: 5px;
+}
+
+.info-box.warning {
+    border-left-color: #f59e0b;
+}
+
+.info-box.tip {
+    border-left-color: #10b981;
+}
+
+.info-box h4 {
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+}
+
+/* Download CTA */
+.download-cta {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    color: white;
+    padding: 3rem;
+    border-radius: 15px;
+    text-align: center;
+    margin-top: 4rem;
+}
+
+.download-cta h3 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.download-cta p {
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+    opacity: 0.95;
+}
+
+.download-cta .btn {
+    background: white;
+    color: var(--primary-color);
+    font-size: 1.2rem;
+}
+
+.download-cta .btn:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+}
+
+/* Feature Cards for Documentation */
+.feature-grid-docs {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+
+.feature-card-docs {
+    background: var(--surface-color);
+    padding: 1.5rem;
+    border-radius: 10px;
+    border: 1px solid var(--border-color);
+}
+
+.feature-card-docs h4 {
+    color: var(--primary-color);
+    margin-top: 0;
+    margin-bottom: 0.75rem;
+}
+
+/* Step-by-Step Instructions */
+.steps {
+    counter-reset: step-counter;
+    margin: 1.5rem 0;
+}
+
+.step {
+    counter-increment: step-counter;
+    margin-bottom: 1.5rem;
+    padding-left: 3rem;
+    position: relative;
+}
+
+.step::before {
+    content: counter(step-counter);
+    position: absolute;
+    left: 0;
+    top: 0;
+    background: var(--primary-color);
+    color: white;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+}
+
+/* Responsive Design */
+@media (min-width: 1025px) and (max-width: 1599px) {
+    .docs-main {
+        max-width: 1100px;
+    }
+}
+
+@media (max-width: 1024px) {
+    .docs-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .docs-sidebar {
+        display: none;
+    }
+    
+    .docs-main {
+        max-width: 900px;
+        margin: 0 auto;
+    }
+}
+
+@media (max-width: 768px) {
+    .docs-hero h1 {
+        font-size: 2rem;
+    }
+
+    .docs-hero p {
+        font-size: 1rem;
+    }
+
+    .nav-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .shortcut-table {
+        overflow-x: auto;
+    }
+
+    .shortcut-table table {
+        min-width: 600px;
+    }
+
+    .doc-section h2 {
+        font-size: 1.5rem;
+    }
+
+    .doc-section h3 {
+        font-size: 1.3rem;
+    }
+    
+    .feature-detail {
+        margin-bottom: 1.5rem;
+    }
+    
+    /* Fix content overflow on small screens */
+    .doc-section {
+        overflow-x: hidden;
+    }
+    
+    .doc-section ul,
+    .doc-section ol {
+        padding-left: 1.5rem;
+        margin-right: 0;
+    }
+    
+    .doc-section p,
+    .doc-section li {
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        max-width: 100%;
+    }
+    
+    .feature-detail {
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+}
+
+@media (max-width: 480px) {
+    .nav-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .docs-content {
+        padding: 1.5rem 0;
+    }
+
+    kbd {
+        font-size: 0.8rem;
+        padding: 0.15rem 0.4rem;
+    }
+    
+    .docs-hero {
+        padding: 2.5rem 0 2rem;
+    }
+    
+    .docs-hero h1 {
+        font-size: 1.75rem;
+    }
+    
+    .docs-hero p {
+        font-size: 0.95rem;
+    }
+    
+    .doc-section {
+        overflow-x: hidden;
+        max-width: 100%;
+    }
+    
+    .doc-section h2 {
+        font-size: 1.3rem;
+        word-wrap: break-word;
+    }
+    
+    .doc-section h3 {
+        font-size: 1.1rem;
+        word-wrap: break-word;
+    }
+    
+    .doc-section h4 {
+        font-size: 1rem;
+    }
+    
+    .doc-section ul,
+    .doc-section ol {
+        padding-left: 1.25rem;
+        margin-left: 0;
+        margin-right: 0;
+    }
+    
+    .doc-section li {
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+    }
+    
+    .feature-detail {
+        padding: 1rem;
+        margin-bottom: 1.25rem;
+        max-width: 100%;
+        overflow-x: hidden;
+    }
+    
+    .feature-detail ul,
+    .feature-detail ol {
+        padding-left: 1.25rem;
+        margin-left: 0;
+        margin-right: 0;
+    }
+    
+    .feature-detail li {
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+    }
+    
+    /* Fix table overflow on very small screens */
+    .shortcut-table {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        max-width: 100%;
+    }
+    
+    .shortcut-table table {
+        min-width: 500px;
+        font-size: 0.85rem;
+    }
+    
+    .shortcut-table th,
+    .shortcut-table td {
+        padding: 0.5rem 0.75rem;
+        word-wrap: break-word;
+    }
+    
+    /* Fix nav cards on small screens */
+    .nav-card {
+        padding: 1rem;
+        font-size: 0.9rem;
+    }
+    
+    .nav-card i {
+        font-size: 1.5rem;
+    }
+    
+    /* Fix download CTA */
+    .download-cta {
+        padding: 2rem 1rem;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+    
+    .download-cta h3 {
+        font-size: 1.5rem;
+    }
+    
+    .download-cta p {
+        font-size: 1rem;
+    }
+    
+    /* Fix info boxes */
+    .info-box {
+        padding: 0.75rem 1rem;
+        margin: 1rem 0;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+    
+    /* Ensure text doesn't overflow */
+    body {
+        overflow-x: hidden;
+    }
+    
+    .container {
+        padding: 0 1rem;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+    
+    .docs-layout {
+        max-width: 100%;
+        overflow-x: hidden;
+    }
+    
+    .docs-main {
+        max-width: 100%;
+        overflow-x: hidden;
+    }
+    
+    /* Fix long words breaking layout */
+    p, li, td, h1, h2, h3, h4, h5, h6 {
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        hyphens: auto;
+    }
+    
+    /* Fix content-lang overflow */
+    .content-lang {
+        max-width: 100%;
+        overflow-x: hidden;
+    }
+}
+
+/* Extra small screens (iPhone SE and smaller) */
+@media (max-width: 375px) {
+    .container {
+        padding: 0 0.75rem;
+    }
+    
+    .docs-hero h1 {
+        font-size: 1.5rem;
+    }
+    
+    .docs-hero p {
+        font-size: 0.9rem;
+    }
+    
+    .doc-section h2 {
+        font-size: 1.2rem;
+    }
+    
+    .doc-section h3 {
+        font-size: 1rem;
+    }
+    
+    .feature-detail {
+        padding: 0.75rem;
+    }
+    
+    kbd {
+        font-size: 0.75rem;
+        padding: 0.1rem 0.3rem;
+        margin: 0 0.1rem;
+    }
+    
+    .shortcut-table table {
+        font-size: 0.8rem;
+    }
+    
+    .nav-card {
+        padding: 0.75rem;
+    }
+    
+    .download-cta {
+        padding: 1.5rem 0.75rem;
+    }
+    
+    .download-cta h3 {
+        font-size: 1.3rem;
+    }
+}
+
+/* Dark Mode Adjustments */
+[data-theme="dark"] .shortcut-table table {
+    background: var(--surface-color);
+}
+
+[data-theme="dark"] .nav-card {
+    background: var(--surface-color);
+}
+
+[data-theme="dark"] kbd {
+    box-shadow: 0 2px 0 var(--primary-color);
+}
+
+/* Print Styles */
+@media print {
+    .docs-sidebar,
+    header,
+    footer,
+    .quick-nav,
+    .download-cta {
+        display: none;
+    }
+
+    .docs-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .doc-section {
+        page-break-inside: avoid;
+    }
+
+    .shortcut-table table {
+        page-break-inside: avoid;
+    }
+}
+
+/* Smooth Scroll Behavior */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Language Content Display */
+.content-lang {
+    display: none;
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+.content-lang.active {
+    display: block;
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+/* For inline language switching */
+.nav-card .content-lang,
+.toc a .content-lang,
+kbd .content-lang {
+    display: none;
+}
+
+.nav-card .content-lang.active,
+.toc a .content-lang.active,
+kbd .content-lang.active {
+    display: inline;
+}

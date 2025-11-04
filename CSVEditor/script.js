@@ -80,39 +80,71 @@ document.querySelectorAll('.lang-btn').forEach(btn => {
         const shortcutsLink = navLinks.querySelector('a[href^="#shortcuts"]');
         const detailsLink = navLinks.querySelector('a[href^="#details"]');
         const downloadLink = navLinks.querySelector('a[href^="#download"]');
+        const docsLink = navLinks.querySelector('a[href="docs.html"]');
 
         if (lang === 'vi') {
-            featuresLink.href = '#features';
-            featuresLink.textContent = 'Tính Năng';
-            shortcutsLink.href = '#shortcuts';
-            shortcutsLink.textContent = 'Phím Tắt';
-            detailsLink.href = '#details';
-            detailsLink.textContent = 'Chi Tiết';
-            downloadLink.href = '#download';
-            downloadLink.textContent = 'Tải Xuống';
+            if (featuresLink) {
+                featuresLink.href = '#features';
+                featuresLink.textContent = 'Tính Năng';
+            }
+            if (shortcutsLink) {
+                shortcutsLink.href = '#shortcuts';
+                shortcutsLink.textContent = 'Phím Tắt';
+            }
+            if (detailsLink) {
+                detailsLink.href = '#details';
+                detailsLink.textContent = 'Chi Tiết';
+            }
+            if (downloadLink) {
+                downloadLink.href = '#download';
+                downloadLink.textContent = 'Tải Xuống';
+            }
+            if (docsLink) {
+                docsLink.innerHTML = '<i class="fas fa-book"></i> Tài Liệu';
+            }
         } else if (lang === 'en') {
-            featuresLink.href = '#features-en';
-            featuresLink.textContent = 'Features';
-            shortcutsLink.href = '#shortcuts-en';
-            shortcutsLink.textContent = 'Shortcuts';
-            detailsLink.href = '#details-en';
-            detailsLink.textContent = 'Details';
-            downloadLink.href = '#download-en';
-            downloadLink.textContent = 'Download';
+            if (featuresLink) {
+                featuresLink.href = '#features-en';
+                featuresLink.textContent = 'Features';
+            }
+            if (shortcutsLink) {
+                shortcutsLink.href = '#shortcuts-en';
+                shortcutsLink.textContent = 'Shortcuts';
+            }
+            if (detailsLink) {
+                detailsLink.href = '#details-en';
+                detailsLink.textContent = 'Details';
+            }
+            if (downloadLink) {
+                downloadLink.href = '#download-en';
+                downloadLink.textContent = 'Download';
+            }
+            if (docsLink) {
+                docsLink.innerHTML = '<i class="fas fa-book"></i> Documentation';
+            }
         } else if (lang === 'ja') {
-            featuresLink.href = '#features-ja';
-            featuresLink.textContent = '機能';
-            shortcutsLink.href = '#shortcuts-ja';
-            shortcutsLink.textContent = 'ショートカット';
-            detailsLink.href = '#details-ja';
-            detailsLink.textContent = '詳細';
-            downloadLink.href = '#download-ja';
-            downloadLink.textContent = 'ダウンロード';
+            if (featuresLink) {
+                featuresLink.href = '#features-ja';
+                featuresLink.textContent = '機能';
+            }
+            if (shortcutsLink) {
+                shortcutsLink.href = '#shortcuts-ja';
+                shortcutsLink.textContent = 'ショートカット';
+            }
+            if (detailsLink) {
+                detailsLink.href = '#details-ja';
+                detailsLink.textContent = '詳細';
+            }
+            if (downloadLink) {
+                downloadLink.href = '#download-ja';
+                downloadLink.textContent = 'ダウンロード';
+            }
+            if (docsLink) {
+                docsLink.innerHTML = '<i class="fas fa-book"></i> ドキュメント';
+            }
         }
     });
-});
-
-// Smooth scroll for anchor links
+});// Smooth scroll for anchor links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         e.preventDefault();
