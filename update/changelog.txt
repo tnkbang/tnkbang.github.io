@@ -1,5 +1,8 @@
+Phiên bản 2.0.0.7
+- Thay đổi nền webview thành #F0F0F0 !important để tránh cấu hình của người dùng ghi đè
+
 Phiên bản 2.0.0.6
-- Cập nhật nhật model gemini thành: models/gemini-flash-latest
+- Cập nhật model gemini thành: models/gemini-flash-latest
 
 Phiên bản 2.0.0.5
 - Sửa lỗi hotkey không hoạt động ở một số thiết bị
