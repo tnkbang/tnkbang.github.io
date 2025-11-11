@@ -1,4 +1,5 @@
-Phiên bản 2.0.0.7
+Phiên bản 2.0.0.7 và 2.0.0.8
+- Sửa lỗi webview nhận chủ đề của hệ điều hành (lỗi từ .net https://github.com/MicrosoftEdge/WebView2Feedback/issues/5392#issue-3501872228)
 - Thay đổi nền webview thành #F0F0F0 !important để tránh cấu hình của người dùng ghi đè
 
 Phiên bản 2.0.0.6
