@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="CSV Editor - Lịch sử cập nhật và thay đổi">
+    <meta name="keywords" content="CSV Editor, Changelog, Updates, Version History">
+    <title>CSV Editor - Lịch Sử Cập Nhật</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .changelog-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 60px;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: white;
+            border-radius: 15px;
+        }
+
+        .page-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .page-header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .version-card {
+            background: var(--surface-color);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .version-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .version-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid var(--primary-color);
+        }
+
+        .version-number {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .version-badge {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .latest-badge {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+        }
+
+        .changes-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .changes-list li {
+            padding: 12px 0 12px 35px;
+            position: relative;
+            line-height: 1.8;
+            font-size: 1.05rem;
+        }
+
+        .changes-list li::before {
+            content: '\f00c';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            left: 0;
+            color: var(--primary-color);
+            font-size: 1rem;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 24px;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            margin-bottom: 30px;
+        }
+
+        .back-link:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        @media (max-width: 768px) {
+            .page-header h1 {
+                font-size: 1.8rem;
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .page-header p {
+                font-size: 1rem;
+            }
+
+            .version-number {
+                font-size: 1.5rem;
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .version-card {
+                padding: 20px;
+            }
+
+            .changes-list li {
+                font-size: 0.95rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav class="container">
+            <div class="logo">
+                <i class="fas fa-file-csv"></i>
+                CSV Editor
+            </div>
+            <button class="mobile-menu-toggle" onclick="toggleMobileMenu()" aria-label="Toggle menu">
+                <i class="fas fa-bars"></i>
+            </button>
+            <ul class="nav-links">
+                <li><a href="index.html#features" onclick="closeMobileMenu()">
+                    <span class="content-lang active" data-lang="vi">Tính Năng</span>
+                    <span class="content-lang" data-lang="en">Features</span>
+                    <span class="content-lang" data-lang="ja">機能</span>
+                </a></li>
+                <li><a href="index.html#shortcuts" onclick="closeMobileMenu()">
+                    <span class="content-lang active" data-lang="vi">Phím Tắt</span>
+                    <span class="content-lang" data-lang="en">Shortcuts</span>
+                    <span class="content-lang" data-lang="ja">ショートカット</span>
+                </a></li>
+                <li><a href="index.html#details" onclick="closeMobileMenu()">
+                    <span class="content-lang active" data-lang="vi">Chi Tiết</span>
+                    <span class="content-lang" data-lang="en">Details</span>
+                    <span class="content-lang" data-lang="ja">詳細</span>
+                </a></li>
+                <li><a href="index.html#download" onclick="closeMobileMenu()">
+                    <span class="content-lang active" data-lang="vi">Tải Xuống</span>
+                    <span class="content-lang" data-lang="en">Download</span>
+                    <span class="content-lang" data-lang="ja">ダウンロード</span>
+                </a></li>
+                <li><a href="docs.html" onclick="closeMobileMenu()">
+                    <i class="fas fa-book"></i>
+                    <span class="content-lang active" data-lang="vi">Tài Liệu</span>
+                    <span class="content-lang" data-lang="en">Documentation</span>
+                    <span class="content-lang" data-lang="ja">ドキュメント</span>
+                </a></li>
+                <li class="lang-selector">
+                    <button class="lang-btn active" data-lang="vi">VI</button>
+                    <button class="lang-btn" data-lang="en">EN</button>
+                    <button class="lang-btn" data-lang="ja">JA</button>
+                </li>
+                <li><button class="theme-toggle" onclick="toggleTheme()"><i class="fas fa-moon"></i></button></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="changelog-container">
+        <div class="page-header">
+            <h1>
+                <i class="fas fa-history"></i>
+                <span class="content-lang active" data-lang="vi">Lịch Sử Cập Nhật</span>
+                <span class="content-lang" data-lang="en">Changelog</span>
+                <span class="content-lang" data-lang="ja">更新履歴</span>
+            </h1>
+            <p class="content-lang active" data-lang="vi">Theo dõi các cập nhật và cải tiến của CSV Editor</p>
+            <p class="content-lang" data-lang="en">Track updates and improvements to CSV Editor</p>
+            <p class="content-lang" data-lang="ja">CSV Editorのアップデートと改善を追跡</p>
+        </div>
+
+        <a href="index.html" class="back-link">
+            <i class="fas fa-arrow-left"></i>
+            <span class="content-lang active" data-lang="vi">Quay lại trang chủ</span>
+            <span class="content-lang" data-lang="en">Back to home</span>
+            <span class="content-lang" data-lang="ja">ホームに戻る</span>
+        </a>
+
+        <!-- Version 2.0.0.1 -->
+        <div class="version-card">
+            <div class="version-header">
+                <div class="version-number">
+                    <i class="fas fa-tag"></i>
+                    <span class="content-lang active" data-lang="vi">Phiên bản 2.0.0.1</span>
+                    <span class="content-lang" data-lang="en">Version 2.0.0.1</span>
+                    <span class="content-lang" data-lang="ja">バージョン 2.0.0.1</span>
+                </div>
+                <span class="version-badge latest-badge content-lang active" data-lang="vi">MỚI NHẤT</span>
+                <span class="version-badge latest-badge content-lang" data-lang="en">LATEST</span>
+                <span class="version-badge latest-badge content-lang" data-lang="ja">最新</span>
+            </div>
+            <ul class="changes-list">
+                <li class="content-lang active" data-lang="vi">Sửa các lỗi đã được báo cáo.</li>
+                <li class="content-lang" data-lang="en">Fixed reported bugs.</li>
+                <li class="content-lang" data-lang="ja">報告されたバグを修正しました。</li>
+
+                <li class="content-lang active" data-lang="vi">Tối ưu bộ xử lý xuất excel giúp cho việc xử lý nhanh và ít tốn ram hơn.</li>
+                <li class="content-lang" data-lang="en">Optimized Excel export processor for faster processing and reduced RAM usage.</li>
+                <li class="content-lang" data-lang="ja">Excel エクスポートプロセッサを最適化し、処理速度の向上と RAM 使用量の削減を実現しました。</li>
+
+                <li class="content-lang active" data-lang="vi">Nâng cấp lịch sử thao tác (hiện tại có thể hoàn tác tối đa 10000 lần).</li>
+                <li class="content-lang" data-lang="en">Enhanced operation history (now supports up to 10,000 undo operations).</li>
+                <li class="content-lang" data-lang="ja">操作履歴を強化（最大10,000回の取り消しをサポート）。</li>
+
+                <li class="content-lang active" data-lang="vi">Thêm hệ thống kiểm tra cập nhật.</li>
+                <li class="content-lang" data-lang="en">Added update check system.</li>
+                <li class="content-lang" data-lang="ja">アップデートチェックシステムを追加しました。</li>
+
+                <li class="content-lang active" data-lang="vi">Thêm chức năng cho phép xử lý xóa ô của dòng (điều này đáp ứng cho việc xử lý file csv có số cột không đồng nhất).</li>
+                <li class="content-lang" data-lang="en">Added functionality to delete cells in a row (supports CSV files with inconsistent column counts).</li>
+                <li class="content-lang" data-lang="ja">行内のセル削除機能を追加（列数が不均一な CSV ファイルの処理に対応）。</li>
+
+                <li class="content-lang active" data-lang="vi">Thêm xử lý cho phép người dùng nhấp đúp vào grid để mở file khi grid đang trống.</li>
+                <li class="content-lang" data-lang="en">Added support for double-clicking on the grid to open a file when the grid is empty.</li>
+                <li class="content-lang" data-lang="ja">グリッドが空のときにダブルクリックしてファイルを開く機能を追加しました。</li>
+
+                <li class="content-lang active" data-lang="vi">Thêm xử lý cho phép người dùng copy và dán cả file (sẽ thực hiện đọc dữ liệu file giống như đang mở file).</li>
+                <li class="content-lang" data-lang="en">Added support for copying and pasting entire files (reads file data as if opening the file).</li>
+                <li class="content-lang" data-lang="ja">ファイル全体のコピー＆ペースト機能を追加（ファイルを開くようにデータを読み込みます）。</li>
+            </ul>
+        </div>
+
+        <!-- Version 2.0.0.0 -->
+        <div class="version-card">
+            <div class="version-header">
+                <div class="version-number">
+                    <i class="fas fa-tag"></i>
+                    <span class="content-lang active" data-lang="vi">Phiên bản 2.0.0.0</span>
+                    <span class="content-lang" data-lang="en">Version 2.0.0.0</span>
+                    <span class="content-lang" data-lang="ja">バージョン 2.0.0.0</span>
+                </div>
+                <span class="version-badge content-lang active" data-lang="vi">CẬP NHẬT LỚN</span>
+                <span class="version-badge content-lang" data-lang="en">MAJOR UPDATE</span>
+                <span class="version-badge content-lang" data-lang="ja">メジャーアップデート</span>
+            </div>
+            <ul class="changes-list">
+                <li class="content-lang active" data-lang="vi">Nâng cấp từ phiên bản 1.0 với nhiều tính năng mới.</li>
+                <li class="content-lang" data-lang="en">Upgraded from version 1.0 with many new features.</li>
+                <li class="content-lang" data-lang="ja">バージョン1.0から多くの新機能を追加してアップグレードしました。</li>
+
+                <li class="content-lang active" data-lang="vi">Tối ưu ram (hiệu suất tương tương notepad++ và wps,...) cho phép xử lý file lớn trên 2GB trở lên.</li>
+                <li class="content-lang" data-lang="en">Optimized RAM usage (performance comparable to Notepad++ and WPS) enabling processing of large files over 2GB.</li>
+                <li class="content-lang" data-lang="ja">RAM を最適化（Notepad++ や WPS と同等のパフォーマンス）し、2GB 以上の大きなファイルの処理を可能にしました。</li>
+
+                <li class="content-lang active" data-lang="vi">Cải tiến hệ thống undo/redo hoàn chỉnh với mọi thao tác với dữ liệu như thêm, sửa, xóa cột/dòng, đóng băng,... (trước đây chỉ có xử lý được với ô dữ liệu).</li>
+                <li class="content-lang" data-lang="en">Improved complete undo/redo system for all data operations including adding, editing, deleting columns/rows, freezing, etc. (previously only supported cell data).</li>
+                <li class="content-lang" data-lang="ja">完全な元に戻す/やり直しシステムを改善し、列/行の追加、編集、削除、固定など、すべてのデータ操作に対応（以前はセルデータのみ対応）。</li>
+
+                <li class="content-lang active" data-lang="vi">Cải tiến chế độ copy và dán dữ liệu, giờ đây bạn có thể thao tác copy và dán hàng loạt ô từ excel sang CSVEditor và ngược lại.</li>
+                <li class="content-lang" data-lang="en">Enhanced copy and paste mode, now you can copy and paste multiple cells from Excel to CSVEditor and vice versa.</li>
+                <li class="content-lang" data-lang="ja">コピー＆ペーストモードを改善し、Excel から CSVEditor への複数セルのコピー＆ペーストとその逆が可能になりました。</li>
+
+                <li class="content-lang active" data-lang="vi">Cải tiến xử lý với cột và hàng được tối ưu hơn, hiện tại có thể đóng băng, ẩn hiện tại bất kỳ vị trí nào.</li>
+                <li class="content-lang" data-lang="en">Improved column and row handling with better optimization, now supports freezing and hiding at any position.</li>
+                <li class="content-lang" data-lang="ja">列と行の処理を改善し、最適化を向上。任意の位置での固定と非表示をサポートするようになりました。</li>
+
+                <li class="content-lang active" data-lang="vi">Thêm xử lý lọc dữ liệu theo cột, cho phép kết hợp lọc nhiều cột tương tự excel.</li>
+                <li class="content-lang" data-lang="en">Added column-based data filtering, allowing combined filtering of multiple columns similar to Excel.</li>
+                <li class="content-lang" data-lang="ja">列ベースのデータフィルタリングを追加し、Excel と同様に複数列の組み合わせフィルタリングが可能になりました。</li>
+
+                <li class="content-lang active" data-lang="vi">Tối ưu hóa tìm kiếm và thay thế ô dữ liệu cho phép thực hiện nhanh và ít tốn ram hơn.</li>
+                <li class="content-lang" data-lang="en">Optimized cell data search and replace for faster execution and reduced RAM usage.</li>
+                <li class="content-lang" data-lang="ja">セルデータの検索と置換を最適化し、高速実行と RAM 使用量の削減を実現しました。</li>
+            </ul>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <!-- Vietnamese Footer -->
+                <div class="footer-section">
+                    <h3>CSV Editor</h3>
+                    <p class="content-lang active" data-lang="vi">Ứng dụng chỉnh sửa CSV mạnh mẽ được xây dựng bằng .NET 8 cho Windows</p>
+                    <p class="content-lang" data-lang="en">Powerful CSV editor built with .NET 8 for Windows</p>
+                    <p class="content-lang" data-lang="ja">Windows用.NET 8で構築された強力なCSVエディタ</p>
+                    <div class="social-links">
+                        <a href="https://github.com/tnkbang/CSVEditor"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3 class="content-lang active" data-lang="vi">Liên Kết</h3>
+                    <h3 class="content-lang" data-lang="en">Links</h3>
+                    <h3 class="content-lang" data-lang="ja">リンク</h3>
+                    <a href="https://github.com/tnkbang/CSVEditor">GitHub Repository</a>
+                    <a href="https://github.com/tnkbang/CSVEditor/releases" class="content-lang active" data-lang="vi">Tải Xuống</a>
+                    <a href="https://github.com/tnkbang/CSVEditor/releases" class="content-lang" data-lang="en">Download</a>
+                    <a href="https://github.com/tnkbang/CSVEditor/releases" class="content-lang" data-lang="ja">ダウンロード</a>
+                    <a href="https://github.com/tnkbang/CSVEditor/issues" class="content-lang active" data-lang="vi">Báo Lỗi</a>
+                    <a href="https://github.com/tnkbang/CSVEditor/issues" class="content-lang" data-lang="en">Report Issues</a>
+                    <a href="https://github.com/tnkbang/CSVEditor/issues" class="content-lang" data-lang="ja">問題を報告</a>
+                    <a href="README.md" class="content-lang active" data-lang="vi">Tài liệu</a>
+                    <a href="README.md" class="content-lang" data-lang="en">Documentation</a>
+                    <a href="README.md" class="content-lang" data-lang="ja">書類</a>
+                </div>
+                <div class="footer-section">
+                    <h3 class="content-lang active" data-lang="vi">Tài Nguyên</h3>
+                    <h3 class="content-lang" data-lang="en">Resources</h3>
+                    <h3 class="content-lang" data-lang="ja">リソース</h3>
+                    <a href="README_Vi.md" class="content-lang active" data-lang="vi">Hướng Dẫn Tiếng Việt</a>
+                    <a href="README_Vi.md" class="content-lang" data-lang="en">Vietnamese Guide</a>
+                    <a href="README_Vi.md" class="content-lang" data-lang="ja">ベトナム語ガイド</a>
+                    <a href="README.md" class="content-lang active" data-lang="vi">English Guide</a>
+                    <a href="README.md" class="content-lang" data-lang="en">English Guide</a>
+                    <a href="README.md" class="content-lang" data-lang="ja">英語ガイド</a>
+                    <a href="README_Ja.md" class="content-lang active" data-lang="vi">日本語ガイド</a>
+                    <a href="README_Ja.md" class="content-lang" data-lang="en">Japanese Guide</a>
+                    <a href="README_Ja.md" class="content-lang" data-lang="ja">日本語ガイド</a>
+                </div>
+                <div class="footer-section">
+                    <h3 class="content-lang active" data-lang="vi">Giấy Phép</h3>
+                    <h3 class="content-lang" data-lang="en">License</h3>
+                    <h3 class="content-lang" data-lang="ja">ライセンス</h3>
+                    <p class="content-lang active" data-lang="vi">Dự án này được cấp phép theo giấy phép MIT</p>
+                    <p class="content-lang" data-lang="en">This project is licensed under the MIT License</p>
+                    <p class="content-lang" data-lang="ja">このプロジェクトはMITライセンスの下でライセンスされています</p>
+                    <p>© 2025 CSV Editor</p>
+                </div>
+            </div>
+            <div class="copyright">
+                <p class="content-lang active" data-lang="vi">Được tạo với ❤️ sử dụng .NET 8 | <a href="https://github.com/tnkbang" style="color: var(--primary-color);">@tnkbang</a></p>
+                <p class="content-lang" data-lang="en">Made with ❤️ using .NET 8 | <a href="https://github.com/tnkbang" style="color: var(--primary-color);">@tnkbang</a></p>
+                <p class="content-lang" data-lang="ja">.NET 8で❤️を込めて作成 | <a href="https://github.com/tnkbang" style="color: var(--primary-color);">@tnkbang</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

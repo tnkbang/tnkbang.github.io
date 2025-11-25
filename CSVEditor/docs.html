@@ -204,7 +204,7 @@
                                 <li><strong>Hiệu Suất Cao:</strong> Tối ưu hóa để xử lý các bộ dữ liệu lớn (hàng triệu ô) với quản lý bộ nhớ hiệu quả và xử lý song song</li>
                                 <li><strong>DataGrid Nâng Cao:</strong> Triển khai DataGrid tùy chỉnh với chế độ ảo hóa cho cuộn và chỉnh sửa mượt mà</li>
                                 <li><strong>Quản Lý Bộ Nhớ Thông Minh:</strong> StringPool và PooledStringTable để khử trùng lặp chuỗi hiệu quả về bộ nhớ</li>
-                                <li><strong>Hoàn Tác/Làm Lại Hoàn Chỉnh:</strong> Triển khai mẫu lệnh đầy đủ với lịch sử hoàn tác/làm lại không giới hạn (lên đến 100 bước)</li>
+                                <li><strong>Hoàn Tác/Làm Lại Hoàn Chỉnh:</strong> Triển khai mẫu lệnh đầy đủ với lịch sử hoàn tác/làm lại không giới hạn (lên đến 10000 bước)</li>
                                 <li><strong>Hỗ Trợ Đa Ngôn Ngữ:</strong> Bản địa hóa tích hợp (Tiếng Việt, Tiếng Anh & Tiếng Nhật)</li>
                                 <li><strong>Giao Diện Hiện Đại:</strong> Giao diện sạch sẽ, trực quan với nhận thức DPI và khả năng thu phóng</li>
                             </ul>
@@ -226,7 +226,7 @@
                                 <li><strong>High Performance:</strong> Optimized for handling large datasets (millions of cells) with efficient memory management and parallel processing</li>
                                 <li><strong>Advanced Data Grid:</strong> Custom DataGrid implementation with virtual mode for smooth scrolling and editing</li>
                                 <li><strong>Intelligent Memory:</strong> StringPool and PooledStringTable for memory-efficient string deduplication</li>
-                                <li><strong>Complete Undo/Redo:</strong> Full command pattern implementation with unlimited undo/redo history (up to 100 steps)</li>
+                                <li><strong>Complete Undo/Redo:</strong> Full command pattern implementation with unlimited undo/redo history (up to 10000 steps)</li>
                                 <li><strong>Multi-language Support:</strong> Built-in localization (Vietnamese, English & Japanese)</li>
                                 <li><strong>Modern UI:</strong> Clean, intuitive interface with DPI awareness and zoom capabilities</li>
                             </ul>
@@ -248,7 +248,7 @@
                                 <li><strong>高性能:</strong> 効率的なメモリ管理と並列処理により、大規模なデータセット（数百万セル）の処理に最適化</li>
                                 <li><strong>高度なデータグリッド:</strong> スムーズなスクロールと編集のための仮想化モードを備えたカスタムDataGrid実装</li>
                                 <li><strong>インテリジェントメモリ:</strong> メモリ効率的な文字列重複排除のためのStringPoolとPooledStringTable</li>
-                                <li><strong>完全な元に戻す/やり直し:</strong> 無制限の元に戻す/やり直し履歴（最大100ステップ）を備えた完全なコマンドパターン実装</li>
+                                <li><strong>完全な元に戻す/やり直し:</strong> 無制限の元に戻す/やり直し履歴（最大10000ステップ）を備えた完全なコマンドパターン実装</li>
                                 <li><strong>多言語サポート:</strong> 組み込みのローカライゼーション（ベトナム語、英語、日本語）</li>
                                 <li><strong>モダンUI:</strong> DPI認識とズーム機能を備えたクリーンで直感的なインターフェイス</li>
                             </ul>
@@ -2993,7 +2993,6 @@
                                 </ul>
                                 <h4>Thư viện chính:</h4>
                                 <ul>
-                                    <li><strong>MiniExcel:</strong> Xuất file Excel nhanh chóng</li>
                                     <li><strong>System.Text.Encoding:</strong> Xử lý encoding đa dạng</li>
                                     <li><strong>System.Security.Cryptography:</strong> Mã hóa file</li>
                                 </ul>
@@ -3128,7 +3127,6 @@
                                 </ul>
                                 <h4>Main libraries:</h4>
                                 <ul>
-                                    <li><strong>MiniExcel:</strong> Fast Excel file export</li>
                                     <li><strong>System.Text.Encoding:</strong> Diverse encoding handling</li>
                                     <li><strong>System.Security.Cryptography:</strong> File encryption</li>
                                 </ul>
@@ -3263,7 +3261,6 @@
                                 </ul>
                                 <h4>主要ライブラリ:</h4>
                                 <ul>
-                                    <li><strong>MiniExcel:</strong> 高速Excelファイルエクスポート</li>
                                     <li><strong>System.Text.Encoding:</strong> 多様なエンコーディング処理</li>
                                     <li><strong>System.Security.Cryptography:</strong> ファイル暗号化</li>
                                 </ul>
@@ -3362,11 +3359,17 @@
                         <p class="content-lang" data-lang="en">Download CSV Editor and start editing your CSV files today!</p>
                         <p class="content-lang" data-lang="ja">CSV Editorをダウンロードして、今日からCSVファイルの編集を始めましょう！</p>
                         
-                        <a href="https://github.com/tnkbang/CSVEditor/releases" class="btn btn-primary">
+                        <a href="data/CSVEditor-portable.zip" class="btn btn-primary">
                             <i class="fas fa-download"></i>
-                            <span class="content-lang active" data-lang="vi">Tải Xuống Miễn Phí</span>
-                            <span class="content-lang" data-lang="en">Download Free</span>
-                            <span class="content-lang" data-lang="ja">無料ダウンロード</span>
+                            <span class="content-lang active" data-lang="vi">Tải Bản Portable</span>
+                            <span class="content-lang" data-lang="en">Download Portable</span>
+                            <span class="content-lang" data-lang="ja">ポータブル版をダウンロード</span>
+                        </a>
+                        <a href="data/CSVEditor Setup.exe" class="btn btn-primary" style="margin-left: 1rem;">
+                            <i class="fas fa-download"></i>
+                            <span class="content-lang active" data-lang="vi">Tải Bản Cài Đặt</span>
+                            <span class="content-lang" data-lang="en">Download Setup</span>
+                            <span class="content-lang" data-lang="ja">インストーラーをダウンロード</span>
                         </a>
                     </div>
 

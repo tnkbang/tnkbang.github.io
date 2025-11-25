@@ -1,0 +1,8 @@
+<item>
+  <title>CSVEditor</title>
+  <version>2.0.0.1</version>
+  <url>https://tnkbang.github.io/CSVEditor/data/CSVEditor-portable.zip</url>
+  <changelog>https://tnkbang.github.io/CSVEditor/changelog.html</changelog>
+  <mandatory>false</mandatory>
+  <minVersion>2.0.0.1</minVersion>
+</item>
