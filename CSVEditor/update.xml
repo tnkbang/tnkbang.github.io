@@ -3,11 +3,7 @@
   <version>2.0.0.2</version>
   <installUrl>https://tnkbang.github.io/CSVEditor/data/CSVEditor%20Setup.exe</installUrl>
   <portableUrl>https://tnkbang.github.io/CSVEditor/data/CSVEditor-portable.zip</portableUrl>
-  <changelog>Thêm các chức năng mới:
-  - Thêm chức năng cho phép chèn cột phía trước cột đang chọn.
-  - Thêm chức năng cho phép chèn dòng phía trước dòng đang chọn.
-  - Thêm chức năng cho phép người dùng chọn màu ô đang chọn, đóng băng,...
-  Xem chi tiết tại: https://tnkbang.github.io/CSVEditor/changelog.html</changelog>
+  <changelog>Thêm các chức năng cho phép chèn cột/dòng phía trước về phía trước và cho phép tùy chỉnh màu ô. Xem chi tiết tại: https://tnkbang.github.io/CSVEditor/changelog.html</changelog>
   <mandatory>false</mandatory>
   <minVersion>2.0.0.1</minVersion>
 </item>
