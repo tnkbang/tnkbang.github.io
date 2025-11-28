@@ -5,9 +5,9 @@
 }
 
 :root {
-    --primary-color: #667eea;
-    --secondary-color: #764ba2;
-    --accent-color: #f093fb;
+    --primary-color: #3498db;
+    --secondary-color: #5dade2;
+    --accent-color: #85c1e9;
     --text-color: #1a202c;
     --bg-color: #ffffff;
     --surface-color: #f7fafc;
@@ -17,9 +17,9 @@
 }
 
 [data-theme="dark"] {
-    --primary-color: #667eea;
-    --secondary-color: #9f7aea;
-    --accent-color: #f093fb;
+    --primary-color: #3498db;
+    --secondary-color: #5dade2;
+    --accent-color: #85c1e9;
     --text-color: #f7fafc;
     --bg-color: #1a202c;
     --surface-color: #2d3748;
@@ -44,7 +44,7 @@ body {
 
 /* Header */
 header {
-    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    background: #2c3e50;
     color: white;
     padding: 1rem 0;
     position: sticky;
@@ -139,7 +139,7 @@ nav {
 
 /* Hero Section */
 .hero {
-    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    background: linear-gradient(135deg, #5dade2 0%, #85c1e9 100%);
     color: white;
     padding: 6rem 0 4rem;
     text-align: center;
@@ -227,7 +227,7 @@ nav {
     text-align: center;
     font-size: 2.5rem;
     margin-bottom: 3rem;
-    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    background: linear-gradient(135deg, #3498db 0%, #5dade2 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -256,7 +256,7 @@ nav {
 
 .feature-icon {
     font-size: 3rem;
-    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    background: linear-gradient(135deg, #3498db 0%, #5dade2 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
