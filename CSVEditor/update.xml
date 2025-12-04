@@ -1,9 +1,12 @@
 <item>
   <title>CSVEditor</title>
-  <version>2.0.0.2</version>
+  <version>2.0.0.3</version>
   <installUrl>https://tnkbang.github.io/CSVEditor/data/CSVEditor%20Setup.exe</installUrl>
   <portableUrl>https://tnkbang.github.io/CSVEditor/data/CSVEditor-portable.zip</portableUrl>
-  <changelog>Thêm các chức năng cho phép chèn cột/dòng phía trước về phía trước và cho phép tùy chỉnh màu ô. Xem chi tiết tại: https://tnkbang.github.io/CSVEditor/changelog.html</changelog>
+  <changelog>Thêm các chức năng sau:
+  - Đếm số ký tự tại ô đang chọn.
+  - Cho phép cấu hình tiêu đề tùy chỉnh.
+  Xem chi tiết tại: https://tnkbang.github.io/CSVEditor/changelog.html</changelog>
   <mandatory>false</mandatory>
   <minVersion>2.0.0.1</minVersion>
 </item>
