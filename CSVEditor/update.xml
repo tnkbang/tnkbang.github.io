@@ -1,11 +1,16 @@
 <item>
   <title>CSVEditor</title>
-  <version>2.0.0.3</version>
+  <version>2.0.0.4</version>
   <installUrl>https://tnkbang.github.io/CSVEditor/data/CSVEditor%20Setup.exe</installUrl>
   <portableUrl>https://tnkbang.github.io/CSVEditor/data/CSVEditor-portable.zip</portableUrl>
-  <changelog>Thêm các chức năng sau:
-  - Đếm số ký tự tại ô đang chọn.
-  - Cho phép cấu hình tiêu đề tùy chỉnh.
+  <changelog>Các thay đổi sau:
+  - Thêm xử lý cấu hình nhanh tiêu đề tùy chỉnh.
+  - Thêm chức năng cho phép sắp xếp giá trị của cột.
+  - Thêm chức năng cho phép canh chỉnh dữ liệu.
+  - Thêm chức năng cho phép nhận diện loại dữ liệu (chuỗi, số, ngày tháng).
+  - Thay đổi xử lý tự động tính chiều rộng cột (hỗ trợ trộn lẫn nhiều loại ký tự).
+  - Sửa lỗi xử lý ký tự xuống dòng (một số trường hợp đặc biệt).
+  - Sửa các lỗi liên quan đến phóng to/thu nhỏ lưới dữ liệu.
   Xem chi tiết tại: https://tnkbang.github.io/CSVEditor/changelog.html</changelog>
   <mandatory>false</mandatory>
   <minVersion>2.0.0.1</minVersion>
