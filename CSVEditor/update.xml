@@ -1,16 +1,16 @@
 <item>
   <title>CSVEditor</title>
-  <version>2.0.0.4</version>
+  <version>2.0.0.5</version>
   <installUrl>https://tnkbang.github.io/CSVEditor/data/CSVEditor%20Setup.exe</installUrl>
   <portableUrl>https://tnkbang.github.io/CSVEditor/data/CSVEditor-portable.zip</portableUrl>
   <changelog>Các thay đổi sau:
-  - Thêm xử lý cấu hình nhanh tiêu đề tùy chỉnh.
-  - Thêm chức năng cho phép sắp xếp giá trị của cột.
-  - Thêm chức năng cho phép canh chỉnh dữ liệu.
-  - Thêm chức năng cho phép nhận diện loại dữ liệu (chuỗi, số, ngày tháng).
-  - Thay đổi xử lý tự động tính chiều rộng cột (hỗ trợ trộn lẫn nhiều loại ký tự).
-  - Sửa lỗi xử lý ký tự xuống dòng (một số trường hợp đặc biệt).
-  - Sửa các lỗi liên quan đến phóng to/thu nhỏ lưới dữ liệu.
+  - Thêm xử lý đếm tổng giá trị của các cột đang được chọn nếu nó thuộc kiểu số.
+  - Thêm xử lý "go to line", cho phép tìm kiếm và di chuyển đến dòng cụ thể bằng cách nhấp đúp chuột trái vào tiêu đề dòng.
+  - Sửa lỗi khi nhận diện loại ký tự ở chế độ hiển thị dấu "" không thể nhận diện.
+  - Xử lý để dòng tiêu đề CSV không hiển thị "".
+  - Xử lý bỏ "" khi copy/paste tiêu đề ở cấu hình nhanh tiêu đề tùy chỉnh.
+  - Chỉnh sửa giao diện màn hình cấu hình nhanh tiêu đề hỗ trợ hiển thị tiếng Việt tốt hơn.
+  - Sửa xử lý khi save as file cho phép cập nhật tiêu đề ngay lập tức sau khi save as file (trước đây khi save as không cập nhật đường dẫn tệp mới trên tiêu đề app).
   Xem chi tiết tại: https://tnkbang.github.io/CSVEditor/changelog.html</changelog>
   <mandatory>false</mandatory>
   <minVersion>2.0.0.1</minVersion>
