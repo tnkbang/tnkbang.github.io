@@ -1,12 +1,19 @@
 <item>
   <title>CSVEditor</title>
-  <version>2.0.0.6</version>
+  <version>2.0.0.7</version>
   <installUrl>https://tnkbang.github.io/CSVEditor/data/CSVEditor%20Setup.exe</installUrl>
   <portableUrl>https://tnkbang.github.io/CSVEditor/data/CSVEditor-portable.zip</portableUrl>
-  <changelog>Xin lỗi vì sơ sót, đây là bản cập nhật sửa lỗi cho 2.0.0.5:
-  - Thay đổi xử lý của đếm số lượng ký tự và đếm tổng giá trị của các ô đang chọn. Gộp chúng lại thành 1 khung để đơn giản hóa giao diện.
-  - Sửa lỗi index trong khi thay đổi dữ liệu (thêm, xóa,.. hàng/cột) trong một số trường hợp.
+  <changelog>Các thay đổi sau:
+  - Thêm chức năng theo dõi file đang mở, nếu bị thay đổi bởi app khác thì sẽ yêu cầu tải lại file.
+  - Thêm chức năng cho phép kiểm tra và cảnh báo lỗi đối với các giá trị nhập vào không hợp lệ.
+  - Thêm xử lý cho phép người dùng sao chép 1 giá trị, sau đó chọn vùng và dán giá trị vừa sao chép cho tất cả các ô đang chọn.
+  - Thay đổi logic khi dán nhiều giá trị. Khi người dùng chọn nhiều ô và dán các giá trị thì sẽ bắt đầu dán từ ô đầu tiên được chọn (trước đây là ô cuối cùng).
+  - Thay đổi xử lý ghi chú của tiêu đề tùy chỉnh. Hiện tại giao diện đẹp hơn và hỗ trợ in đậm và đường kẻ ngang với kỹ thuật đánh dấu văn bản (markdown text).
+  - Thay đổi xử lý khi cuộn chuột: Ctrl+MouseWheel để phóng to/thu nhỏ lưới. Shift+MouseWheel để cuộn ngang (Chỉnh sửa này giúp đồng bộ xử lý với excel).
+  - Sửa lỗi khi nhấn vào tiêu đề mà không có hàng nào hiển thị.
+  - Sửa lỗi highlights không cập nhật đúng khi thêm/xóa cột.
+  - Sửa lỗi ký tự xuống hàng khi giữ Shift + Enter ở màn hình chỉnh sửa giá trị.
   Xem chi tiết tại: https://tnkbang.github.io/CSVEditor/changelog.html</changelog>
-  <mandatory>true</mandatory>
+  <mandatory>false</mandatory>
   <minVersion>2.0.0.6</minVersion>
 </item>

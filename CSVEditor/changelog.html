@@ -220,6 +220,58 @@
                 <span class="content-lang" data-lang="ja">ホームに戻る</span>
             </a>
 
+            <!-- Version 2.0.0.7 -->
+            <div class="version-card">
+                <div class="version-header">
+                    <div class="version-number">
+                        <i class="fas fa-tag"></i>
+                        <span class="content-lang active" data-lang="vi">Phiên bản 2.0.0.7</span>
+                        <span class="content-lang" data-lang="en">Version 2.0.0.7</span>
+                        <span class="content-lang" data-lang="ja">バージョン 2.0.0.7</span>
+                    </div>
+                    <span class="version-badge latest-badge content-lang active" data-lang="vi">MỚI NHẤT</span>
+                    <span class="version-badge latest-badge content-lang" data-lang="en">LATEST</span>
+                    <span class="version-badge latest-badge content-lang" data-lang="ja">最新</span>
+                </div>
+                <ul class="changes-list">
+                    <li class="content-lang active" data-lang="vi">Thêm chức năng theo dõi file đang mở, nếu bị thay đổi bởi app khác thì sẽ yêu cầu tải lại file.</li>
+                    <li class="content-lang" data-lang="en">Added file monitoring feature that prompts to reload if the open file is modified by another application.</li>
+                    <li class="content-lang" data-lang="ja">他のアプリで変更された場合にファイルの再読み込みを促すファイル監視機能を追加しました。</li>
+
+                    <li class="content-lang active" data-lang="vi">Thêm chức năng cho phép kiểm tra và cảnh báo lỗi đối với các giá trị nhập vào không hợp lệ.</li>
+                    <li class="content-lang" data-lang="en">Added validation and error warning functionality for invalid input values.</li>
+                    <li class="content-lang" data-lang="ja">無効な入力値の検証とエラー警告機能を追加しました。</li>
+
+                    <li class="content-lang active" data-lang="vi">Thêm xử lý cho phép người dùng sao chép 1 giá trị, sau đó chọn vùng và dán giá trị vừa sao chép cho tất cả các ô đang chọn.</li>
+                    <li class="content-lang" data-lang="en">Added functionality to copy a single value and paste it to all selected cells in a range.</li>
+                    <li class="content-lang" data-lang="ja">1つの値をコピーして、範囲内の選択されたすべてのセルに貼り付ける機能を追加しました。</li>
+
+                    <li class="content-lang active" data-lang="vi">Thay đổi logic khi dán nhiều giá trị. Khi người dùng chọn nhiều ô và dán các giá trị thì sẽ bắt đầu dán từ ô đầu tiên được chọn (trước đây là ô cuối cùng).</li>
+                    <li class="content-lang" data-lang="en">Changed paste logic for multiple values. Pasting now starts from the first selected cell (previously started from the last cell).</li>
+                    <li class="content-lang" data-lang="ja">複数値の貼り付けロジックを変更。現在は最初に選択されたセルから貼り付けを開始します（以前は最後のセルから）。</li>
+
+                    <li class="content-lang active" data-lang="vi">Thay đổi xử lý ghi chú của tiêu đề tùy chỉnh. Hiện tại giao diện đẹp hơn và hỗ trợ in đậm và đường kẻ ngang với kỹ thuật đánh dấu văn bản (markdown text).</li>
+                    <li class="content-lang" data-lang="en">Changed custom header note handling. Interface is now more attractive and supports bold and strikethrough using markdown text.</li>
+                    <li class="content-lang" data-lang="ja">カスタムヘッダーノートの処理を変更。インターフェースがより魅力的になり、マークダウンテキストを使用した太字と取り消し線をサポートします。</li>
+
+                    <li class="content-lang active" data-lang="vi">Thay đổi xử lý khi cuộn chuột: Ctrl+MouseWheel để phóng to/thu nhỏ lưới. Shift+MouseWheel để cuộn ngang (Chỉnh sửa này giúp đồng bộ xử lý với excel).</li>
+                    <li class="content-lang" data-lang="en">Changed mouse wheel handling: Ctrl+MouseWheel to zoom in/out the grid. Shift+MouseWheel to scroll horizontally (this change aligns with Excel behavior).</li>
+                    <li class="content-lang" data-lang="ja">マウスホイール処理を変更：Ctrl+マウスホイールでグリッドのズームイン/アウト。Shift+マウスホイールで横スクロール（この変更はExcelの動作と同期します）。</li>
+
+                    <li class="content-lang active" data-lang="vi">Sửa lỗi khi nhấn vào tiêu đề mà không có hàng nào hiển thị.</li>
+                    <li class="content-lang" data-lang="en">Fixed bug when clicking header with no visible rows.</li>
+                    <li class="content-lang" data-lang="ja">表示される行がない状態でヘッダーをクリックした際のバグを修正しました。</li>
+
+                    <li class="content-lang active" data-lang="vi">Sửa lỗi highlights không cập nhật đúng khi thêm/xóa cột.</li>
+                    <li class="content-lang" data-lang="en">Fixed highlights not updating correctly when adding/deleting columns.</li>
+                    <li class="content-lang" data-lang="ja">列の追加/削除時にハイライトが正しく更新されないバグを修正しました。</li>
+
+                    <li class="content-lang active" data-lang="vi">Sửa lỗi ký tự xuống hàng khi giữ Shift + Enter ở màn hình chỉnh sửa giá trị.</li>
+                    <li class="content-lang" data-lang="en">Fixed line break character issue when pressing Shift + Enter in the value edit screen.</li>
+                    <li class="content-lang" data-lang="ja">値編集画面でShift + Enterを押した際の改行文字の問題を修正しました。</li>
+                </ul>
+            </div>
+
             <!-- Version 2.0.0.6 -->
             <div class="version-card">
                 <div class="version-header">
@@ -229,9 +281,6 @@
                         <span class="content-lang" data-lang="en">Version 2.0.0.6</span>
                         <span class="content-lang" data-lang="ja">バージョン 2.0.0.6</span>
                     </div>
-                    <span class="version-badge latest-badge content-lang active" data-lang="vi">MỚI NHẤT</span>
-                    <span class="version-badge latest-badge content-lang" data-lang="en">LATEST</span>
-                    <span class="version-badge latest-badge content-lang" data-lang="ja">最新</span>
                 </div>
                 <p style="margin-bottom: 15px; padding: 10px; background: #fff3cd; border-left: 4px solid #ffc107; border-radius: 4px;">
                     <strong class="content-lang active" data-lang="vi">🔧 Đây là phiên bản sửa lỗi quan trọng</strong>
