@@ -1,10 +1,309 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>tnkbang</title>
-    </head>
-    <body>
-        <div><p>Chưa có thông tin gì!</p></div>
-    </body>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tnkbang@dev:~$</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+            background: #0d1117;
+            color: #c9d1d9;
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .terminal {
+            background: #161b22;
+            border: 1px solid #30363d;
+            border-radius: 6px;
+            padding: 20px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+        }
+
+        .terminal-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #30363d;
+        }
+
+        .terminal-buttons {
+            display: flex;
+            gap: 8px;
+        }
+
+        .terminal-button {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .btn-close { background: #ff5f56; }
+        .btn-minimize { background: #ffbd2e; }
+        .btn-maximize { background: #27c93f; }
+
+        .terminal-title {
+            margin-left: auto;
+            color: #8b949e;
+            font-size: 12px;
+        }
+
+        .prompt {
+            color: #58a6ff;
+            margin-bottom: 10px;
+        }
+
+        .prompt span {
+            color: #7ee787;
+        }
+
+        h1 {
+            color: #58a6ff;
+            font-size: 24px;
+            margin: 20px 0;
+            display: inline-block;
+        }
+
+        .cursor {
+            display: inline-block;
+            width: 10px;
+            height: 20px;
+            background: #58a6ff;
+            animation: blink 1s infinite;
+        }
+
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0; }
+        }
+
+        .info {
+            margin: 20px 0;
+            padding-left: 20px;
+        }
+
+        .info-line {
+            margin: 8px 0;
+            color: #c9d1d9;
+        }
+
+        .label {
+            color: #79c0ff;
+            font-weight: bold;
+        }
+
+        .value {
+            color: #c9d1d9;
+        }
+
+        .skills {
+            margin: 20px 0;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .tag {
+            background: #1f6feb;
+            color: #fff;
+            padding: 5px 12px;
+            border-radius: 4px;
+            font-size: 12px;
+            transition: all 0.3s;
+        }
+
+        .tag:hover {
+            background: #58a6ff;
+            transform: translateY(-2px);
+        }
+
+        .projects {
+            margin: 30px 0;
+        }
+
+        .project-item {
+            background: #0d1117;
+            border: 1px solid #30363d;
+            border-radius: 6px;
+            padding: 15px;
+            margin: 10px 0;
+            transition: all 0.3s;
+        }
+
+        .project-item:hover {
+            border-color: #58a6ff;
+            transform: translateX(5px);
+        }
+
+        .project-name {
+            color: #58a6ff;
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .project-desc {
+            color: #8b949e;
+            font-size: 14px;
+        }
+
+        .featured {
+            border: 2px solid #58a6ff;
+            background: #0d1117;
+        }
+
+        .featured .project-name {
+            color: #7ee787;
+        }
+
+        .featured-badge {
+            display: inline-block;
+            background: #7ee787;
+            color: #0d1117;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 10px;
+            font-weight: bold;
+            margin-left: 10px;
+        }
+
+        .links {
+            margin: 30px 0;
+        }
+
+        .link-item {
+            display: inline-block;
+            color: #58a6ff;
+            text-decoration: none;
+            margin-right: 20px;
+            transition: all 0.3s;
+        }
+
+        .link-item:hover {
+            color: #7ee787;
+            text-decoration: underline;
+        }
+
+        .link-item:before {
+            content: "→ ";
+            color: #7ee787;
+        }
+
+        .comment {
+            color: #8b949e;
+            font-style: italic;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 20px 10px;
+            }
+            
+            .terminal {
+                padding: 15px;
+            }
+            
+            h1 {
+                font-size: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="terminal">
+            <div class="terminal-header">
+                <div class="terminal-buttons">
+                    <div class="terminal-button btn-close"></div>
+                    <div class="terminal-button btn-minimize"></div>
+                    <div class="terminal-button btn-maximize"></div>
+                </div>
+                <div class="terminal-title">tnkbang.github.io</div>
+            </div>
+
+            <div class="prompt">guest@tnkbang:~$ <span>cat intro.txt</span></div>
+            
+            <h1>Hi 👋, I'm Khanh Bang</h1>
+
+            <div class="info">
+                <div class="info-line"><span class="label">></span> <span class="value">A passionate web and winform developer from Viet Nam</span></div>
+                <div class="info-line"><span class="label">></span> <span class="value">🌱 Currently learning C# and JavaScript</span></div>
+                <div class="info-line"><span class="label">></span> <span class="value">💬 Ask me about C# and JS</span></div>
+                <div class="info-line"><span class="label">></span> <span class="value">📫 Reach me: <a href="mailto:tnkbang.dev@gmail.com" style="color: #58a6ff;">tnkbang.dev@gmail.com</a></span></div>
+                <div class="info-line"><span class="label">></span> <span class="value">⚡ Fun fact: Passionate about coding but my English is very bad 😅</span></div>
+            </div>
+
+            <div class="prompt" style="margin-top: 30px;">guest@tnkbang:~$ <span>ls skills/</span></div>
+            <div class="skills">
+                <div class="skill-tags">
+                    <span class="tag">C#</span>
+                    <span class="tag">JavaScript</span>
+                    <span class="tag">HTML5</span>
+                    <span class="tag">CSS3</span>
+                    <span class="tag">.NET</span>
+                    <span class="tag">Bootstrap</span>
+                    <span class="tag">Tailwind</span>
+                    <span class="tag">MySQL</span>
+                    <span class="tag">MSSQL</span>
+                    <span class="tag">Git</span>
+                </div>
+            </div>
+
+            <div class="prompt" style="margin-top: 30px;">guest@tnkbang:~$ <span>cat projects.json</span></div>
+            <div class="projects">
+                <div class="project-item featured">
+                    <div class="project-name">📊 CSVEditor<span class="featured-badge">ACTIVE</span></div>
+                    <div class="project-desc">A powerful CSV editor tool with advanced features</div>
+                    <div style="margin-top: 8px;">
+                        <a href="CSVEditor/" class="link-item" style="margin: 0;">Launch App</a>
+                    </div>
+                </div>
+
+                <div class="project-item">
+                    <div class="project-name">🤖 TLDBot</div>
+                    <div class="project-desc">Discord bot built with Discord.Net and Lavalink</div>
+                </div>
+
+                <div class="project-item">
+                    <div class="project-name">🎓 DayHocTrucTuyen</div>
+                    <div class="project-desc">Online learning management system with MoMo payment integration</div>
+                </div>
+
+                <div class="project-item">
+                    <div class="project-name">🍜 MonNgonMoiNgay</div>
+                    <div class="project-desc">Food management & ordering website</div>
+                </div>
+            </div>
+
+            <div class="prompt" style="margin-top: 30px;">guest@tnkbang:~$ <span>cat links.txt</span></div>
+            <div class="links">
+                <a href="https://github.com/tnkbang" target="_blank" class="link-item">GitHub</a>
+                <a href="https://twitter.com/tnkbang" target="_blank" class="link-item">Twitter</a>
+                <a href="https://linkedin.com/in/tnkbang" target="_blank" class="link-item">LinkedIn</a>
+                <a href="https://fb.com/tnkbang" target="_blank" class="link-item">Facebook</a>
+            </div>
+
+            <div class="prompt" style="margin-top: 30px;">guest@tnkbang:~$ <span class="cursor"></span></div>
+            <div class="comment" style="margin-top: 20px;">// Feel free to explore and reach out!</div>
+        </div>
+    </div>
+</body>
 </html>
