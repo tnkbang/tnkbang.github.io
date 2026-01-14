@@ -1,3 +1,48 @@
+// Lightbox translations
+const lightboxTranslations = {
+    vi: {
+        zoomIn: 'Phóng to',
+        zoomOut: 'Thu nhỏ',
+        zoomReset: 'Đặt lại',
+        fullscreen: 'Toàn màn hình',
+        exitFullscreen: 'Thoát toàn màn hình'
+    },
+    en: {
+        zoomIn: 'Zoom In',
+        zoomOut: 'Zoom Out',
+        zoomReset: 'Reset Zoom',
+        fullscreen: 'Fullscreen',
+        exitFullscreen: 'Exit Fullscreen'
+    },
+    ja: {
+        zoomIn: '拡大',
+        zoomOut: '縮小',
+        zoomReset: 'リセット',
+        fullscreen: 'フルスクリーン',
+        exitFullscreen: 'フルスクリーン終了'
+    }
+};
+
+// Update lightbox button tooltips
+function updateLightboxLanguage(lang) {
+    const translations = lightboxTranslations[lang] || lightboxTranslations.vi;
+    const zoomInBtn = document.querySelector('#zoom-in');
+    const zoomOutBtn = document.querySelector('#zoom-out');
+    const zoomResetBtn = document.querySelector('#zoom-reset');
+    const fullscreenBtn = document.querySelector('#fullscreen');
+
+    if (zoomInBtn) zoomInBtn.title = translations.zoomIn;
+    if (zoomOutBtn) zoomOutBtn.title = translations.zoomOut;
+    if (zoomResetBtn) zoomResetBtn.title = translations.zoomReset;
+    if (fullscreenBtn) {
+        if (document.fullscreenElement) {
+            fullscreenBtn.title = translations.exitFullscreen;
+        } else {
+            fullscreenBtn.title = translations.fullscreen;
+        }
+    }
+}
+
 // Theme Toggle
 function toggleTheme() {
     const html = document.documentElement;
@@ -63,7 +108,223 @@ window.addEventListener('DOMContentLoaded', () => {
     if (langBtn) {
         langBtn.click(); // Trigger the language switch
     }
+
+    // Initialize screenshot lightbox
+    initializeScreenshotLightbox();
+
+    // Update lightbox tooltips with current language
+    const currentLang = localStorage.getItem('selectedLanguage') || 'vi';
+    updateLightboxLanguage(currentLang);
 });
+
+// Screenshot Lightbox Functionality
+function initializeScreenshotLightbox() {
+    // Create lightbox element if not exists
+    let lightbox = document.querySelector('.lightbox');
+    if (!lightbox) {
+        lightbox = document.createElement('div');
+        lightbox.className = 'lightbox';
+        lightbox.innerHTML = `
+            <span class="lightbox-close">&times;</span>
+            <span class="lightbox-nav lightbox-prev">&#10094;</span>
+            <div class="lightbox-image-container">
+                <img src="" alt="Screenshot">
+            </div>
+            <span class="lightbox-nav lightbox-next">&#10095;</span>
+            <div class="lightbox-controls">
+                <button class="lightbox-btn" id="zoom-in" title="Phóng to"><i class="fas fa-search-plus"></i></button>
+                <button class="lightbox-btn" id="zoom-out" title="Thu nhỏ"><i class="fas fa-search-minus"></i></button>
+                <button class="lightbox-btn" id="zoom-reset" title="Đặt lại"><i class="fas fa-compress"></i></button>
+                <button class="lightbox-btn" id="fullscreen" title="Toàn màn hình"><i class="fas fa-expand"></i></button>
+            </div>
+        `;
+        document.body.appendChild(lightbox);
+    }
+
+    const screenshots = document.querySelectorAll('.screenshot-item img');
+    const lightboxContainer = lightbox.querySelector('.lightbox-image-container');
+    const lightboxImg = lightbox.querySelector('img');
+    const closeBtn = lightbox.querySelector('.lightbox-close');
+    const prevBtn = lightbox.querySelector('.lightbox-prev');
+    const nextBtn = lightbox.querySelector('.lightbox-next');
+    const zoomInBtn = lightbox.querySelector('#zoom-in');
+    const zoomOutBtn = lightbox.querySelector('#zoom-out');
+    const zoomResetBtn = lightbox.querySelector('#zoom-reset');
+    const fullscreenBtn = lightbox.querySelector('#fullscreen');
+    let currentIndex = 0;
+    let currentZoom = 1;
+    let isPanning = false;
+    let startX, startY, translateX = 0, translateY = 0;
+
+    // Open lightbox on image click
+    screenshots.forEach((img, index) => {
+        img.parentElement.addEventListener('click', (e) => {
+            e.preventDefault();
+            currentIndex = index;
+            showImage(currentIndex);
+            lightbox.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+    });
+
+    // Close lightbox
+    const closeLightbox = () => {
+        lightbox.classList.remove('active');
+        document.body.style.overflow = '';
+    };
+
+    closeBtn.addEventListener('click', closeLightbox);
+    lightbox.addEventListener('click', (e) => {
+        if (e.target === lightbox) {
+            closeLightbox();
+        }
+    });
+
+    // Navigation
+    const showImage = (index) => {
+        if (index >= 0 && index < screenshots.length) {
+            lightboxImg.src = screenshots[index].src;
+            lightboxImg.alt = screenshots[index].alt;
+            currentIndex = index;
+            resetZoom();
+        }
+    };
+
+    // Zoom functions
+    const resetZoom = () => {
+        currentZoom = 1;
+        translateX = 0;
+        translateY = 0;
+        updateTransform();
+        lightboxContainer.style.cursor = 'default';
+    };
+
+    const updateTransform = () => {
+        lightboxImg.style.transform = `scale(${currentZoom}) translate(${translateX}px, ${translateY}px)`;
+    };
+
+    const zoom = (delta) => {
+        const oldZoom = currentZoom;
+        currentZoom = Math.min(Math.max(0.5, currentZoom + delta), 5);
+
+        if (currentZoom > 1) {
+            lightboxContainer.style.cursor = 'move';
+        } else {
+            lightboxContainer.style.cursor = 'default';
+            translateX = 0;
+            translateY = 0;
+        }
+
+        updateTransform();
+    };
+
+    // Zoom controls
+    zoomInBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        zoom(0.3);
+    });
+
+    zoomOutBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        zoom(-0.3);
+    });
+
+    zoomResetBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        resetZoom();
+    });
+
+    // Mouse wheel zoom
+    lightboxContainer.addEventListener('wheel', (e) => {
+        e.preventDefault();
+        const delta = e.deltaY > 0 ? -0.1 : 0.1;
+        zoom(delta);
+    });
+
+    // Pan functionality
+    lightboxImg.addEventListener('mousedown', (e) => {
+        if (currentZoom > 1) {
+            isPanning = true;
+            startX = e.clientX - translateX;
+            startY = e.clientY - translateY;
+            lightboxImg.style.cursor = 'grabbing';
+        }
+    });
+
+    document.addEventListener('mousemove', (e) => {
+        if (isPanning) {
+            translateX = e.clientX - startX;
+            translateY = e.clientY - startY;
+            updateTransform();
+        }
+    });
+
+    document.addEventListener('mouseup', () => {
+        if (isPanning) {
+            isPanning = false;
+            if (currentZoom > 1) {
+                lightboxImg.style.cursor = 'grab';
+            }
+        }
+    });
+
+    // Fullscreen
+    fullscreenBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const currentLang = localStorage.getItem('selectedLanguage') || 'vi';
+        const translations = lightboxTranslations[currentLang];
+
+        if (!document.fullscreenElement) {
+            lightbox.requestFullscreen().catch(err => {
+                console.log('Fullscreen error:', err);
+            });
+            fullscreenBtn.innerHTML = '<i class="fas fa-compress"></i>';
+            fullscreenBtn.title = translations.exitFullscreen;
+        } else {
+            document.exitFullscreen();
+            fullscreenBtn.innerHTML = '<i class="fas fa-expand"></i>';
+            fullscreenBtn.title = translations.fullscreen;
+        }
+    });
+
+    // Update fullscreen button on fullscreen change
+    document.addEventListener('fullscreenchange', () => {
+        const currentLang = localStorage.getItem('selectedLanguage') || 'vi';
+        const translations = lightboxTranslations[currentLang];
+
+        if (!document.fullscreenElement) {
+            fullscreenBtn.innerHTML = '<i class="fas fa-expand"></i>';
+            fullscreenBtn.title = translations.fullscreen;
+        }
+    });
+
+    prevBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        currentIndex = (currentIndex - 1 + screenshots.length) % screenshots.length;
+        showImage(currentIndex);
+    });
+
+    nextBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        currentIndex = (currentIndex + 1) % screenshots.length;
+        showImage(currentIndex);
+    });
+
+    // Keyboard navigation
+    document.addEventListener('keydown', (e) => {
+        if (!lightbox.classList.contains('active')) return;
+
+        if (e.key === 'Escape') {
+            closeLightbox();
+        } else if (e.key === 'ArrowLeft') {
+            currentIndex = (currentIndex - 1 + screenshots.length) % screenshots.length;
+            showImage(currentIndex);
+        } else if (e.key === 'ArrowRight') {
+            currentIndex = (currentIndex + 1) % screenshots.length;
+            showImage(currentIndex);
+        }
+    });
+}
 
 // Language Switcher
 document.querySelectorAll('.lang-btn').forEach(btn => {
@@ -76,6 +337,9 @@ document.querySelectorAll('.lang-btn').forEach(btn => {
         // Update active button
         document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
+
+        // Update lightbox tooltips
+        updateLightboxLanguage(lang);
 
         // Show/hide content
         document.querySelectorAll('.content-lang').forEach(content => {
