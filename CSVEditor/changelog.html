@@ -220,6 +220,74 @@
                 <span class="content-lang" data-lang="ja">ホームに戻る</span>
             </a>
 
+            <!-- Version 2.0.0.8 -->
+            <div class="version-card">
+                <div class="version-header">
+                    <div class="version-number">
+                        <i class="fas fa-tag"></i>
+                        <span class="content-lang active" data-lang="vi">Phiên bản 2.0.0.8</span>
+                        <span class="content-lang" data-lang="en">Version 2.0.0.8</span>
+                        <span class="content-lang" data-lang="ja">バージョン 2.0.0.8</span>
+                    </div>
+                    <span class="version-badge latest-badge content-lang active" data-lang="vi">MỚI NHẤT</span>
+                    <span class="version-badge latest-badge content-lang" data-lang="en">LATEST</span>
+                    <span class="version-badge latest-badge content-lang" data-lang="ja">最新</span>
+                </div>
+                <ul class="changes-list">
+                    <li class="content-lang active" data-lang="vi">Thêm xử lý "go to column", cho phép tìm kiếm và di chuyển đến cột cụ thể bằng cách nhấp đúp chuột trái vào tiêu đề cột (phím tắt Ctrl + Shift + G), có thể nhập số thứ tự cột hoặc tên cột.</li>
+                    <li class="content-lang" data-lang="en">Added "go to column" feature, allowing search and navigation to specific columns by double-clicking the left mouse button on the column header (Ctrl + Shift + G shortcut), supports input by column number or column name.</li>
+                    <li class="content-lang" data-lang="ja">「列に移動」機能を追加。列ヘッダーを左マウスボタンでダブルクリックすることで特定の列を検索して移動できます（ショートカットキー：Ctrl + Shift + G）。列番号または列名で入力できます。</li>
+
+                    <li class="content-lang active" data-lang="vi">Thêm xử lý insert cột/hàng khi chọn nhiều cột/hàng, lúc này trên textbox nhập số cột/hàng sẽ nhập sẵn số lượng cần insert dựa trên số cột/hàng đang chọn.</li>
+                    <li class="content-lang" data-lang="en">Added insert column/row handling when multiple columns/rows are selected. The textbox will now be pre-filled with the number to insert based on the number of currently selected columns/rows.</li>
+                    <li class="content-lang" data-lang="ja">複数の列/行を選択した際の列/行挿入処理を追加。テキストボックスには、現在選択されている列/行の数に基づいて挿入する数が事前入力されます。</li>
+
+                    <li class="content-lang active" data-lang="vi">Thêm xử lý ở thanh trạng thái: cho phép hiển thị số dòng đang được hiển thị trên lưới dữ liệu sau khi lọc hoặc ẩn dòng (Khi số dòng hiển thị bằng tổng số dòng thì hiển thị tổng số cột và dòng của dữ liệu).</li>
+                    <li class="content-lang" data-lang="en">Added status bar feature: displays the number of rows currently shown on the data grid after filtering or hiding rows (when visible rows equal total rows, shows total columns and rows of data).</li>
+                    <li class="content-lang" data-lang="ja">ステータスバー機能を追加：フィルタリングまたは行の非表示後にデータグリッドに表示されている行数を表示します（表示行数が総行数と等しい場合、データの総列数と行数を表示）。</li>
+
+                    <li class="content-lang active" data-lang="vi">Thêm checkbox cho phép bỏ qua thông báo cập nhật phiên bản mới (có thể kiểm tra phiên bản cập nhật ở menu, phiên bản cập nhật bắt buộc không thể bỏ qua).</li>
+                    <li class="content-lang" data-lang="en">Added checkbox to skip new version update notifications (can check for updates in the menu, mandatory updates cannot be skipped).</li>
+                    <li class="content-lang" data-lang="ja">新バージョン更新通知をスキップするチェックボックスを追加（メニューで更新を確認可能、必須更新はスキップ不可）。</li>
+
+                    <li class="content-lang active" data-lang="vi">Thêm xử lý cho phép thay đổi kích thước của menu lọc dữ liệu.</li>
+                    <li class="content-lang" data-lang="en">Added ability to resize the data filter menu.</li>
+                    <li class="content-lang" data-lang="ja">データフィルタメニューのサイズ変更機能を追加しました。</li>
+
+                    <li class="content-lang active" data-lang="vi">Thêm chức năng lưu lại các file đã mở gần đây (nằm trong menu file, người dùng có thể xóa lịch sử này).</li>
+                    <li class="content-lang" data-lang="en">Added recent files feature (located in File menu, users can clear this history).</li>
+                    <li class="content-lang" data-lang="ja">最近開いたファイル機能を追加（ファイルメニュー内、ユーザーはこの履歴を消去可能）。</li>
+
+                    <li class="content-lang active" data-lang="vi">Thêm tab hiển thị lỗi nhập liệu để người dùng thao tác trực quan hơn.</li>
+                    <li class="content-lang" data-lang="en">Added data error display tab for more intuitive user interaction.</li>
+                    <li class="content-lang" data-lang="ja">より直感的な操作のためにデータエラー表示タブを追加しました。</li>
+
+                    <li class="content-lang active" data-lang="vi">Thay đổi xử lý tự động sửa lỗi dấu ngoặc kép, kiểm tra nghiêm ngặt và chính xác hơn nếu có nhiều hơn 2 dấu ngoặc kép trong 1 ô giá trị.</li>
+                    <li class="content-lang" data-lang="en">Improved automatic quote error fixing with more strict and accurate checking when there are more than 2 quotes in a cell value.</li>
+                    <li class="content-lang" data-lang="ja">セル値に2つ以上の引用符がある場合、より厳格で正確なチェックを行う自動引用符エラー修正処理を改善しました。</li>
+
+                    <li class="content-lang active" data-lang="vi">Tối ưu tốc độ và giảm ram khi thay đổi giá trị ô hàng loạt.</li>
+                    <li class="content-lang" data-lang="en">Optimized speed and reduced RAM usage when batch changing cell values.</li>
+                    <li class="content-lang" data-lang="ja">セル値の一括変更時の速度を最適化し、RAM使用量を削減しました。</li>
+
+                    <li class="content-lang active" data-lang="vi">Sửa lỗi vị trí hiển thị của nút cấu hình nhanh tại màn hình cấu hình tiêu đề tùy chỉnh.</li>
+                    <li class="content-lang" data-lang="en">Fixed display position of quick configuration button on custom header configuration screen.</li>
+                    <li class="content-lang" data-lang="ja">カスタムヘッダー設定画面でのクイック設定ボタンの表示位置を修正しました。</li>
+
+                    <li class="content-lang active" data-lang="vi">Sửa lỗi khi tính toán chiều rộng cột ở chế độ tiêu đề tùy chỉnh.</li>
+                    <li class="content-lang" data-lang="en">Fixed column width calculation error in custom header mode.</li>
+                    <li class="content-lang" data-lang="ja">カスタムヘッダーモードでの列幅計算エラーを修正しました。</li>
+
+                    <li class="content-lang active" data-lang="vi">Sửa lỗi hiển thị không chính xác vị trí ô hiện tại và số lượng ký tự ô trên StatusBar khi thay đổi vị trí chọn.</li>
+                    <li class="content-lang" data-lang="en">Fixed incorrect display of current cell position and cell character count on StatusBar when changing selection position.</li>
+                    <li class="content-lang" data-lang="ja">選択位置を変更した際のステータスバーでの現在のセル位置とセル文字数の不正確な表示を修正しました。</li>
+
+                    <li class="content-lang active" data-lang="vi">Sửa lỗi tính năng thêm/xóa dấu ngoặc kép khi giá trị có dấu ngoặc kép không hợp lệ. (tính năng này chỉ áp dụng thêm/xóa dấu ngoặc kép ở đầu và cuối giá trị, không tự clean dữ liệu).</li>
+                    <li class="content-lang" data-lang="en">Fixed add/remove quotes feature when value has invalid quotes. (This feature only adds/removes quotes at the beginning and end of the value, does not automatically clean data).</li>
+                    <li class="content-lang" data-lang="ja">値に無効な引用符がある場合の引用符追加/削除機能を修正しました（この機能は値の先頭と末尾の引用符のみを追加/削除し、データの自動クリーニングは行いません）。</li>
+                </ul>
+            </div>
+
             <!-- Version 2.0.0.7 -->
             <div class="version-card">
                 <div class="version-header">
@@ -229,9 +297,6 @@
                         <span class="content-lang" data-lang="en">Version 2.0.0.7</span>
                         <span class="content-lang" data-lang="ja">バージョン 2.0.0.7</span>
                     </div>
-                    <span class="version-badge latest-badge content-lang active" data-lang="vi">MỚI NHẤT</span>
-                    <span class="version-badge latest-badge content-lang" data-lang="en">LATEST</span>
-                    <span class="version-badge latest-badge content-lang" data-lang="ja">最新</span>
                 </div>
                 <ul class="changes-list">
                     <li class="content-lang active" data-lang="vi">Thêm chức năng theo dõi file đang mở, nếu bị thay đổi bởi app khác thì sẽ yêu cầu tải lại file.</li>
