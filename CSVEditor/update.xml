@@ -1,23 +1,12 @@
 <item>
   <title>CSVEditor</title>
-  <version>2.0.0.8</version>
+  <version>2.0.1.0</version>
   <installUrl>https://tnkbang.github.io/CSVEditor/data/CSVEditor%20Setup.exe</installUrl>
   <portableUrl>https://tnkbang.github.io/CSVEditor/data/CSVEditor-portable.zip</portableUrl>
   <changelog>Các thay đổi sau:
-  - Thêm xử lý "go to column", cho phép tìm kiếm và di chuyển đến cột cụ thể bằng cách nhấp đúp chuột trái vào tiêu đề cột (phím tắt Ctrl + Shift + G), có thể nhập số thứ tự cột hoặc tên cột.
-  - Thêm xử lý insert cột/hàng khi chọn nhiều cột/hàng, lúc này trên textbox nhập số cột/hàng sẽ nhập sẵn số lượng cần insert dựa trên số cột/hàng đang chọn.
-  - Thêm xử lý ở thanh trạng thái: cho phép hiển thị số dòng đang được hiển thị trên lưới dữ liệu sau khi lọc hoặc ẩn dòng (Khi số dòng hiển thị bằng tổng số dòng thì hiển thị tổng số cột và dòng của dữ liệu)
-  - Thêm checkbox cho phép bỏ qua thông báo cập nhật phiên bản mới (có thể kiểm tra phiên bản cập nhật ở menu, phiên bản cập nhật bắt buộc không thể bỏ qua)
-  - Thêm xử lý cho phép thay đổi kích thước của menu lọc dữ liệu.
-  - Thêm chức năng lưu lại các file đã mở gần đây (nằm trong menu file, người dùng có thể xóa lịch sử này)
-  - Thêm tab hiền thị lỗi nhập liệu để người dùng thao tác trực quan hơn.
-  - Thay đổi xử lý tự động sửa lỗi dấu ngoặc kép, kiểm tra nghiêm ngặt và chính xác hơn nếu có nhiều hơn 2 dấu ngoặc kép trong 1 ô giá trị.
-  - Tối ưu tốc độ và giảm ram khi thay đổi giá trị ô hàng loạt.
-  - Sửa lỗi vị trí hiển thị của nút cấu hình nhanh tại màn hình cấu hình tiêu đề tùy chỉnh.
-  - Sửa lỗi khi tính toán chiều rộng cột ở chế độ tiêu đề tùy chỉnh.
-  - Sủa lỗi hiển thị không chính xác vị trí ô hiện tại và số lượng ký tự ô trên StatusBar khi thay đổi vị trí chọn.
-  - Sửa lỗi tính năng thêm/xóa dấu ngoặc kép khi giá trị có dấu ngoặc kép không hợp lệ. (tính năng này chỉ áp dụng thêm/xóa dấu ngoặc kép ở đầu và cuối giá trị, không tự clean dữ liệu)
+  - Thêm giấy phép cho ứng dụng. Hiện sử dụng giấy phép CC BY-NC 4.0
+  - Tối ưu xử lý tìm giá trị và đánh dấu ô.
   Xem chi tiết tại: https://tnkbang.github.io/CSVEditor/changelog.html</changelog>
   <mandatory>false</mandatory>
-  <minVersion>2.0.0.6</minVersion>
+  <minVersion>2.0.1.0</minVersion>
 </item>
