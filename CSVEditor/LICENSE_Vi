@@ -1,0 +1,218 @@
+﻿Giấy phép Phần mềm CSVEditor
+Phiên bản 1.0, 2024
+
+Bản quyền (c) 2024 tnkbang
+Bảo lưu mọi quyền.
+
+================================================================================
+                           THỎA THUẬN CẤP PHÉP
+================================================================================
+
+Thỏa thuận cấp phép này ("Giấy phép") điều chỉnh việc sử dụng, sao chép, chỉnh 
+sửa và phân phối phần mềm CSVEditor ("Phần mềm"). Bằng việc sử dụng, sao chép 
+hoặc phân phối Phần mềm, bạn đồng ý tuân theo các điều khoản của Giấy phép này.
+
+--------------------------------------------------------------------------------
+                           1. ĐỊNH NGHĨA
+--------------------------------------------------------------------------------
+
+"Phần mềm" đề cập đến ứng dụng CSVEditor, bao gồm mã nguồn, tệp nhị phân đã 
+biên dịch, tài liệu và tất cả các tệp liên quan.
+
+"Sản phẩm đầu ra" đề cập đến bất kỳ tệp, dữ liệu hoặc nội dung nào được tạo, 
+chỉnh sửa, sửa đổi hoặc xuất ra bằng Phần mềm, bao gồm nhưng không giới hạn ở 
+các tệp CSV, tệp Excel và các định dạng dữ liệu khác.
+
+"Sử dụng thương mại" nghĩa là bất kỳ việc sử dụng Phần mềm nào nhằm mục đích 
+hoặc hướng tới lợi thế thương mại hoặc bù đắp tiền tệ, bao gồm nhưng không 
+giới hạn ở:
+  - Bán, cấp phép hoặc cho thuê Phần mềm
+  - Phân phối Phần mềm như một phần của sản phẩm hoặc dịch vụ trả phí
+  - Sử dụng Phần mềm để cung cấp dịch vụ trả phí cho bên thứ ba
+
+"Phân phối phi thương mại" nghĩa là chia sẻ Phần mềm mà không nhận bù đắp tiền 
+tệ, bao gồm nhưng không giới hạn ở:
+  - Chia sẻ qua trang web cá nhân, blog hoặc mạng xã hội
+  - Phân phối trong bối cảnh giáo dục hoặc nghiên cứu
+  - Đưa vào các bộ sưu tập phần mềm miễn phí hoặc kho lưu trữ
+
+--------------------------------------------------------------------------------
+                           2. CẤP QUYỀN
+--------------------------------------------------------------------------------
+
+Theo các điều khoản của Giấy phép này, chủ sở hữu bản quyền cấp cho bạn giấy 
+phép toàn cầu, miễn phí bản quyền, không độc quyền để:
+
+a) SỬ DỤNG: Sử dụng Phần mềm cho bất kỳ mục đích cá nhân, giáo dục hoặc thương 
+   mại nội bộ nào mà không bị hạn chế.
+
+b) SAO CHÉP: Tạo các bản sao của Phần mềm cho mục đích sao lưu, lưu trữ hoặc 
+   phân phối theo Mục 3.
+
+c) CHỈNH SỬA: Sửa đổi, điều chỉnh, dịch thuật hoặc tạo các tác phẩm phái sinh 
+   dựa trên Phần mềm cho mục đích sử dụng của riêng bạn.
+
+d) PHÂN PHỐI: Chia sẻ hoặc phân phối lại Phần mềm cho người khác, với điều kiện 
+   việc phân phối đó là Phi thương mại và tuân thủ Mục 3.
+
+e) QUYỀN SỞ HỮU SẢN PHẨM ĐẦU RA: Bạn giữ toàn quyền sở hữu tất cả Sản phẩm đầu 
+   ra được tạo bằng Phần mềm. Bạn có thể tự do sử dụng, bán, cấp phép, phân phối 
+   hoặc thương mại hóa bất kỳ Sản phẩm đầu ra nào mà không bị hạn chế hay nghĩa 
+   vụ đối với chủ sở hữu bản quyền.
+
+--------------------------------------------------------------------------------
+                           3. HẠN CHẾ
+--------------------------------------------------------------------------------
+
+Bạn KHÔNG được:
+
+a) BÁN PHẦN MỀM: Bán, cấp phép có phí, cho thuê, thuê hoặc phân phối thương mại 
+   Phần mềm hoặc bất kỳ tác phẩm phái sinh nào.
+
+b) PHÂN PHỐI THƯƠNG MẠI: Đưa Phần mềm vào bất kỳ sản phẩm, gói hoặc dịch vụ 
+   trả phí nào.
+
+c) XÓA THÔNG BÁO: Xóa, thay đổi hoặc che giấu bất kỳ thông báo bản quyền, điều 
+   khoản giấy phép hoặc tuyên bố ghi nhận tác giả nào trong Phần mềm.
+
+d) CẤP PHÉP LẠI: Cấp giấy phép phụ cho người khác mà cho phép họ vượt quá các 
+   quyền được cấp theo Giấy phép này.
+
+e) XÁC NHẬN SAI NGUỒN GỐC: Tuyên bố quyền tác giả của Phần mềm gốc hoặc xác 
+   nhận sai nguồn gốc của Phần mềm.
+
+--------------------------------------------------------------------------------
+                      4. PHÂN PHỐI PHI THƯƠNG MẠI
+--------------------------------------------------------------------------------
+
+Khi phân phối Phần mềm phi thương mại, bạn phải:
+
+a) Bao gồm một bản sao đầy đủ của Giấy phép này cùng với Phần mềm.
+
+b) Ghi nhận rõ ràng tác giả gốc (tnkbang) và cung cấp liên kết đến kho lưu trữ 
+   nguồn gốc khi có thể một cách hợp lý.
+
+c) Chỉ rõ nếu bạn đã thực hiện bất kỳ sửa đổi nào đối với Phần mềm.
+
+d) Không áp đặt bất kỳ hạn chế bổ sung nào đối với người nhận ngoài những hạn 
+   chế trong Giấy phép này.
+
+--------------------------------------------------------------------------------
+                      5. SẢN PHẨM ĐẦU RA VÀ TÁC PHẨM ĐƯỢC TẠO
+--------------------------------------------------------------------------------
+
+a) Tất cả Sản phẩm đầu ra được tạo bằng Phần mềm hoàn toàn thuộc sở hữu của 
+   người dùng đã tạo ra nó.
+
+b) Chủ sở hữu bản quyền không có bất kỳ yêu cầu nào đối với Sản phẩm đầu ra và 
+   không có quyền đối với bất kỳ dữ liệu, tệp hoặc nội dung nào được xử lý hoặc 
+   tạo bằng Phần mềm.
+
+c) Bạn có thể tự do thương mại hóa, bán, phân phối, cấp phép hoặc sử dụng bất 
+   kỳ Sản phẩm đầu ra nào cho bất kỳ mục đích nào mà không cần ghi nhận hoặc 
+   bồi thường cho chủ sở hữu bản quyền.
+
+d) Mục này áp dụng bất kể bạn sử dụng phiên bản miễn phí hay bất kỳ phiên bản 
+   tương lai nào của Phần mềm.
+
+--------------------------------------------------------------------------------
+                           6. ĐÓNG GÓP
+--------------------------------------------------------------------------------
+
+Nếu bạn gửi đóng góp (mã, tài liệu, sửa lỗi, v.v.) cho Phần mềm:
+
+a) Bạn cấp cho chủ sở hữu bản quyền giấy phép vĩnh viễn, toàn cầu, miễn phí bản 
+   quyền để sử dụng, sửa đổi và phân phối các đóng góp của bạn.
+
+b) Bạn đại diện rằng bạn có quyền cấp giấy phép đó.
+
+c) Các đóng góp của bạn sẽ được cấp phép theo các điều khoản tương tự như Giấy 
+   phép này.
+
+--------------------------------------------------------------------------------
+                      7. TỪ CHỐI BẢO HÀNH
+--------------------------------------------------------------------------------
+
+PHẦN MỀM ĐƯỢC CUNG CẤP "NGUYÊN TRẠNG", KHÔNG CÓ BẤT KỲ BẢO HÀNH NÀO, DÙ RÕ 
+RÀNG HAY NGỤ Ý, BAO GỒM NHƯNG KHÔNG GIỚI HẠN Ở CÁC BẢO HÀNH VỀ KHẢ NĂNG BÁN 
+ĐƯỢC, SỰ PHÙ HỢP CHO MỘT MỤC ĐÍCH CỤ THỂ VÀ KHÔNG VI PHẠM.
+
+CHỦ SỞ HỮU BẢN QUYỀN KHÔNG BẢO ĐẢM RẰNG PHẦN MỀM SẼ KHÔNG BỊ GIÁN ĐOẠN, KHÔNG 
+CÓ LỖI HOẶC KHÔNG CÓ CÁC THÀNH PHẦN GÂY HẠI.
+
+--------------------------------------------------------------------------------
+                      8. GIỚI HẠN TRÁCH NHIỆM
+--------------------------------------------------------------------------------
+
+TRONG MỌI TRƯỜNG HỢP, CHỦ SỞ HỮU BẢN QUYỀN KHÔNG CHỊU TRÁCH NHIỆM VỀ BẤT KỲ 
+KHIẾU NẠI, THIỆT HẠI HOẶC TRÁCH NHIỆM PHÁP LÝ NÀO KHÁC, DÙ TRONG HÀNH ĐỘNG HỢP 
+ĐỒNG, SAI PHẠM DÂN SỰ HOẶC CÁCH KHÁC, PHÁT SINH TỪ, NGOÀI HOẶC LIÊN QUAN ĐẾN 
+PHẦN MỀM HOẶC VIỆC SỬ DỤNG HAY CÁC GIAO DỊCH KHÁC TRONG PHẦN MỀM.
+
+ĐIỀU NÀY BAO GỒM, NHƯNG KHÔNG GIỚI HẠN Ở:
+  - Thiệt hại trực tiếp, gián tiếp, ngẫu nhiên, đặc biệt hoặc hậu quả
+  - Mất dữ liệu, lợi nhuận hoặc cơ hội kinh doanh
+  - Thiệt hại phát sinh từ việc sử dụng hoặc không thể sử dụng Phần mềm
+
+--------------------------------------------------------------------------------
+                           9. CHẤM DỨT
+--------------------------------------------------------------------------------
+
+a) Giấy phép này có hiệu lực cho đến khi bị chấm dứt.
+
+b) Các quyền của bạn theo Giấy phép này sẽ tự động chấm dứt nếu bạn không tuân 
+   thủ bất kỳ điều khoản nào trong đây.
+
+c) Khi chấm dứt, bạn phải ngừng tất cả việc sử dụng và hủy tất cả các bản sao 
+   của Phần mềm trong sở hữu của bạn.
+
+d) Các Mục 5, 7, 8 và 10 vẫn có hiệu lực sau khi chấm dứt.
+
+--------------------------------------------------------------------------------
+                           10. ĐIỀU KHOẢN CHUNG
+--------------------------------------------------------------------------------
+
+a) TOÀN BỘ THỎA THUẬN: Giấy phép này cấu thành toàn bộ thỏa thuận giữa bạn và 
+   chủ sở hữu bản quyền liên quan đến Phần mềm.
+
+b) TÍNH TÁCH BIỆT: Nếu bất kỳ điều khoản nào của Giấy phép này bị coi là không 
+   hợp lệ hoặc không thể thi hành, các điều khoản còn lại vẫn có đầy đủ hiệu 
+   lực.
+
+c) TỪ BỎ: Việc không thực thi bất kỳ điều khoản nào của Giấy phép này không 
+   cấu thành việc từ bỏ điều khoản đó.
+
+d) LUẬT ĐIỀU CHỈNH: Giấy phép này được điều chỉnh và giải thích theo luật sở 
+   hữu trí tuệ quốc tế có thể áp dụng.
+
+e) SỬA ĐỔI: Chủ sở hữu bản quyền bảo lưu quyền phát hành Phần mềm theo các điều 
+   khoản giấy phép khác hoặc sửa đổi Giấy phép này cho các phiên bản tương lai.
+
+--------------------------------------------------------------------------------
+                           11. LIÊN HỆ
+--------------------------------------------------------------------------------
+
+Đối với các câu hỏi liên quan đến cấp phép, quyền hạn hoặc các vấn đề khác:
+  - GitHub: https://github.com/tnkbang/CSVEditor
+  - Email: [Liên hệ qua GitHub Issues]
+
+================================================================================
+                              TÓM TẮT
+================================================================================
+
+✓ MIỄN PHÍ sử dụng cho mục đích cá nhân, giáo dục và kinh doanh
+✓ MIỄN PHÍ chia sẻ và phân phối lại phi thương mại
+✓ MIỄN PHÍ chỉnh sửa và tạo tác phẩm phái sinh
+✓ TOÀN QUYỀN sở hữu tất cả tệp/dữ liệu được tạo bằng phần mềm này
+✓ CÓ THỂ bán bất kỳ tệp CSV, Excel hoặc sản phẩm đầu ra nào bạn tạo
+
+✗ KHÔNG ĐƯỢC bán phần mềm này
+✗ KHÔNG ĐƯỢC đưa phần mềm này vào sản phẩm hoặc dịch vụ trả phí
+✗ KHÔNG ĐƯỢC xóa thông báo bản quyền
+
+================================================================================
+
+Bằng việc sử dụng CSVEditor, bạn thừa nhận rằng bạn đã đọc, hiểu và đồng ý 
+tuân theo các điều khoản của Giấy phép này.
+
+Bản quyền (c) 2024 tnkbang - Bảo lưu mọi quyền.
