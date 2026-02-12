@@ -222,6 +222,16 @@
                         <h3>Giao Diện Hiện Đại</h3>
                         <p>Giao diện sạch sẽ, trực quan với nhận thức DPI và khả năng thu phóng</p>
                     </div>
+                    <div class="feature-card">
+                        <div class="feature-icon"><i class="fas fa-check-circle"></i></div>
+                        <h3>Kiểm Tra Dữ Liệu</h3>
+                        <p>Kiểm tra lỗi CSV theo thời gian thực với bảng lỗi hiển thị các vấn đề và sửa nhanh</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon"><i class="fas fa-sync-alt"></i></div>
+                        <h3>Tự Động Cập Nhật</h3>
+                        <p>Tự động kiểm tra và cài đặt phiên bản mới nhất, giữ ứng dụng luôn cập nhật</p>
+                    </div>
                 </div>
             </div>
         </section>
@@ -370,11 +380,14 @@
                         <ul>
                             <li>Tạo file CSV mới với kích thước tùy chỉnh</li>
                             <li>Mở file với tự động phát hiện mã hóa (UTF-8, Shift-JIS, v.v.)</li>
+                            <li>Mở file trực tiếp từ URL (HTTP/HTTPS)</li>
+                            <li>Danh sách file gần đây (Ctrl+1-9 để truy cập nhanh)</li>
                             <li>Hỗ trợ nhiều định dạng: CSV, TSV, và dấu phân cách tùy chỉnh</li>
                             <li>Xuất ra Excel (.xlsx) với độ rộng cột tối ưu</li>
                             <li>Gộp nhiều file CSV thành một với căn chỉnh cột tự động</li>
                             <li>Mã hóa file với bảo vệ mật khẩu</li>
                             <li>Kéo và thả file để mở nhanh</li>
+                            <li>Phát hiện thay đổi file từ bên ngoài và tự động nhắc tải lại</li>
                         </ul>
                     </div>
 
@@ -383,6 +396,8 @@
                         <h4>Tìm và Thay Thế:</h4>
                         <ul>
                             <li>Tìm kiếm chính xác, chứa, bắt đầu với, hoặc kết thúc với</li>
+                            <li>Tìm kiếm bằng Regex (biểu thức chính quy)</li>
+                            <li>Tìm kiếm kiểu SQL (VD: column1 = 'value' AND column2 > 10)</li>
                             <li>Tìm chỉ trong cột hiện tại</li>
                             <li>Đánh dấu tất cả kết quả</li>
                             <li>Thay thế một hoặc tất cả</li>
@@ -395,6 +410,13 @@
                             <li>Sắp xếp tăng dần, giảm dần, tự nhiên, hoặc ngẫu nhiên</li>
                             <li>Kết hợp bộ lọc trên nhiều cột</li>
                         </ul>
+                        <h4>Kiểm Tra Dữ Liệu:</h4>
+                        <ul>
+                            <li>Phát hiện dấu ngoặc kép không cân bằng</li>
+                            <li>Phát hiện xuống dòng và dấu phân cách trong ô chưa được quote</li>
+                            <li>Phát hiện số có số 0 ở đầu, khoảng trắng thừa</li>
+                            <li>Bảng lỗi hiển thị theo thời gian thực với sửa nhanh</li>
+                        </ul>
                     </div>
 
                     <div class="feature-detail">
@@ -405,8 +427,10 @@
                             <li>Ẩn/Hiện hàng và cột với undo/redo</li>
                             <li>Đóng băng hàng và cột để cuộn dễ dàng</li>
                             <li>Tự động điều chỉnh độ rộng cột theo nội dung</li>
-                            <li>3 kiểu tiêu đề cột: Số, Excel (A, B, C...), hoặc CSV Header</li>
+                            <li>Căn chỉnh cột: Trái, Giữa, Phải</li>
+                            <li>4 kiểu tiêu đề cột: Số, Excel (A, B, C...), CSV Header, hoặc Tùy chỉnh</li>
                             <li>Chọn nhiều hàng/cột với Shift và Ctrl</li>
+                            <li>Đánh dấu ô quan trọng với màu nền (Highlight)</li>
                         </ul>
                     </div>
 
@@ -418,8 +442,10 @@
                             <li>Chọn mã hóa: UTF-8, Shift-JIS, v.v.</li>
                             <li>Dấu phân cách: Phẩy, Tab, Chấm phẩy, Gạch đứng, hoặc tùy chỉnh</li>
                             <li>Đa ngôn ngữ: Tiếng Việt, Tiếng Anh, Tiếng Nhật</li>
-                            <li>Đánh dấu ô quan trọng với màu nền</li>
+                            <li>Tùy chỉnh màu sắc theo kiểu dữ liệu (Số, Văn bản, Ngày)</li>
+                            <li>Tùy chỉnh màu nền, màu chữ, lưới, vùng đóng băng</li>
                             <li>Thêm/Xóa dấu ngoặc kép</li>
+                            <li>Tự động kiểm tra cập nhật khi khởi động</li>
                         </ul>
                     </div>
                 </div>
@@ -506,6 +532,16 @@
                         <div class="feature-icon"><i class="fas fa-paint-brush"></i></div>
                         <h3>Modern UI</h3>
                         <p>Clean, intuitive interface with DPI awareness and zoom capabilities</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon"><i class="fas fa-check-circle"></i></div>
+                        <h3>Data Validation</h3>
+                        <p>Real-time CSV validation with error panel showing issues and quick fixes</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon"><i class="fas fa-sync-alt"></i></div>
+                        <h3>Auto Update</h3>
+                        <p>Automatically check and install latest version to keep your app up to date</p>
                     </div>
                 </div>
             </div>
@@ -655,11 +691,14 @@
                         <ul>
                             <li>Create new CSV files with custom dimensions</li>
                             <li>Open files with automatic encoding detection (UTF-8, Shift-JIS, etc.)</li>
+                            <li>Open files directly from URL (HTTP/HTTPS)</li>
+                            <li>Recent files list (Ctrl+1-9 for quick access)</li>
                             <li>Support for multiple formats: CSV, TSV, and custom delimiters</li>
                             <li>Export to Excel (.xlsx) with optimal column widths</li>
                             <li>Merge multiple CSV files with automatic column alignment</li>
                             <li>File encryption with password protection</li>
                             <li>Drag and drop files to open quickly</li>
+                            <li>External file change detection with auto-reload prompt</li>
                         </ul>
                     </div>
 
@@ -668,6 +707,8 @@
                         <h4>Find and Replace:</h4>
                         <ul>
                             <li>Search modes: exact, contains, starts with, or ends with</li>
+                            <li>Regex search (regular expressions)</li>
+                            <li>SQL-like search (e.g., column1 = 'value' AND column2 > 10)</li>
                             <li>Find only in current column</li>
                             <li>Highlight all matches</li>
                             <li>Replace single or all occurrences</li>
@@ -680,6 +721,13 @@
                             <li>Sort ascending, descending, natural, or shuffle</li>
                             <li>Combine filters on multiple columns</li>
                         </ul>
+                        <h4>Data Validation:</h4>
+                        <ul>
+                            <li>Detect unbalanced quotes</li>
+                            <li>Detect unquoted newlines and delimiters</li>
+                            <li>Detect leading zeros and trailing spaces</li>
+                            <li>Real-time error panel with quick fixes</li>
+                        </ul>
                     </div>
 
                     <div class="feature-detail">
@@ -690,8 +738,10 @@
                             <li>Hide/Unhide rows and columns with undo/redo</li>
                             <li>Freeze rows and columns for easy scrolling</li>
                             <li>Auto-resize column widths to fit content</li>
-                            <li>3 column header styles: Number, Excel (A, B, C...), or CSV Header</li>
+                            <li>Column alignment: Left, Center, Right</li>
+                            <li>4 column header styles: Number, Excel (A, B, C...), CSV Header, or Customize</li>
                             <li>Select multiple rows/columns with Shift and Ctrl</li>
+                            <li>Highlight important cells with background color</li>
                         </ul>
                     </div>
 
@@ -703,8 +753,10 @@
                             <li>Choose encoding: UTF-8, Shift-JIS, etc.</li>
                             <li>Delimiters: Comma, Tab, Semicolon, Pipe, or custom</li>
                             <li>Multi-language: Vietnamese, English, Japanese</li>
-                            <li>Highlight important cells with background color</li>
+                            <li>Customize colors by data type (Number, Text, Date)</li>
+                            <li>Customize background, text, grid, and frozen area colors</li>
                             <li>Add/Remove quote marks</li>
+                            <li>Auto-check for updates on startup</li>
                         </ul>
                     </div>
                 </div>
@@ -791,6 +843,16 @@
                         <div class="feature-icon"><i class="fas fa-paint-brush"></i></div>
                         <h3>モダンUI</h3>
                         <p>DPI認識とズーム機能を備えたクリーンで直感的なインターフェイス</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon"><i class="fas fa-check-circle"></i></div>
+                        <h3>データ検証</h3>
+                        <p>リアルタイムCSV検証と問題とクイックフィックスを表示するエラーパネル</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon"><i class="fas fa-sync-alt"></i></div>
+                        <h3>自動更新</h3>
+                        <p>最新バージョンを自動的にチェックしてインストール、アプリを常に最新に保つ</p>
                     </div>
                 </div>
             </div>
@@ -940,11 +1002,14 @@
                         <ul>
                             <li>カスタムサイズの新しいCSVファイルを作成</li>
                             <li>自動エンコーディング検出でファイルを開く（UTF-8、Shift-JISなど）</li>
+                            <li>URLから直接ファイルを開く（HTTP/HTTPS）</li>
+                            <li>最近開いたファイルリスト（Ctrl+1-9でクイックアクセス）</li>
                             <li>複数形式のサポート：CSV、TSV、カスタム区切り文字</li>
                             <li>最適な列幅でExcel（.xlsx）にエクスポート</li>
                             <li>自動列配置で複数のCSVファイルを結合</li>
                             <li>パスワード保護付きファイル暗号化</li>
                             <li>ドラッグ＆ドロップでファイルを素早く開く</li>
+                            <li>外部ファイル変更検出と自動再読み込みプロンプト</li>
                         </ul>
                     </div>
 
@@ -953,6 +1018,8 @@
                         <h4>検索と置換:</h4>
                         <ul>
                             <li>検索モード：完全一致、部分一致、先頭一致、末尾一致</li>
+                            <li>Regex検索（正規表現）</li>
+                            <li>SQLライク検索（例：column1 = 'value' AND column2 > 10）</li>
                             <li>現在の列のみで検索</li>
                             <li>すべての一致をハイライト</li>
                             <li>単一またはすべての出現を置換</li>
@@ -965,6 +1032,13 @@
                             <li>昇順、降順、自然順、またはシャッフルでソート</li>
                             <li>複数の列にフィルタを組み合わせ</li>
                         </ul>
+                        <h4>データ検証:</h4>
+                        <ul>
+                            <li>アンバランスお重覆引用符を検出</li>
+                            <li>クォートされていない改行と区切り文字を検出</li>
+                            <li>先頭ゼロと末尾スペースを検出</li>
+                            <li>クイックフィックス付きリアルタイムエラーパネル</li>
+                        </ul>
                     </div>
 
                     <div class="feature-detail">
@@ -975,8 +1049,10 @@
                             <li>元に戻す/やり直し機能付きで行と列を非表示/再表示</li>
                             <li>スクロールを簡単にするために行と列を固定</li>
                             <li>内容に合わせて列幅を自動リサイズ</li>
-                            <li>3つの列ヘッダースタイル：番号、Excel（A、B、C...）、またはCSVヘッダー</li>
+                            <li>列の配置：左、中央、右</li>
+                            <li>4つの列ヘッダースタイル：番号、Excel（A、B、C...）、CSVヘッダー、またはカスタマイズ</li>
                             <li>ShiftとCtrlで複数の行/列を選択</li>
+                            <li>背景色で重要なセルをハイライト</li>
                         </ul>
                     </div>
 
@@ -988,8 +1064,10 @@
                             <li>エンコーディングの選択：UTF-8、Shift-JISなど</li>
                             <li>区切り文字：カンマ、タブ、セミコロン、パイプ、またはカスタム</li>
                             <li>多言語：ベトナム語、英語、日本語</li>
-                            <li>背景色で重要なセルをハイライト</li>
+                            <li>データタイプ別の色カスタマイズ（数値、テキスト、日付）</li>
+                            <li>背景、テキスト、グリッド、固定エリアの色カスタマイズ</li>
                             <li>引用符の追加/削除</li>
+                            <li>起動時に更新を自動チェック</li>
                         </ul>
                     </div>
                 </div>
