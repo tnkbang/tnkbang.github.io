@@ -1,11 +1,13 @@
 <item>
   <title>CSVEditor</title>
-  <version>2.0.1.0</version>
+  <version>2.0.1.1</version>
   <installUrl>https://tnkbang.github.io/CSVEditor/data/CSVEditor%20Setup.exe</installUrl>
   <portableUrl>https://tnkbang.github.io/CSVEditor/data/CSVEditor-portable.zip</portableUrl>
   <changelog>Các thay đổi sau:
-  - Thêm giấy phép cho ứng dụng. Hiện sử dụng giấy phép CC BY-NC 4.0
-  - Tối ưu xử lý tìm giá trị và đánh dấu ô.
+  - Thêm chế độ tìm kiếm bằng Regex và truy vấn SQL.
+  - Thay đổi layout của form tìm kiếm cho gọn và dễ dùng hơn.
+  - Cập nhật giấy phép thành: CSVEditor Software License.
+  - Sửa lỗi khi ẩn dòng, không làm ảnh hưởng các dòng bị ẩn bởi lệnh khác khi hoàn tác.
   Xem chi tiết tại: https://tnkbang.github.io/CSVEditor/changelog.html</changelog>
   <mandatory>false</mandatory>
   <minVersion>2.0.1.0</minVersion>
