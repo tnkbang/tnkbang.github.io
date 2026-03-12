@@ -1,13 +1,19 @@
 <item>
   <title>CSVEditor</title>
-  <version>2.0.1.1</version>
+  <version>2.1.0.0</version>
   <installUrl>https://tnkbang.github.io/CSVEditor/data/CSVEditor%20Setup.exe</installUrl>
   <portableUrl>https://tnkbang.github.io/CSVEditor/data/CSVEditor-portable.zip</portableUrl>
   <changelog>Các thay đổi sau:
-  - Thêm chế độ tìm kiếm bằng Regex và truy vấn SQL.
-  - Thay đổi layout của form tìm kiếm cho gọn và dễ dùng hơn.
-  - Cập nhật giấy phép thành: CSVEditor Software License.
-  - Sửa lỗi khi ẩn dòng, không làm ảnh hưởng các dòng bị ẩn bởi lệnh khác khi hoàn tác.
+  - Thêm tính năng cho phép mở nhiều file trên một màn hình (multi tab).
+  - Thêm tính năng lưu giữ và khôi phục vị trí và trạng thái của ứng dụng.
+  - Thêm tính năng cho phép app luôn hiển thị lên trên cùng, có thể bật/tắt mọi lúc.
+  - Thêm tính năng cho phép đặt mật khẩu để mở/lưu file mã hóa.
+  - Thêm xử lý cho phép xem số lượng bytes của ô khi chọn vào.
+  - Cải tiến xử lý lọc (hỗ trợ xử lý chính xác khi kết hợp ẩn và lọc dữ liệu).
+  - Cải tiến xử lý sắp xếp (hỗ trợ xử lý hiển thị đúng khi kết hợp lọc và sắp xếp).
+  - Cải tiến xử lý tìm kiếm bằng SQL (hỗ trợ phân tích cú pháp chuẩn và linh hoạt).
+  - Cải tiến tính năng xuất excel (tăng tốc độ xuất file và cho phép tùy chọn dấu nháy đôi).
+  - Sửa lỗi index khi zoom từ lớn đến nhỏ trong khi kích thước màn hình quá nhỏ.
   Xem chi tiết tại: https://tnkbang.github.io/CSVEditor/changelog.html</changelog>
   <mandatory>false</mandatory>
   <minVersion>2.0.1.0</minVersion>
