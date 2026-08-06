@@ -1,0 +1,926 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="CSV Editor - Lịch sử cập nhật và thay đổi">
+    <meta name="keywords" content="CSV Editor, Changelog, Updates, Version History">
+    <title>CSV Editor - Lịch Sử Cập Nhật</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .changelog-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .page-header {
+            text-align: center;
+            padding: 4rem 0 3rem;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: white;
+        }
+
+        .page-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .page-header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .version-card {
+            background: var(--surface-color);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .version-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .version-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid var(--primary-color);
+        }
+
+        .version-number {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .version-date {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            margin-left: auto;
+        }
+
+        .version-date i {
+            color: var(--primary-color);
+        }
+
+        .version-badge {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .latest-badge {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+        }
+
+        .changes-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .changes-list li {
+            padding: 12px 0 12px 35px;
+            position: relative;
+            line-height: 1.8;
+            font-size: 1.05rem;
+        }
+
+        .changes-list li::before {
+            content: '\f00c';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            left: 0;
+            color: var(--primary-color);
+            font-size: 1rem;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 24px;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            margin-bottom: 30px;
+        }
+
+        .back-link:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        @media (max-width: 768px) {
+            .page-header h1 {
+                font-size: 1.8rem;
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .page-header p {
+                font-size: 1rem;
+            }
+
+            .version-number {
+                font-size: 1.5rem;
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .version-card {
+                padding: 20px;
+            }
+
+            .changes-list li {
+                font-size: 0.95rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav class="container">
+            <div class="logo">
+                <i class="fas fa-file-csv"></i>
+                CSV Editor
+            </div>
+            <button class="mobile-menu-toggle" onclick="toggleMobileMenu()" aria-label="Toggle menu">
+                <i class="fas fa-bars"></i>
+            </button>
+            <ul class="nav-links">
+                <li><a href="index.html#features" onclick="closeMobileMenu()">
+                    <span class="content-lang active" data-lang="vi">Tính Năng</span>
+                    <span class="content-lang" data-lang="en">Features</span>
+                    <span class="content-lang" data-lang="ja">機能</span>
+                </a></li>
+                <li><a href="index.html#shortcuts" onclick="closeMobileMenu()">
+                    <span class="content-lang active" data-lang="vi">Phím Tắt</span>
+                    <span class="content-lang" data-lang="en">Shortcuts</span>
+                    <span class="content-lang" data-lang="ja">ショートカット</span>
+                </a></li>
+                <li><a href="index.html#details" onclick="closeMobileMenu()">
+                    <span class="content-lang active" data-lang="vi">Chi Tiết</span>
+                    <span class="content-lang" data-lang="en">Details</span>
+                    <span class="content-lang" data-lang="ja">詳細</span>
+                </a></li>
+                <li><a href="index.html#download" onclick="closeMobileMenu()">
+                    <span class="content-lang active" data-lang="vi">Tải Xuống</span>
+                    <span class="content-lang" data-lang="en">Download</span>
+                    <span class="content-lang" data-lang="ja">ダウンロード</span>
+                </a></li>
+                <li><a href="docs.html" onclick="closeMobileMenu()">
+                    <i class="fas fa-book"></i>
+                    <span class="content-lang active" data-lang="vi">Tài Liệu</span>
+                    <span class="content-lang" data-lang="en">Documentation</span>
+                    <span class="content-lang" data-lang="ja">ドキュメント</span>
+                </a></li>
+                <li class="lang-selector">
+                    <button class="lang-btn active" data-lang="vi">VI</button>
+                    <button class="lang-btn" data-lang="en">EN</button>
+                    <button class="lang-btn" data-lang="ja">JA</button>
+                </li>
+                <li><button class="theme-toggle" onclick="toggleTheme()"><i class="fas fa-moon"></i></button></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <div class="page-header">
+            <h1>
+                <i class="fas fa-history"></i>
+                <span class="content-lang active" data-lang="vi">Lịch Sử Cập Nhật</span>
+                <span class="content-lang" data-lang="en">Changelog</span>
+                <span class="content-lang" data-lang="ja">更新履歴</span>
+            </h1>
+            <p class="content-lang active" data-lang="vi">Theo dõi các cập nhật và cải tiến của CSV Editor</p>
+            <p class="content-lang" data-lang="en">Track updates and improvements to CSV Editor</p>
+            <p class="content-lang" data-lang="ja">CSV Editorのアップデートと改善を追跡</p>
+        </div>
+
+        <div class="changelog-container">
+            <a href="index.html" class="back-link">
+                <i class="fas fa-arrow-left"></i>
+                <span class="content-lang active" data-lang="vi">Quay lại trang chủ</span>
+                <span class="content-lang" data-lang="en">Back to home</span>
+                <span class="content-lang" data-lang="ja">ホームに戻る</span>
+            </a>
+
+            <!-- Version 2.1.0.4 -->
+            <div class="version-card">
+                <div class="version-header">
+                    <div class="version-number">
+                        <i class="fas fa-tag"></i>
+                        <span class="content-lang active" data-lang="vi">Phiên bản 2.1.0.4</span>
+                        <span class="content-lang" data-lang="en">Version 2.1.0.4</span>
+                        <span class="content-lang" data-lang="ja">バージョン 2.1.0.4</span>
+                    </div>
+                    <span class="version-badge latest-badge content-lang active" data-lang="vi">MỚI NHẤT</span>
+                    <span class="version-badge latest-badge content-lang" data-lang="en">LATEST</span>
+                    <span class="version-badge latest-badge content-lang" data-lang="ja">最新</span>
+                    <div class="version-date">
+                        <i class="fas fa-calendar-alt"></i>
+                        <span>2026/07/02</span>
+                    </div>
+                </div>
+                <ul class="changes-list">
+                    <li class="content-lang active" data-lang="vi">Thêm chức năng cho phép người dùng có thể thay đổi icon app qua lại giữa icon cũ và mới.</li>
+                    <li class="content-lang" data-lang="en">Added feature allowing users to switch the app icon between the old and new icon.</li>
+                    <li class="content-lang" data-lang="ja">ユーザーがアプリアイコンを新旧アイコン間で切り替えられる機能を追加しました。</li>
+                </ul>
+            </div>
+
+            <!-- Version 2.1.0.3 -->
+            <div class="version-card">
+                <div class="version-header">
+                    <div class="version-number">
+                        <i class="fas fa-tag"></i>
+                        <span class="content-lang active" data-lang="vi">Phiên bản 2.1.0.3</span>
+                        <span class="content-lang" data-lang="en">Version 2.1.0.3</span>
+                        <span class="content-lang" data-lang="ja">バージョン 2.1.0.3</span>
+                    </div>
+                    <div class="version-date">
+                        <i class="fas fa-calendar-alt"></i>
+                        <span>2026/05/11</span>
+                    </div>
+                </div>
+                <ul class="changes-list">
+                    <li class="content-lang active" data-lang="vi">Thêm xử lý cho các file mã hóa (tự động nhận diện khi mở, kiểm tra khi lưu).</li>
+                    <li class="content-lang" data-lang="en">Added handling for encrypted files (auto-detection when opening, validation when saving).</li>
+                    <li class="content-lang" data-lang="ja">暗号化ファイルの処理を追加しました（開く際の自動検出、保存時の確認）。</li>
+
+                    <li class="content-lang active" data-lang="vi">Sửa lỗi treo ứng dụng khi đọc các file không phải file văn bản (phim, ảnh,...).</li>
+                    <li class="content-lang" data-lang="en">Fixed application freeze when reading non-text files (video, image, etc.).</li>
+                    <li class="content-lang" data-lang="ja">テキスト以外のファイル（動画、画像など）を読み込む際にアプリがフリーズするバグを修正しました。</li>
+
+                    <li class="content-lang active" data-lang="vi">Sửa lỗi nhận diện NewLine không chính xác ở dòng cuối (đối với file không có newline).</li>
+                    <li class="content-lang" data-lang="en">Fixed incorrect NewLine detection at the last line (for files without a trailing newline).</li>
+                    <li class="content-lang" data-lang="ja">末尾に改行がないファイルにおける最終行のNewLine検出が不正確なバグを修正しました。</li>
+                </ul>
+            </div>
+
+            <!-- Version 2.1.0.2 -->
+            <div class="version-card">
+                <div class="version-header">
+                    <div class="version-number">
+                        <i class="fas fa-tag"></i>
+                        <span class="content-lang active" data-lang="vi">Phiên bản 2.1.0.2</span>
+                        <span class="content-lang" data-lang="en">Version 2.1.0.2</span>
+                        <span class="content-lang" data-lang="ja">バージョン 2.1.0.2</span>
+                    </div>
+                    <div class="version-date">
+                        <i class="fas fa-calendar-alt"></i>
+                        <span>2026/04/09</span>
+                    </div>
+                </div>
+                <ul class="changes-list">
+                    <li class="content-lang active" data-lang="vi">Thêm xử lý hỗ trợ đọc nhiều file khi mở bằng menu window (áp dụng đối với bản cài đặt).</li>
+                    <li class="content-lang" data-lang="en">Added support for opening multiple files via the Window menu (applies to the installer version).</li>
+                    <li class="content-lang" data-lang="ja">Windowメニューから複数ファイルを開く処理をサポートしました（インストール版に適用）。</li>
+
+                    <li class="content-lang active" data-lang="vi">Tối ưu xử lý đọc file từ url (hiển thị tên file và url trên app tốt hơn).</li>
+                    <li class="content-lang" data-lang="en">Optimized file reading from URL (better display of file name and URL in the app).</li>
+                    <li class="content-lang" data-lang="ja">URLからのファイル読み込み処理を最適化しました（アプリでのファイル名とURLの表示を改善）。</li>
+
+                    <li class="content-lang active" data-lang="vi">Tối ưu hiển thị tab (độ dài tên tab, quy trình tạo tab mới,...).</li>
+                    <li class="content-lang" data-lang="en">Optimized tab display (tab name length, new tab creation workflow, etc.).</li>
+                    <li class="content-lang" data-lang="ja">タブの表示を最適化しました（タブ名の長さ、新しいタブの作成フローなど）。</li>
+
+                    <li class="content-lang active" data-lang="vi">Cải thiện hiển thị của tab xem lỗi (chỉnh sửa UI cho hợp lý hơn).</li>
+                    <li class="content-lang" data-lang="en">Improved the display of the error view tab (more reasonable UI adjustments).</li>
+                    <li class="content-lang" data-lang="ja">エラー表示タブの表示を改善しました（UIをより合理的に調整）。</li>
+
+                    <li class="content-lang active" data-lang="vi">Sửa lỗi tính toán số lượng hàng khi xóa/chèn quá nhiều (trước sửa đôi khi gây lỗi out index do tính toán không đúng).</li>
+                    <li class="content-lang" data-lang="en">Fixed row count calculation error when deleting/inserting too many rows (previously could cause out-of-index errors due to incorrect calculation).</li>
+                    <li class="content-lang" data-lang="ja">大量の行を削除/挿入した際の行数計算バグを修正しました（修正前は計算誤りによりインデックス範囲外エラーが発生することがありました）。</li>
+                </ul>
+            </div>
+
+            <!-- Version 2.1.0.1 -->
+            <div class="version-card">
+                <div class="version-header">
+                    <div class="version-number">
+                        <i class="fas fa-tag"></i>
+                        <span class="content-lang active" data-lang="vi">Phiên bản 2.1.0.1</span>
+                        <span class="content-lang" data-lang="en">Version 2.1.0.1</span>
+                        <span class="content-lang" data-lang="ja">バージョン 2.1.0.1</span>
+                    </div>
+                    <div class="version-date">
+                        <i class="fas fa-calendar-alt"></i>
+                        <span>2026/03/16</span>
+                    </div>
+                </div>
+                <ul class="changes-list">
+                    <li class="content-lang active" data-lang="vi">Thay đổi vị trí của nút xác nhận và hủy bỏ ở màn hình đặt mật khẩu để cho đồng bộ với các màn hình khác.</li>
+                    <li class="content-lang" data-lang="en">Changed the position of confirm and cancel buttons on the password screen to be consistent with other screens.</li>
+                    <li class="content-lang" data-lang="ja">パスワード画面の確認・キャンセルボタンの位置を他の画面と統一しました。</li>
+
+                    <li class="content-lang active" data-lang="vi">Sửa lỗi không thể đọc file bằng menu window.</li>
+                    <li class="content-lang" data-lang="en">Fixed bug where files could not be opened via the Window menu.</li>
+                    <li class="content-lang" data-lang="ja">Windowメニューからファイルを開けないバグを修正しました。</li>
+
+                    <li class="content-lang active" data-lang="vi">Sửa lỗi font của màn hình cập nhật để hỗ trợ Tiếng Việt tốt hơn.</li>
+                    <li class="content-lang" data-lang="en">Fixed font issue on the update screen for better Vietnamese language support.</li>
+                    <li class="content-lang" data-lang="ja">ベトナム語をより適切にサポートするため、更新画面のフォントを修正しました。</li>
+                </ul>
+            </div>
+
+            <!-- Version 2.1.0.0 -->
+            <div class="version-card">
+                <div class="version-header">
+                    <div class="version-number">
+                        <i class="fas fa-tag"></i>
+                        <span class="content-lang active" data-lang="vi">Phiên bản 2.1.0.0</span>
+                        <span class="content-lang" data-lang="en">Version 2.1.0.0</span>
+                        <span class="content-lang" data-lang="ja">バージョン 2.1.0.0</span>
+                    </div>
+                    <div class="version-date">
+                        <i class="fas fa-calendar-alt"></i>
+                        <span>2026/03/12</span>
+                    </div>
+                </div>
+                <ul class="changes-list">
+                    <li class="content-lang active" data-lang="vi">Thêm tính năng cho phép mở nhiều file trên một màn hình (multi tab).</li>
+                    <li class="content-lang" data-lang="en">Added feature to open multiple files on one screen (multi tab).</li>
+                    <li class="content-lang" data-lang="ja">1つの画面で複数のファイルを開く機能を追加しました（マルチタブ）。</li>
+
+                    <li class="content-lang active" data-lang="vi">Thêm tính năng lưu giữ và khôi phục vị trí và trạng thái của ứng dụng.</li>
+                    <li class="content-lang" data-lang="en">Added feature to save and restore application position and state.</li>
+                    <li class="content-lang" data-lang="ja">アプリケーションの位置と状態を保存・復元する機能を追加しました。</li>
+
+                    <li class="content-lang active" data-lang="vi">Thêm tính năng cho phép app luôn hiển thị lên trên cùng, có thể bật/tắt mọi lúc.</li>
+                    <li class="content-lang" data-lang="en">Added always-on-top feature, can be toggled on/off at any time.</li>
+                    <li class="content-lang" data-lang="ja">常に最前面に表示する機能を追加しました。いつでもオン/オフを切り替えられます。</li>
+
+                    <li class="content-lang active" data-lang="vi">Thêm tính năng cho phép đặt mật khẩu để mở/lưu file mã hóa.</li>
+                    <li class="content-lang" data-lang="en">Added feature to set password for opening/saving encrypted files.</li>
+                    <li class="content-lang" data-lang="ja">暗号化ファイルを開く/保存するためのパスワード設定機能を追加しました。</li>
+
+                    <li class="content-lang active" data-lang="vi">Thêm xử lý cho phép xem số lượng bytes của ô khi chọn vào.</li>
+                    <li class="content-lang" data-lang="en">Added feature to view cell byte count when selected.</li>
+                    <li class="content-lang" data-lang="ja">セルを選択した際にバイト数を表示する機能を追加しました。</li>
+
+                    <li class="content-lang active" data-lang="vi">Cải tiến xử lý lọc (hỗ trợ xử lý chính xác khi kết hợp ẩn và lọc dữ liệu).</li>
+                    <li class="content-lang" data-lang="en">Improved filtering (supports accurate processing when combining hide and filter data).</li>
+                    <li class="content-lang" data-lang="ja">フィルタリング処理を改善しました（非表示とデータフィルタリングを組み合わせた際の正確な処理をサポート）。</li>
+
+                    <li class="content-lang active" data-lang="vi">Cải tiến xử lý sắp xếp (hỗ trợ xử lý hiển thị đúng khi kết hợp lọc và sắp xếp).</li>
+                    <li class="content-lang" data-lang="en">Improved sorting (supports correct display when combining filter and sort).</li>
+                    <li class="content-lang" data-lang="ja">ソート処理を改善しました（フィルタリングとソートを組み合わせた際の正しい表示をサポート）。</li>
+
+                    <li class="content-lang active" data-lang="vi">Cải tiến xử lý tìm kiếm bằng SQL (hỗ trợ phân tích cú pháp chuẩn và linh hoạt).</li>
+                    <li class="content-lang" data-lang="en">Improved SQL search processing (supports standard and flexible syntax parsing).</li>
+                    <li class="content-lang" data-lang="ja">SQL検索処理を改善しました（標準的で柔軟な構文解析をサポート）。</li>
+
+                    <li class="content-lang active" data-lang="vi">Cải tiến tính năng xuất excel (tăng tốc độ xuất file và cho phép tùy chọn dấu nháy đôi).</li>
+                    <li class="content-lang" data-lang="en">Improved Excel export feature (faster export speed and double quote option).</li>
+                    <li class="content-lang" data-lang="ja">Excelエクスポート機能を改善しました（エクスポート速度の向上とダブルクォートオプション）。</li>
+
+                    <li class="content-lang active" data-lang="vi">Sửa lỗi index khi zoom từ lớn đến nhỏ trong khi kích thước màn hình quá nhỏ.</li>
+                    <li class="content-lang" data-lang="en">Fixed index error when zooming from large to small while screen size is too small.</li>
+                    <li class="content-lang" data-lang="ja">画面サイズが小さすぎる状態で大から小へズームする際のインデックスエラーを修正しました。</li>
+                </ul>
+            </div>
+
+            <!-- Version 2.0.1.1 -->
+            <div class="version-card">
+                <div class="version-header">
+                    <div class="version-number">
+                        <i class="fas fa-tag"></i>
+                        <span class="content-lang active" data-lang="vi">Phiên bản 2.0.1.1</span>
+                        <span class="content-lang" data-lang="en">Version 2.0.1.1</span>
+                        <span class="content-lang" data-lang="ja">バージョン 2.0.1.1</span>
+                    </div>
+                    <div class="version-date">
+                        <i class="fas fa-calendar-alt"></i>
+                        <span>2026/02/12</span>
+                    </div>
+                </div>
+                <ul class="changes-list">
+                    <li class="content-lang active" data-lang="vi">Thêm chế độ tìm kiếm bằng Regex và truy vấn SQL.</li>
+                    <li class="content-lang" data-lang="en">Added search mode using Regex and SQL query.</li>
+                    <li class="content-lang" data-lang="ja">RegexおよびSQLクエリによる検索モードを追加しました。</li>
+
+                    <li class="content-lang active" data-lang="vi">Thay đổi layout của form tìm kiếm cho gọn và dễ dùng hơn.</li>
+                    <li class="content-lang" data-lang="en">Changed the search form layout to be more compact and user-friendly.</li>
+                    <li class="content-lang" data-lang="ja">検索フォームのレイアウトをよりコンパクトで使いやすく変更しました。</li>
+
+                    <li class="content-lang active" data-lang="vi">Cập nhật giấy phép thành: CSVEditor Software License.</li>
+                    <li class="content-lang" data-lang="en">Updated the license to: CSVEditor Software License.</li>
+                    <li class="content-lang" data-lang="ja">ライセンスをCSVEditor Software Licenseに更新しました。</li>
+
+                    <li class="content-lang active" data-lang="vi">Sửa lỗi khi ẩn dòng, không làm ảnh hưởng các dòng bị ẩn bởi lệnh khác khi hoàn tác.</li>
+                    <li class="content-lang" data-lang="en">Fixed bug when hiding rows, ensuring rows hidden by other commands are not affected when undoing.</li>
+                    <li class="content-lang" data-lang="ja">行を非表示にする際のバグを修正し、元に戻す際に他のコマンドによって非表示になった行に影響しないようにしました。</li>
+                </ul>
+            </div>
+
+            <!-- Version 2.0.1.0 -->
+            <div class="version-card">
+                <div class="version-header">
+                    <div class="version-number">
+                        <i class="fas fa-tag"></i>
+                        <span class="content-lang active" data-lang="vi">Phiên bản 2.0.1.0</span>
+                        <span class="content-lang" data-lang="en">Version 2.0.1.0</span>
+                        <span class="content-lang" data-lang="ja">バージョン 2.0.1.0</span>
+                    </div>
+                    <div class="version-date">
+                        <i class="fas fa-calendar-alt"></i>
+                        <span>2026/01/28</span>
+                    </div>
+                </div>
+                <ul class="changes-list">
+                    <li class="content-lang active" data-lang="vi">Thêm giấy phép cho ứng dụng. Hiện sử dụng giấy phép tùy chỉnh.</li>
+                    <li class="content-lang" data-lang="en">Added license for the application. Currently using a custom license.</li>
+                    <li class="content-lang" data-lang="ja">アプリケーションにライセンスを追加しました。現在カスタムライセンスを使用しています。</li>
+
+                    <li class="content-lang active" data-lang="vi">Tối ưu xử lý tìm giá trị và đánh dấu ô.</li>
+                    <li class="content-lang" data-lang="en">Optimized search value processing and cell highlighting.</li>
+                    <li class="content-lang" data-lang="ja">値の検索処理とセルのハイライト表示を最適化しました。</li>
+                </ul>
+            </div>
+
+            <!-- Version 2.0.0.8 -->
+            <div class="version-card">
+                <div class="version-header">
+                    <div class="version-number">
+                        <i class="fas fa-tag"></i>
+                        <span class="content-lang active" data-lang="vi">Phiên bản 2.0.0.8</span>
+                        <span class="content-lang" data-lang="en">Version 2.0.0.8</span>
+                        <span class="content-lang" data-lang="ja">バージョン 2.0.0.8</span>
+                    </div>
+                    <div class="version-date">
+                        <i class="fas fa-calendar-alt"></i>
+                        <span>2026/01/23</span>
+                    </div>
+                </div>
+                <ul class="changes-list">
+                    <li class="content-lang active" data-lang="vi">Thêm xử lý "go to column", cho phép tìm kiếm và di chuyển đến cột cụ thể bằng cách nhấp đúp chuột trái vào tiêu đề cột (phím tắt Ctrl + Shift + G), có thể nhập số thứ tự cột hoặc tên cột.</li>
+                    <li class="content-lang" data-lang="en">Added "go to column" feature, allowing search and navigation to specific columns by double-clicking the left mouse button on the column header (Ctrl + Shift + G shortcut), supports input by column number or column name.</li>
+                    <li class="content-lang" data-lang="ja">「列に移動」機能を追加。列ヘッダーを左マウスボタンでダブルクリックすることで特定の列を検索して移動できます（ショートカットキー：Ctrl + Shift + G）。列番号または列名で入力できます。</li>
+
+                    <li class="content-lang active" data-lang="vi">Thêm xử lý insert cột/hàng khi chọn nhiều cột/hàng, lúc này trên textbox nhập số cột/hàng sẽ nhập sẵn số lượng cần insert dựa trên số cột/hàng đang chọn.</li>
+                    <li class="content-lang" data-lang="en">Added insert column/row handling when multiple columns/rows are selected. The textbox will now be pre-filled with the number to insert based on the number of currently selected columns/rows.</li>
+                    <li class="content-lang" data-lang="ja">複数の列/行を選択した際の列/行挿入処理を追加。テキストボックスには、現在選択されている列/行の数に基づいて挿入する数が事前入力されます。</li>
+
+                    <li class="content-lang active" data-lang="vi">Thêm xử lý ở thanh trạng thái: cho phép hiển thị số dòng đang được hiển thị trên lưới dữ liệu sau khi lọc hoặc ẩn dòng (Khi số dòng hiển thị bằng tổng số dòng thì hiển thị tổng số cột và dòng của dữ liệu).</li>
+                    <li class="content-lang" data-lang="en">Added status bar feature: displays the number of rows currently shown on the data grid after filtering or hiding rows (when visible rows equal total rows, shows total columns and rows of data).</li>
+                    <li class="content-lang" data-lang="ja">ステータスバー機能を追加：フィルタリングまたは行の非表示後にデータグリッドに表示されている行数を表示します（表示行数が総行数と等しい場合、データの総列数と行数を表示）。</li>
+
+                    <li class="content-lang active" data-lang="vi">Thêm checkbox cho phép bỏ qua thông báo cập nhật phiên bản mới (có thể kiểm tra phiên bản cập nhật ở menu, phiên bản cập nhật bắt buộc không thể bỏ qua).</li>
+                    <li class="content-lang" data-lang="en">Added checkbox to skip new version update notifications (can check for updates in the menu, mandatory updates cannot be skipped).</li>
+                    <li class="content-lang" data-lang="ja">新バージョン更新通知をスキップするチェックボックスを追加（メニューで更新を確認可能、必須更新はスキップ不可）。</li>
+
+                    <li class="content-lang active" data-lang="vi">Thêm xử lý cho phép thay đổi kích thước của menu lọc dữ liệu.</li>
+                    <li class="content-lang" data-lang="en">Added ability to resize the data filter menu.</li>
+                    <li class="content-lang" data-lang="ja">データフィルタメニューのサイズ変更機能を追加しました。</li>
+
+                    <li class="content-lang active" data-lang="vi">Thêm chức năng lưu lại các file đã mở gần đây (nằm trong menu file, người dùng có thể xóa lịch sử này).</li>
+                    <li class="content-lang" data-lang="en">Added recent files feature (located in File menu, users can clear this history).</li>
+                    <li class="content-lang" data-lang="ja">最近開いたファイル機能を追加（ファイルメニュー内、ユーザーはこの履歴を消去可能）。</li>
+
+                    <li class="content-lang active" data-lang="vi">Thêm tab hiển thị lỗi nhập liệu để người dùng thao tác trực quan hơn.</li>
+                    <li class="content-lang" data-lang="en">Added data error display tab for more intuitive user interaction.</li>
+                    <li class="content-lang" data-lang="ja">より直感的な操作のためにデータエラー表示タブを追加しました。</li>
+
+                    <li class="content-lang active" data-lang="vi">Thay đổi xử lý tự động sửa lỗi dấu ngoặc kép, kiểm tra nghiêm ngặt và chính xác hơn nếu có nhiều hơn 2 dấu ngoặc kép trong 1 ô giá trị.</li>
+                    <li class="content-lang" data-lang="en">Improved automatic quote error fixing with more strict and accurate checking when there are more than 2 quotes in a cell value.</li>
+                    <li class="content-lang" data-lang="ja">セル値に2つ以上の引用符がある場合、より厳格で正確なチェックを行う自動引用符エラー修正処理を改善しました。</li>
+
+                    <li class="content-lang active" data-lang="vi">Tối ưu tốc độ và giảm ram khi thay đổi giá trị ô hàng loạt.</li>
+                    <li class="content-lang" data-lang="en">Optimized speed and reduced RAM usage when batch changing cell values.</li>
+                    <li class="content-lang" data-lang="ja">セル値の一括変更時の速度を最適化し、RAM使用量を削減しました。</li>
+
+                    <li class="content-lang active" data-lang="vi">Sửa lỗi vị trí hiển thị của nút cấu hình nhanh tại màn hình cấu hình tiêu đề tùy chỉnh.</li>
+                    <li class="content-lang" data-lang="en">Fixed display position of quick configuration button on custom header configuration screen.</li>
+                    <li class="content-lang" data-lang="ja">カスタムヘッダー設定画面でのクイック設定ボタンの表示位置を修正しました。</li>
+
+                    <li class="content-lang active" data-lang="vi">Sửa lỗi khi tính toán chiều rộng cột ở chế độ tiêu đề tùy chỉnh.</li>
+                    <li class="content-lang" data-lang="en">Fixed column width calculation error in custom header mode.</li>
+                    <li class="content-lang" data-lang="ja">カスタムヘッダーモードでの列幅計算エラーを修正しました。</li>
+
+                    <li class="content-lang active" data-lang="vi">Sửa lỗi hiển thị không chính xác vị trí ô hiện tại và số lượng ký tự ô trên StatusBar khi thay đổi vị trí chọn.</li>
+                    <li class="content-lang" data-lang="en">Fixed incorrect display of current cell position and cell character count on StatusBar when changing selection position.</li>
+                    <li class="content-lang" data-lang="ja">選択位置を変更した際のステータスバーでの現在のセル位置とセル文字数の不正確な表示を修正しました。</li>
+
+                    <li class="content-lang active" data-lang="vi">Sửa lỗi tính năng thêm/xóa dấu ngoặc kép khi giá trị có dấu ngoặc kép không hợp lệ. (tính năng này chỉ áp dụng thêm/xóa dấu ngoặc kép ở đầu và cuối giá trị, không tự clean dữ liệu).</li>
+                    <li class="content-lang" data-lang="en">Fixed add/remove quotes feature when value has invalid quotes. (This feature only adds/removes quotes at the beginning and end of the value, does not automatically clean data).</li>
+                    <li class="content-lang" data-lang="ja">値に無効な引用符がある場合の引用符追加/削除機能を修正しました（この機能は値の先頭と末尾の引用符のみを追加/削除し、データの自動クリーニングは行いません）。</li>
+                </ul>
+            </div>
+
+            <!-- Version 2.0.0.7 -->
+            <div class="version-card">
+                <div class="version-header">
+                    <div class="version-number">
+                        <i class="fas fa-tag"></i>
+                        <span class="content-lang active" data-lang="vi">Phiên bản 2.0.0.7</span>
+                        <span class="content-lang" data-lang="en">Version 2.0.0.7</span>
+                        <span class="content-lang" data-lang="ja">バージョン 2.0.0.7</span>
+                    </div>
+                    <div class="version-date">
+                        <i class="fas fa-calendar-alt"></i>
+                        <span>2025/12/30</span>
+                    </div>
+                </div>
+                <ul class="changes-list">
+                    <li class="content-lang active" data-lang="vi">Thêm chức năng theo dõi file đang mở, nếu bị thay đổi bởi app khác thì sẽ yêu cầu tải lại file.</li>
+                    <li class="content-lang" data-lang="en">Added file monitoring feature that prompts to reload if the open file is modified by another application.</li>
+                    <li class="content-lang" data-lang="ja">他のアプリで変更された場合にファイルの再読み込みを促すファイル監視機能を追加しました。</li>
+
+                    <li class="content-lang active" data-lang="vi">Thêm chức năng cho phép kiểm tra và cảnh báo lỗi đối với các giá trị nhập vào không hợp lệ.</li>
+                    <li class="content-lang" data-lang="en">Added validation and error warning functionality for invalid input values.</li>
+                    <li class="content-lang" data-lang="ja">無効な入力値の検証とエラー警告機能を追加しました。</li>
+
+                    <li class="content-lang active" data-lang="vi">Thêm xử lý cho phép người dùng sao chép 1 giá trị, sau đó chọn vùng và dán giá trị vừa sao chép cho tất cả các ô đang chọn.</li>
+                    <li class="content-lang" data-lang="en">Added functionality to copy a single value and paste it to all selected cells in a range.</li>
+                    <li class="content-lang" data-lang="ja">1つの値をコピーして、範囲内の選択されたすべてのセルに貼り付ける機能を追加しました。</li>
+
+                    <li class="content-lang active" data-lang="vi">Thay đổi logic khi dán nhiều giá trị. Khi người dùng chọn nhiều ô và dán các giá trị thì sẽ bắt đầu dán từ ô đầu tiên được chọn (trước đây là ô cuối cùng).</li>
+                    <li class="content-lang" data-lang="en">Changed paste logic for multiple values. Pasting now starts from the first selected cell (previously started from the last cell).</li>
+                    <li class="content-lang" data-lang="ja">複数値の貼り付けロジックを変更。現在は最初に選択されたセルから貼り付けを開始します（以前は最後のセルから）。</li>
+
+                    <li class="content-lang active" data-lang="vi">Thay đổi xử lý ghi chú của tiêu đề tùy chỉnh. Hiện tại giao diện đẹp hơn và hỗ trợ in đậm và đường kẻ ngang với kỹ thuật đánh dấu văn bản (markdown text).</li>
+                    <li class="content-lang" data-lang="en">Changed custom header note handling. Interface is now more attractive and supports bold and strikethrough using markdown text.</li>
+                    <li class="content-lang" data-lang="ja">カスタムヘッダーノートの処理を変更。インターフェースがより魅力的になり、マークダウンテキストを使用した太字と取り消し線をサポートします。</li>
+
+                    <li class="content-lang active" data-lang="vi">Thay đổi xử lý khi cuộn chuột: Ctrl+MouseWheel để phóng to/thu nhỏ lưới. Shift+MouseWheel để cuộn ngang (Chỉnh sửa này giúp đồng bộ xử lý với excel).</li>
+                    <li class="content-lang" data-lang="en">Changed mouse wheel handling: Ctrl+MouseWheel to zoom in/out the grid. Shift+MouseWheel to scroll horizontally (this change aligns with Excel behavior).</li>
+                    <li class="content-lang" data-lang="ja">マウスホイール処理を変更：Ctrl+マウスホイールでグリッドのズームイン/アウト。Shift+マウスホイールで横スクロール（この変更はExcelの動作と同期します）。</li>
+
+                    <li class="content-lang active" data-lang="vi">Sửa lỗi khi nhấn vào tiêu đề mà không có hàng nào hiển thị.</li>
+                    <li class="content-lang" data-lang="en">Fixed bug when clicking header with no visible rows.</li>
+                    <li class="content-lang" data-lang="ja">表示される行がない状態でヘッダーをクリックした際のバグを修正しました。</li>
+
+                    <li class="content-lang active" data-lang="vi">Sửa lỗi highlights không cập nhật đúng khi thêm/xóa cột.</li>
+                    <li class="content-lang" data-lang="en">Fixed highlights not updating correctly when adding/deleting columns.</li>
+                    <li class="content-lang" data-lang="ja">列の追加/削除時にハイライトが正しく更新されないバグを修正しました。</li>
+
+                    <li class="content-lang active" data-lang="vi">Sửa lỗi ký tự xuống hàng khi giữ Shift + Enter ở màn hình chỉnh sửa giá trị.</li>
+                    <li class="content-lang" data-lang="en">Fixed line break character issue when pressing Shift + Enter in the value edit screen.</li>
+                    <li class="content-lang" data-lang="ja">値編集画面でShift + Enterを押した際の改行文字の問題を修正しました。</li>
+                </ul>
+            </div>
+
+            <!-- Version 2.0.0.6 -->
+            <div class="version-card">
+                <div class="version-header">
+                    <div class="version-number">
+                        <i class="fas fa-tag"></i>
+                        <span class="content-lang active" data-lang="vi">Phiên bản 2.0.0.6</span>
+                        <span class="content-lang" data-lang="en">Version 2.0.0.6</span>
+                        <span class="content-lang" data-lang="ja">バージョン 2.0.0.6</span>
+                    </div>
+                    <div class="version-date">
+                        <i class="fas fa-calendar-alt"></i>
+                        <span>2025/12/22</span>
+                    </div>
+                </div>
+                <p style="margin-bottom: 15px; padding: 10px; background: #fff3cd; border-left: 4px solid #ffc107; border-radius: 4px;">
+                    <strong class="content-lang active" data-lang="vi">🔧 Đây là phiên bản sửa lỗi quan trọng</strong>
+                    <strong class="content-lang" data-lang="en">🔧 This is an important bug fix release</strong>
+                    <strong class="content-lang" data-lang="ja">🔧 これは重要なバグ修正リリースです</strong>
+                </p>
+                <ul class="changes-list">
+                    <li class="content-lang active" data-lang="vi">Thay đổi xử lý của đếm số lượng ký tự và đếm tổng giá trị của các ô đang chọn. Gộp chúng lại thành 1 khung để đơn giản hóa giao diện.</li>
+                    <li class="content-lang" data-lang="en">Changed handling of character count and sum of values for selected cells. Combined them into a single panel to simplify the interface.</li>
+                    <li class="content-lang" data-lang="ja">選択中のセルの文字数カウントと値の合計処理を変更。インターフェースを簡素化するために1つのパネルに統合しました。</li>
+
+                    <li class="content-lang active" data-lang="vi">Sửa lỗi index trong khi thay đổi dữ liệu (thêm, xóa,.. hàng/cột) trong một số trường hợp.</li>
+                    <li class="content-lang" data-lang="en">Fixed index bug when changing data (adding, deleting rows/columns) in some cases.</li>
+                    <li class="content-lang" data-lang="ja">データ変更時（行/列の追加、削除など）のインデックスバグを一部のケースで修正しました。</li>
+                </ul>
+            </div>
+
+            <!-- Version 2.0.0.5 -->
+            <div class="version-card">
+                <div class="version-header">
+                    <div class="version-number">
+                        <i class="fas fa-tag"></i>
+                        <span class="content-lang active" data-lang="vi">Phiên bản 2.0.0.5</span>
+                        <span class="content-lang" data-lang="en">Version 2.0.0.5</span>
+                        <span class="content-lang" data-lang="ja">バージョン 2.0.0.5</span>
+                    </div>
+                    <div class="version-date">
+                        <i class="fas fa-calendar-alt"></i>
+                        <span>2025/12/19</span>
+                    </div>
+                </div>
+                <ul class="changes-list">
+                    <li class="content-lang active" data-lang="vi">Thêm xử lý đếm tổng giá trị của các cột đang được chọn nếu nó thuộc kiểu số.</li>
+                    <li class="content-lang" data-lang="en">Added handling to count total values of selected columns if they are numeric type.</li>
+                    <li class="content-lang" data-lang="ja">選択した列が数値型の場合、その合計値をカウントする処理を追加しました。</li>
+
+                    <li class="content-lang active" data-lang="vi">Thêm xử lý "go to line", cho phép tìm kiếm và di chuyển đến dòng cụ thể bằng cách nhấp đúp chuột trái vào tiêu đề dòng (phím tắt Ctrl + G).</li>
+                    <li class="content-lang" data-lang="en">Added "go to line" feature, allowing search and navigation to a specific line by double-clicking the left mouse button on the row header (shortcut Ctrl + G).</li>
+                    <li class="content-lang" data-lang="ja">「行に移動」機能を追加。行ヘッダーを左ダブルクリックすることで特定の行を検索・移動できます（ショートカット：Ctrl + G）。</li>
+
+                    <li class="content-lang active" data-lang="vi">Sửa lỗi khi nhận diện loại ký tự ở chế độ hiển thị dấu "" không thể nhận diện.</li>
+                    <li class="content-lang" data-lang="en">Fixed bug where character type recognition failed in "" display mode.</li>
+                    <li class="content-lang" data-lang="ja">""表示モードで文字タイプの認識ができなかったバグを修正しました。</li>
+
+                    <li class="content-lang active" data-lang="vi">Xử lý để dòng tiêu đề CSV không hiển thị ""</li>
+                    <li class="content-lang" data-lang="en">Implemented handling so CSV header row does not display ""</li>
+                    <li class="content-lang" data-lang="ja">CSVヘッダー行に""が表示されないように処理を実装しました。</li>
+
+                    <li class="content-lang active" data-lang="vi">Xử lý bỏ "" khi copy/paste tiêu đề ở cấu hình nhanh tiêu đề tùy chỉnh</li>
+                    <li class="content-lang" data-lang="en">Implemented handling to remove "" when copying/pasting headers in custom header quick configuration.</li>
+                    <li class="content-lang" data-lang="ja">カスタムヘッダーのクイック設定でヘッダーをコピー/ペーストする際に""を削除する処理を実装しました。</li>
+
+                    <li class="content-lang active" data-lang="vi">Chỉnh sửa giao diện màn hình cấu hình nhanh tiêu đề hỗ trợ hiển thị tiếng Việt tốt hơn.</li>
+                    <li class="content-lang" data-lang="en">Edited the quick configuration header screen interface to better support Vietnamese display.</li>
+                    <li class="content-lang" data-lang="ja">クイック設定ヘッダー画面のインターフェースを編集し、ベトナム語の表示を改善しました。</li>
+
+                    <li class="content-lang active" data-lang="vi">Sửa xử lý khi save as file cho phép cập nhật tiêu đề ngay lập tức sau khi save as file (trước đây khi save as không cập nhật đường dẫn tệp mới trên tiêu đề app)</li>
+                    <li class="content-lang" data-lang="en">Fixed handling when saving as file to allow immediate title update after save as (previously save as did not update the new file path in the app title).</li>
+                    <li class="content-lang" data-lang="ja">名前を付けて保存時の処理を修正し、保存後すぐにタイトルが更新されるようにしました（以前は名前を付けて保存してもアプリのタイトルに新しいファイルパスが更新されませんでした）。</li>
+                </ul>
+            </div>
+
+            <!-- Version 2.0.0.4 -->
+            <div class="version-card">
+                <div class="version-header">
+                    <div class="version-number">
+                        <i class="fas fa-tag"></i>
+                        <span class="content-lang active" data-lang="vi">Phiên bản 2.0.0.4</span>
+                        <span class="content-lang" data-lang="en">Version 2.0.0.4</span>
+                        <span class="content-lang" data-lang="ja">バージョン 2.0.0.4</span>
+                    </div>
+                    <div class="version-date">
+                        <i class="fas fa-calendar-alt"></i>
+                        <span>2025/12/11</span>
+                    </div>
+                </div>
+                <ul class="changes-list">
+                    <li class="content-lang active" data-lang="vi">Thêm xử lý cấu hình nhanh tiêu đề tùy chỉnh. Hiện tại người dùng có thể tạo mới tiêu đề tùy chỉnh bằng cách sao chép và dán.</li>
+                    <li class="content-lang" data-lang="en">Added quick configuration for custom headers. Users can now create new custom headers by copying and pasting.</li>
+                    <li class="content-lang" data-lang="ja">カスタムヘッダーのクイック設定機能を追加。ユーザーはコピー＆ペーストで新しいカスタムヘッダーを作成できるようになりました。</li>
+
+                    <li class="content-lang active" data-lang="vi">Thêm chức năng cho phép sắp xếp giá trị của cột. Có 4 chế độ sắp xếp là: tăng dần A->Z, giảm dần Z->A, tăng dần theo số tự nhiên và sắp xếp trộn (ngẫu nhiên).</li>
+                    <li class="content-lang" data-lang="en">Added functionality to sort column values. There are 4 sorting modes: ascending A->Z, descending Z->A, natural number ascending, and shuffle (random).</li>
+                    <li class="content-lang" data-lang="ja">列の値をソートする機能を追加。4つのソートモード：昇順A→Z、降順Z→A、自然数昇順、シャッフル（ランダム）。</li>
+
+                    <li class="content-lang active" data-lang="vi">Thêm chức năng cho phép canh chỉnh (trái, phải, giữa) của dữ liệu trên lưới.</li>
+                    <li class="content-lang" data-lang="en">Added functionality to align data on the grid (left, right, center).</li>
+                    <li class="content-lang" data-lang="ja">グリッド上のデータの配置（左、右、中央）機能を追加しました。</li>
+
+                    <li class="content-lang active" data-lang="vi">Thêm chức năng cho phép nhận diện loại dữ liệu (chuỗi, số, ngày tháng). Đây là cấu hình tùy chỉnh, có thể bật trong menu cấu hình.</li>
+                    <li class="content-lang" data-lang="en">Added functionality to detect data types (string, number, date). This is a custom configuration that can be enabled in the settings menu.</li>
+                    <li class="content-lang" data-lang="ja">データ型（文字列、数値、日付）の検出機能を追加。これはカスタム設定で、設定メニューから有効にできます。</li>
+
+                    <li class="content-lang active" data-lang="vi">Thay đổi xử lý tự động tính chiều rộng cột (hỗ trợ trộn lẫn nhiều loại ký tự).</li>
+                    <li class="content-lang" data-lang="en">Changed automatic column width calculation (supports mixed character types).</li>
+                    <li class="content-lang" data-lang="ja">列幅の自動計算処理を変更（複数の文字タイプの混在をサポート）。</li>
+
+                    <li class="content-lang active" data-lang="vi">Sửa lỗi xử lý ký tự xuống dòng (một số trường hợp đặc biệt đối với file không có ký tự xuống dòng ở cuối).</li>
+                    <li class="content-lang" data-lang="en">Fixed line break character handling (special cases for files without line break at the end).</li>
+                    <li class="content-lang" data-lang="ja">改行文字の処理のバグを修正（ファイル末尾に改行文字がない特殊なケース）。</li>
+
+                    <li class="content-lang active" data-lang="vi">Sửa các lỗi liên quan đến phóng to/thu nhỏ lưới dữ liệu.</li>
+                    <li class="content-lang" data-lang="en">Fixed bugs related to zooming in/out of the data grid.</li>
+                    <li class="content-lang" data-lang="ja">データグリッドのズームイン/ズームアウトに関するバグを修正しました。</li>
+                </ul>
+            </div>
+
+            <!-- Version 2.0.0.3 -->
+            <div class="version-card">
+                <div class="version-header">
+                    <div class="version-number">
+                        <i class="fas fa-tag"></i>
+                        <span class="content-lang active" data-lang="vi">Phiên bản 2.0.0.3</span>
+                        <span class="content-lang" data-lang="en">Version 2.0.0.3</span>
+                        <span class="content-lang" data-lang="ja">バージョン 2.0.0.3</span>
+                    </div>
+                    <div class="version-date">
+                        <i class="fas fa-calendar-alt"></i>
+                        <span>2025/12/04</span>
+                    </div>
+                </div>
+                <ul class="changes-list">
+                    <li class="content-lang active" data-lang="vi">Thêm xử lý đếm số ký tự của ô đang chọn.</li>
+                    <li class="content-lang" data-lang="en">Added character count feature for the selected cell.</li>
+                    <li class="content-lang" data-lang="ja">選択中のセルの文字数カウント機能を追加しました。</li>
+
+                    <li class="content-lang active" data-lang="vi">Thêm xử lý cho phép người dùng có thể cấu hình tiêu đề tùy chỉnh với: kích thước, màu sắc, kiểu vẽ,... tùy ý.</li>
+                    <li class="content-lang" data-lang="en">Added functionality allowing users to customize header settings with: size, color, drawing style, etc.</li>
+                    <li class="content-lang" data-lang="ja">ユーザーがヘッダーをカスタマイズできる機能を追加：サイズ、色、描画スタイルなどを自由に設定可能。</li>
+                </ul>
+            </div>
+
+            <!-- Version 2.0.0.2 -->
+            <div class="version-card">
+                <div class="version-header">
+                    <div class="version-number">
+                        <i class="fas fa-tag"></i>
+                        <span class="content-lang active" data-lang="vi">Phiên bản 2.0.0.2</span>
+                        <span class="content-lang" data-lang="en">Version 2.0.0.2</span>
+                        <span class="content-lang" data-lang="ja">バージョン 2.0.0.2</span>
+                    </div>
+                    <div class="version-date">
+                        <i class="fas fa-calendar-alt"></i>
+                        <span>2025/11/26</span>
+                    </div>
+                </div>
+                <ul class="changes-list">
+                    <li class="content-lang active" data-lang="vi">Thêm chức năng cho phép chèn một hoặc nhiều cột phía trước cột đang chọn.</li>
+                    <li class="content-lang" data-lang="en">Added functionality to insert one or multiple columns before the selected column.</li>
+                    <li class="content-lang" data-lang="ja">選択した列の前に1つまたは複数の列を挿入する機能を追加しました。</li>
+
+                    <li class="content-lang active" data-lang="vi">Thêm chức năng cho phép chèn một hoặc nhiều dòng phía trước dòng đang chọn.</li>
+                    <li class="content-lang" data-lang="en">Added functionality to insert one or multiple rows before the selected row.</li>
+                    <li class="content-lang" data-lang="ja">選択した行の前に1つまたは複数の行を挿入する機能を追加しました。</li>
+
+                    <li class="content-lang active" data-lang="vi">Thêm chức năng cho phép người dùng tùy chỉnh màu của ô: đang chọn, đóng băng, nổi bật, ô trống,...</li>
+                    <li class="content-lang" data-lang="en">Added functionality allowing users to customize cell colors: selected, frozen, highlighted, empty cells, etc.</li>
+                    <li class="content-lang" data-lang="ja">ユーザーがセルの色をカスタマイズできる機能を追加：選択中、固定、ハイライト、空のセルなど。</li>
+                </ul>
+            </div>
+
+            <!-- Version 2.0.0.1 -->
+            <div class="version-card">
+                <div class="version-header">
+                    <div class="version-number">
+                        <i class="fas fa-tag"></i>
+                        <span class="content-lang active" data-lang="vi">Phiên bản 2.0.0.1</span>
+                        <span class="content-lang" data-lang="en">Version 2.0.0.1</span>
+                        <span class="content-lang" data-lang="ja">バージョン 2.0.0.1</span>
+                    </div>
+                    <div class="version-date">
+                        <i class="fas fa-calendar-alt"></i>
+                        <span>2025/11/25</span>
+                    </div>
+                </div>
+                <ul class="changes-list">
+                    <li class="content-lang active" data-lang="vi">Sửa các lỗi đã được báo cáo.</li>
+                    <li class="content-lang" data-lang="en">Fixed reported bugs.</li>
+                    <li class="content-lang" data-lang="ja">報告されたバグを修正しました。</li>
+
+                    <li class="content-lang active" data-lang="vi">Tối ưu bộ xử lý xuất excel giúp cho việc xử lý nhanh và ít tốn ram hơn.</li>
+                    <li class="content-lang" data-lang="en">Optimized Excel export processor for faster processing and reduced RAM usage.</li>
+                    <li class="content-lang" data-lang="ja">Excel エクスポートプロセッサを最適化し、処理速度の向上と RAM 使用量の削減を実現しました。</li>
+
+                    <li class="content-lang active" data-lang="vi">Nâng cấp lịch sử thao tác (hiện tại có thể hoàn tác tối đa 10000 lần).</li>
+                    <li class="content-lang" data-lang="en">Enhanced operation history (now supports up to 10,000 undo operations).</li>
+                    <li class="content-lang" data-lang="ja">操作履歴を強化（最大10,000回の取り消しをサポート）。</li>
+
+                    <li class="content-lang active" data-lang="vi">Thêm hệ thống kiểm tra cập nhật.</li>
+                    <li class="content-lang" data-lang="en">Added update check system.</li>
+                    <li class="content-lang" data-lang="ja">アップデートチェックシステムを追加しました。</li>
+
+                    <li class="content-lang active" data-lang="vi">Thêm chức năng cho phép xử lý xóa ô của dòng (điều này đáp ứng cho việc xử lý file csv có số cột không đồng nhất).</li>
+                    <li class="content-lang" data-lang="en">Added functionality to delete cells in a row (supports CSV files with inconsistent column counts).</li>
+                    <li class="content-lang" data-lang="ja">行内のセル削除機能を追加（列数が不均一な CSV ファイルの処理に対応）。</li>
+
+                    <li class="content-lang active" data-lang="vi">Thêm xử lý cho phép người dùng nhấp đúp vào grid để mở file khi grid đang trống.</li>
+                    <li class="content-lang" data-lang="en">Added support for double-clicking on the grid to open a file when the grid is empty.</li>
+                    <li class="content-lang" data-lang="ja">グリッドが空のときにダブルクリックしてファイルを開く機能を追加しました。</li>
+
+                    <li class="content-lang active" data-lang="vi">Thêm xử lý cho phép người dùng copy và dán cả file (sẽ thực hiện đọc dữ liệu file giống như đang mở file).</li>
+                    <li class="content-lang" data-lang="en">Added support for copying and pasting entire files (reads file data as if opening the file).</li>
+                    <li class="content-lang" data-lang="ja">ファイル全体のコピー＆ペースト機能を追加（ファイルを開くようにデータを読み込みます）。</li>
+                </ul>
+            </div>
+
+            <!-- Version 2.0.0.0 -->
+            <div class="version-card">
+                <div class="version-header">
+                    <div class="version-number">
+                        <i class="fas fa-tag"></i>
+                        <span class="content-lang active" data-lang="vi">Phiên bản 2.0.0.0</span>
+                        <span class="content-lang" data-lang="en">Version 2.0.0.0</span>
+                        <span class="content-lang" data-lang="ja">バージョン 2.0.0.0</span>
+                    </div>
+                    <span class="version-badge content-lang active" data-lang="vi">CẬP NHẬT LỚN</span>
+                    <span class="version-badge content-lang" data-lang="en">MAJOR UPDATE</span>
+                    <span class="version-badge content-lang" data-lang="ja">メジャーアップデート</span>
+                    <div class="version-date">
+                        <i class="fas fa-calendar-alt"></i>
+                        <span>2025/11/06</span>
+                    </div>
+                </div>
+                <ul class="changes-list">
+                    <li class="content-lang active" data-lang="vi">Nâng cấp từ phiên bản 1.0 với nhiều tính năng mới.</li>
+                    <li class="content-lang" data-lang="en">Upgraded from version 1.0 with many new features.</li>
+                    <li class="content-lang" data-lang="ja">バージョン1.0から多くの新機能を追加してアップグレードしました。</li>
+
+                    <li class="content-lang active" data-lang="vi">Tối ưu ram (hiệu suất tương tương notepad++ và wps,...) cho phép xử lý file lớn trên 2GB trở lên.</li>
+                    <li class="content-lang" data-lang="en">Optimized RAM usage (performance comparable to Notepad++ and WPS) enabling processing of large files over 2GB.</li>
+                    <li class="content-lang" data-lang="ja">RAM を最適化（Notepad++ や WPS と同等のパフォーマンス）し、2GB 以上の大きなファイルの処理を可能にしました。</li>
+
+                    <li class="content-lang active" data-lang="vi">Cải tiến hệ thống undo/redo hoàn chỉnh với mọi thao tác với dữ liệu như thêm, sửa, xóa cột/dòng, đóng băng,... (trước đây chỉ có xử lý được với ô dữ liệu).</li>
+                    <li class="content-lang" data-lang="en">Improved complete undo/redo system for all data operations including adding, editing, deleting columns/rows, freezing, etc. (previously only supported cell data).</li>
+                    <li class="content-lang" data-lang="ja">完全な元に戻す/やり直しシステムを改善し、列/行の追加、編集、削除、固定など、すべてのデータ操作に対応（以前はセルデータのみ対応）。</li>
+
+                    <li class="content-lang active" data-lang="vi">Cải tiến chế độ copy và dán dữ liệu, giờ đây bạn có thể thao tác copy và dán hàng loạt ô từ excel sang CSVEditor và ngược lại.</li>
+                    <li class="content-lang" data-lang="en">Enhanced copy and paste mode, now you can copy and paste multiple cells from Excel to CSVEditor and vice versa.</li>
+                    <li class="content-lang" data-lang="ja">コピー＆ペーストモードを改善し、Excel から CSVEditor への複数セルのコピー＆ペーストとその逆が可能になりました。</li>
+
+                    <li class="content-lang active" data-lang="vi">Cải tiến xử lý với cột và hàng được tối ưu hơn, hiện tại có thể đóng băng, ẩn hiện tại bất kỳ vị trí nào.</li>
+                    <li class="content-lang" data-lang="en">Improved column and row handling with better optimization, now supports freezing and hiding at any position.</li>
+                    <li class="content-lang" data-lang="ja">列と行の処理を改善し、最適化を向上。任意の位置での固定と非表示をサポートするようになりました。</li>
+
+                    <li class="content-lang active" data-lang="vi">Thêm xử lý lọc dữ liệu theo cột, cho phép kết hợp lọc nhiều cột tương tự excel.</li>
+                    <li class="content-lang" data-lang="en">Added column-based data filtering, allowing combined filtering of multiple columns similar to Excel.</li>
+                    <li class="content-lang" data-lang="ja">列ベースのデータフィルタリングを追加し、Excel と同様に複数列の組み合わせフィルタリングが可能になりました。</li>
+
+                    <li class="content-lang active" data-lang="vi">Tối ưu hóa tìm kiếm và thay thế ô dữ liệu cho phép thực hiện nhanh và ít tốn ram hơn.</li>
+                    <li class="content-lang" data-lang="en">Optimized cell data search and replace for faster execution and reduced RAM usage.</li>
+                    <li class="content-lang" data-lang="ja">セルデータの検索と置換を最適化し、高速実行と RAM 使用量の削減を実現しました。</li>
+                </ul>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <!-- Vietnamese Footer -->
+                <div class="footer-section">
+                    <h3>CSV Editor</h3>
+                    <p class="content-lang active" data-lang="vi">Ứng dụng chỉnh sửa CSV mạnh mẽ được xây dựng bằng .NET 8 cho Windows</p>
+                    <p class="content-lang" data-lang="en">Powerful CSV editor built with .NET 8 for Windows</p>
+                    <p class="content-lang" data-lang="ja">Windows用.NET 8で構築された強力なCSVエディタ</p>
+                    <div class="social-links">
+                        <a href="https://github.com/tnkbang/CSVEditor"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3 class="content-lang active" data-lang="vi">Liên Kết</h3>
+                    <h3 class="content-lang" data-lang="en">Links</h3>
+                    <h3 class="content-lang" data-lang="ja">リンク</h3>
+                    <a href="https://github.com/tnkbang/CSVEditor">GitHub Repository</a>
+                    <a href="https://github.com/tnkbang/CSVEditor/releases" class="content-lang active" data-lang="vi">Tải Xuống</a>
+                    <a href="https://github.com/tnkbang/CSVEditor/releases" class="content-lang" data-lang="en">Download</a>
+                    <a href="https://github.com/tnkbang/CSVEditor/releases" class="content-lang" data-lang="ja">ダウンロード</a>
+                    <a href="https://github.com/tnkbang/CSVEditor/issues" class="content-lang active" data-lang="vi">Báo Lỗi</a>
+                    <a href="https://github.com/tnkbang/CSVEditor/issues" class="content-lang" data-lang="en">Report Issues</a>
+                    <a href="https://github.com/tnkbang/CSVEditor/issues" class="content-lang" data-lang="ja">問題を報告</a>
+                    <a href="README.md" class="content-lang active" data-lang="vi">Tài liệu</a>
+                    <a href="README.md" class="content-lang" data-lang="en">Documentation</a>
+                    <a href="README.md" class="content-lang" data-lang="ja">書類</a>
+                </div>
+                <div class="footer-section">
+                    <h3 class="content-lang active" data-lang="vi">Tài Nguyên</h3>
+                    <h3 class="content-lang" data-lang="en">Resources</h3>
+                    <h3 class="content-lang" data-lang="ja">リソース</h3>
+                    <a href="README_Vi.md" class="content-lang active" data-lang="vi">Hướng Dẫn Tiếng Việt</a>
+                    <a href="README_Vi.md" class="content-lang" data-lang="en">Vietnamese Guide</a>
+                    <a href="README_Vi.md" class="content-lang" data-lang="ja">ベトナム語ガイド</a>
+                    <a href="README.md" class="content-lang active" data-lang="vi">English Guide</a>
+                    <a href="README.md" class="content-lang" data-lang="en">English Guide</a>
+                    <a href="README.md" class="content-lang" data-lang="ja">英語ガイド</a>
+                    <a href="README_Ja.md" class="content-lang active" data-lang="vi">日本語ガイド</a>
+                    <a href="README_Ja.md" class="content-lang" data-lang="en">Japanese Guide</a>
+                    <a href="README_Ja.md" class="content-lang" data-lang="ja">日本語ガイド</a>
+                </div>
+                <div class="footer-section">
+                    <h3 class="content-lang active" data-lang="vi">Giấy Phép</h3>
+                    <h3 class="content-lang" data-lang="en">License</h3>
+                    <h3 class="content-lang" data-lang="ja">ライセンス</h3>
+                    <a href="LICENSE_Vi.txt" rel="license" class="content-lang active" data-lang="vi">CSVEditor Software License v1.0</a>
+                    <a href="LICENSE.txt" rel="license" class="content-lang" data-lang="en">CSVEditor Software License v1.0</a>
+                    <a href="LICENSE.txt" rel="license" class="content-lang" data-lang="ja">CSVEditor Software License v1.0</a>
+                    <p class="content-lang active" data-lang="vi">© 2025 CSV Editor - Bảo lưu mọi quyền</p>
+                    <p class="content-lang" data-lang="en">© 2025 CSV Editor - All Rights Reserved</p>
+                    <p class="content-lang" data-lang="ja">© 2025 CSV Editor - 全著作権所有</p>
+                </div>
+            </div>
+            <div class="copyright">
+                <p class="content-lang active" data-lang="vi">Được tạo bởi <a href="https://github.com/tnkbang" style="color: var(--primary-color);">@tnkbang</a></p>
+                <p class="content-lang" data-lang="en">Created by <a href="https://github.com/tnkbang" style="color: var(--primary-color);">@tnkbang</a></p>
+                <p class="content-lang" data-lang="ja"><a href="https://github.com/tnkbang" style="color: var(--primary-color);">@tnkbang</a> が作成</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
