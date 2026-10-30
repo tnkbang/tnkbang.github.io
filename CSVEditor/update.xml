@@ -1,13 +1,26 @@
 <item>
   <title>CSVEditor</title>
-  <version>2.1.0.4</version>
+  <version>3.0.0.0</version>
   <develop-version>3.0.0.3</develop-version>
   <installUrl>https://tnkbang.github.io/CSVEditor/data/CSVEditor%20Setup.exe</installUrl>
   <portableUrl>https://tnkbang.github.io/CSVEditor/data/CSVEditor-portable.zip</portableUrl>
   <developmentUrl>https://tnkbang.github.io/CSVEditor/data/CSVEditor-develop.zip</developmentUrl>
   <changelog>Các thay đổi sau:
-  - Thêm chức năng cho phép người dùng đổi icon app.
+  - Thêm tính năng cho phép auto fill bằng cách kéo thả dữ liệu, tương tự excel.
+  - Thêm tính năng đề xuất nhập liệu khi người dùng thay đổi dữ liệu trực tiếp trên lưới dữ liệu.
+  - Thêm tính năng cho phép chọn màu hightlight tùy chỉnh.
+  - Thêm tính năng hiển thị số lượng cột/dòng/ô đang chọn ở status bar.
+  - Thêm tính năng cho phép hiển thị nổi bật màu cột/dòng xen kẽ.
+  - Thêm tính năng cho phép hỏi nếu đóng chương trình khi có từ 2 tab trở lên đang mở.
+  - Thêm cấu hình cho phép bật tắt tính năng hỏi trước khi lưu file.
+  - Thêm màn hình hiển thị thông tin chính sách và quyền hạn khi sử dụng app (chỉ cần xác nhận 1 lần, nếu có thay đổi chính sách mới cần xác nhận lại)
+  - Thay đổi cấu trúc lưới dữ liệu. Viết lại control mới để hiển thị dữ liệu được tối ưu hơn.
+  - Thay đổi giao diện form cấu hình để thuận tiện và tối ưu hơn.
+  - Thay đổi UI các hộp thoại tin nhắn để tối ưu hơn với phong cách chung và đa ngôn ngữ.
+  - Giới thiệu giao diện dark mode (mức độ hoàn thiện hơn 90%, có 1 số giao diện chưa nhất quán, sẽ sửa ở phiên bản sau)
+  - Cải tiến xử lý lưu file (sửa lỗi memory leak khi save file liên tục).
+  - Sửa lỗi của mode "Hiển thị trên cùng"
   Xem chi tiết tại: https://tnkbang.github.io/CSVEditor/changelog.html</changelog>
   <mandatory>false</mandatory>
-  <minVersion>2.0.1.0</minVersion>
+  <minVersion>3.0.0.0</minVersion>
 </item>
