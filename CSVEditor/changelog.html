@@ -1,237 +1,91 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="vi" data-lang="vi" data-theme="light">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="CSV Editor - Lịch sử cập nhật và thay đổi">
-    <meta name="keywords" content="CSV Editor, Changelog, Updates, Version History">
-    <title>CSV Editor - Lịch Sử Cập Nhật</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
-    <style>
-        .changelog-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-
-        .page-header {
-            text-align: center;
-            padding: 4rem 0 3rem;
-            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
-            color: white;
-        }
-
-        .page-header h1 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 15px;
-        }
-
-        .page-header p {
-            font-size: 1.2rem;
-            opacity: 0.9;
-        }
-
-        .version-card {
-            background: var(--surface-color);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            padding: 30px;
-            margin-bottom: 30px;
-            box-shadow: var(--shadow);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .version-card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-lg);
-        }
-
-        .version-header {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            margin-bottom: 20px;
-            padding-bottom: 15px;
-            border-bottom: 2px solid var(--primary-color);
-        }
-
-        .version-number {
-            font-size: 1.8rem;
-            font-weight: bold;
-            color: var(--primary-color);
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .version-date {
-            font-size: 0.95rem;
-            color: var(--text-muted);
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            margin-left: auto;
-        }
-
-        .version-date i {
-            color: var(--primary-color);
-        }
-
-        .version-badge {
-            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
-            color: white;
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            font-weight: 600;
-        }
-
-        .latest-badge {
-            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
-        }
-
-        .changes-list {
-            list-style: none;
-            padding: 0;
-        }
-
-        .changes-list li {
-            padding: 12px 0 12px 35px;
-            position: relative;
-            line-height: 1.8;
-            font-size: 1.05rem;
-        }
-
-        .changes-list li::before {
-            content: '\f00c';
-            font-family: 'Font Awesome 6 Free';
-            font-weight: 900;
-            position: absolute;
-            left: 0;
-            color: var(--primary-color);
-            font-size: 1rem;
-        }
-
-        .back-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 12px 24px;
-            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
-            color: white;
-            text-decoration: none;
-            border-radius: 8px;
-            font-weight: 600;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            margin-bottom: 30px;
-        }
-
-        .back-link:hover {
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-lg);
-        }
-
-        @media (max-width: 768px) {
-            .page-header h1 {
-                font-size: 1.8rem;
-                flex-direction: column;
-                gap: 10px;
-            }
-
-            .page-header p {
-                font-size: 1rem;
-            }
-
-            .version-number {
-                font-size: 1.5rem;
-                flex-direction: column;
-                align-items: flex-start;
-            }
-
-            .version-card {
-                padding: 20px;
-            }
-
-            .changes-list li {
-                font-size: 0.95rem;
-            }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="CSV Editor — Lịch sử cập nhật và thay đổi qua các phiên bản (v3.1.0.0 đến v2.0.0.0).">
+  <link rel="canonical" href="https://tnkbang.github.io/CSVEditor/changelog.html">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%232563eb'/%3E%3Cpath d='M7 10h18M7 16h18M7 22h18M13 10v12M20 10v12' stroke='%23fff' stroke-width='2.2' stroke-linecap='round'/%3E%3C/svg%3E">
+  <title>Changelog — CSV Editor</title>
+  <link rel="stylesheet" href="assets/design-system.css">
+  <link rel="stylesheet" href="assets/changelog.css">
 </head>
 <body>
-    <!-- Header -->
-    <header>
-        <nav class="container">
-            <div class="logo">
-                <i class="fas fa-file-csv"></i>
-                CSV Editor
-            </div>
-            <button class="mobile-menu-toggle" onclick="toggleMobileMenu()" aria-label="Toggle menu">
-                <i class="fas fa-bars"></i>
-            </button>
-            <ul class="nav-links">
-                <li><a href="index.html#features" onclick="closeMobileMenu()">
-                    <span class="content-lang active" data-lang="vi">Tính Năng</span>
-                    <span class="content-lang" data-lang="en">Features</span>
-                    <span class="content-lang" data-lang="ja">機能</span>
-                </a></li>
-                <li><a href="index.html#shortcuts" onclick="closeMobileMenu()">
-                    <span class="content-lang active" data-lang="vi">Phím Tắt</span>
-                    <span class="content-lang" data-lang="en">Shortcuts</span>
-                    <span class="content-lang" data-lang="ja">ショートカット</span>
-                </a></li>
-                <li><a href="index.html#details" onclick="closeMobileMenu()">
-                    <span class="content-lang active" data-lang="vi">Chi Tiết</span>
-                    <span class="content-lang" data-lang="en">Details</span>
-                    <span class="content-lang" data-lang="ja">詳細</span>
-                </a></li>
-                <li><a href="index.html#download" onclick="closeMobileMenu()">
-                    <span class="content-lang active" data-lang="vi">Tải Xuống</span>
-                    <span class="content-lang" data-lang="en">Download</span>
-                    <span class="content-lang" data-lang="ja">ダウンロード</span>
-                </a></li>
-                <li><a href="docs.html" onclick="closeMobileMenu()">
-                    <i class="fas fa-book"></i>
-                    <span class="content-lang active" data-lang="vi">Tài Liệu</span>
-                    <span class="content-lang" data-lang="en">Documentation</span>
-                    <span class="content-lang" data-lang="ja">ドキュメント</span>
-                </a></li>
-                <li class="lang-selector">
-                    <button class="lang-btn active" data-lang="vi">VI</button>
-                    <button class="lang-btn" data-lang="en">EN</button>
-                    <button class="lang-btn" data-lang="ja">JA</button>
-                </li>
-                <li><button class="theme-toggle" onclick="toggleTheme()"><i class="fas fa-moon"></i></button></li>
-            </ul>
-        </nav>
-    </header>
+  <a class="skip-link" href="#main-content">Skip to content</a>
 
-    <!-- Main Content -->
-    <main>
-        <div class="page-header">
-            <h1>
-                <i class="fas fa-history"></i>
-                <span class="content-lang active" data-lang="vi">Lịch Sử Cập Nhật</span>
-                <span class="content-lang" data-lang="en">Changelog</span>
-                <span class="content-lang" data-lang="ja">更新履歴</span>
-            </h1>
-            <p class="content-lang active" data-lang="vi">Theo dõi các cập nhật và cải tiến của CSV Editor</p>
-            <p class="content-lang" data-lang="en">Track updates and improvements to CSV Editor</p>
-            <p class="content-lang" data-lang="ja">CSV Editorのアップデートと改善を追跡</p>
+  <!-- Top Navigation -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="brand">
+        <span class="brand-mark" aria-hidden="true">
+          <svg class="icon" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 10h18M3 15h18M9 4v16M15 4v16"/></svg>
+        </span>
+        <span>CSV Editor</span>
+        <span class="brand-version">v3.1.0.0</span>
+      </a>
+
+      <nav class="nav-primary" aria-label="Main navigation">
+        <a href="index.html" class="nav-link">
+          <span class="lang-inline" data-lang="vi">Trang chủ</span>
+          <span class="lang-inline" data-lang="en">Home</span>
+          <span class="lang-inline" data-lang="ja">ホーム</span>
+        </a>
+        <a href="docs.html" class="nav-link">
+          <span class="lang-inline" data-lang="vi">Tài liệu</span>
+          <span class="lang-inline" data-lang="en">Documentation</span>
+          <span class="lang-inline" data-lang="ja">ドキュメント</span>
+        </a>
+        <a href="changelog.html" class="nav-link active" aria-current="page">
+          <span class="lang-inline" data-lang="vi">Changelog</span>
+          <span class="lang-inline" data-lang="en">Changelog</span>
+          <span class="lang-inline" data-lang="ja">更新履歴</span>
+        </a>
+        <a href="index.html#download" class="nav-link">
+          <span class="lang-inline" data-lang="vi">Tải xuống</span>
+          <span class="lang-inline" data-lang="en">Download</span>
+          <span class="lang-inline" data-lang="ja">ダウンロード</span>
+        </a>
+      </nav>
+
+      <div class="header-actions">
+        <div class="lang-switcher" role="group" aria-label="Language switcher">
+          <button type="button" class="lang-btn active" data-lang="vi">VI</button>
+          <button type="button" class="lang-btn" data-lang="en">EN</button>
+          <button type="button" class="lang-btn" data-lang="ja">JA</button>
         </div>
+        <button type="button" class="icon-btn theme-toggle" aria-label="Toggle color theme"></button>
+        <button type="button" class="icon-btn mobile-menu-btn" aria-label="Toggle navigation menu" aria-expanded="false">
+          <svg class="icon" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
 
-        <div class="changelog-container">
-            <a href="index.html" class="back-link">
-                <i class="fas fa-arrow-left"></i>
-                <span class="content-lang active" data-lang="vi">Quay lại trang chủ</span>
-                <span class="content-lang" data-lang="en">Back to home</span>
-                <span class="content-lang" data-lang="ja">ホームに戻る</span>
-            </a>
+  <nav class="mobile-nav" aria-label="Mobile navigation">
+    <a href="index.html" class="nav-link"><span class="lang-inline" data-lang="vi">Trang chủ</span><span class="lang-inline" data-lang="en">Home</span><span class="lang-inline" data-lang="ja">ホーム</span></a>
+    <a href="docs.html" class="nav-link"><span class="lang-inline" data-lang="vi">Tài liệu</span><span class="lang-inline" data-lang="en">Documentation</span><span class="lang-inline" data-lang="ja">ドキュメント</span></a>
+    <a href="changelog.html" class="nav-link active"><span class="lang-inline" data-lang="vi">Changelog</span><span class="lang-inline" data-lang="en">Changelog</span><span class="lang-inline" data-lang="ja">更新履歴</span></a>
+    <a href="index.html#download" class="nav-link"><span class="lang-inline" data-lang="vi">Tải xuống</span><span class="lang-inline" data-lang="en">Download</span><span class="lang-inline" data-lang="ja">ダウンロード</span></a>
+  </nav>
+
+  <!-- Main Content -->
+  <main id="main-content">
+    <section class="changelog-hero">
+      <div class="container">
+        <h1>
+          <span class="lang-inline" data-lang="vi">Lịch sử cập nhật</span>
+          <span class="lang-inline" data-lang="en">Changelog</span>
+          <span class="lang-inline" data-lang="ja">更新履歴</span>
+        </h1>
+        <p>
+          <span class="lang-inline" data-lang="vi">Theo dõi toàn bộ các phiên bản phát hành, tính năng mới và bản sửa lỗi của CSV Editor.</span>
+          <span class="lang-inline" data-lang="en">Track releases, new features, and bug fixes across CSV Editor versions.</span>
+          <span class="lang-inline" data-lang="ja">CSV Editorの各バージョンの新機能・改善点・不具合修正の履歴です。</span>
+        </p>
+      </div>
+    </section>
+
+    <div class="changelog-main">
 
             <!-- Version 3.1.0.0 -->
             <div class="version-card">
@@ -979,69 +833,16 @@
         </div>
     </main>
 
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <!-- Vietnamese Footer -->
-                <div class="footer-section">
-                    <h3>CSV Editor</h3>
-                    <p class="content-lang active" data-lang="vi">Ứng dụng chỉnh sửa CSV mạnh mẽ được xây dựng bằng .NET 8 cho Windows</p>
-                    <p class="content-lang" data-lang="en">Powerful CSV editor built with .NET 8 for Windows</p>
-                    <p class="content-lang" data-lang="ja">Windows用.NET 8で構築された強力なCSVエディタ</p>
-                    <div class="social-links">
-                        <a href="https://github.com/tnkbang/CSVEditor"><i class="fab fa-github"></i></a>
-                    </div>
-                </div>
-                <div class="footer-section">
-                    <h3 class="content-lang active" data-lang="vi">Liên Kết</h3>
-                    <h3 class="content-lang" data-lang="en">Links</h3>
-                    <h3 class="content-lang" data-lang="ja">リンク</h3>
-                    <a href="https://github.com/tnkbang/CSVEditor">GitHub Repository</a>
-                    <a href="https://github.com/tnkbang/CSVEditor/releases" class="content-lang active" data-lang="vi">Tải Xuống</a>
-                    <a href="https://github.com/tnkbang/CSVEditor/releases" class="content-lang" data-lang="en">Download</a>
-                    <a href="https://github.com/tnkbang/CSVEditor/releases" class="content-lang" data-lang="ja">ダウンロード</a>
-                    <a href="https://github.com/tnkbang/CSVEditor/issues" class="content-lang active" data-lang="vi">Báo Lỗi</a>
-                    <a href="https://github.com/tnkbang/CSVEditor/issues" class="content-lang" data-lang="en">Report Issues</a>
-                    <a href="https://github.com/tnkbang/CSVEditor/issues" class="content-lang" data-lang="ja">問題を報告</a>
-                    <a href="README.md" class="content-lang active" data-lang="vi">Tài liệu</a>
-                    <a href="README.md" class="content-lang" data-lang="en">Documentation</a>
-                    <a href="README.md" class="content-lang" data-lang="ja">書類</a>
-                </div>
-                <div class="footer-section">
-                    <h3 class="content-lang active" data-lang="vi">Tài Nguyên</h3>
-                    <h3 class="content-lang" data-lang="en">Resources</h3>
-                    <h3 class="content-lang" data-lang="ja">リソース</h3>
-                    <a href="README_Vi.md" class="content-lang active" data-lang="vi">Hướng Dẫn Tiếng Việt</a>
-                    <a href="README_Vi.md" class="content-lang" data-lang="en">Vietnamese Guide</a>
-                    <a href="README_Vi.md" class="content-lang" data-lang="ja">ベトナム語ガイド</a>
-                    <a href="README.md" class="content-lang active" data-lang="vi">English Guide</a>
-                    <a href="README.md" class="content-lang" data-lang="en">English Guide</a>
-                    <a href="README.md" class="content-lang" data-lang="ja">英語ガイド</a>
-                    <a href="README_Ja.md" class="content-lang active" data-lang="vi">日本語ガイド</a>
-                    <a href="README_Ja.md" class="content-lang" data-lang="en">Japanese Guide</a>
-                    <a href="README_Ja.md" class="content-lang" data-lang="ja">日本語ガイド</a>
-                </div>
-                <div class="footer-section">
-                    <h3 class="content-lang active" data-lang="vi">Giấy Phép</h3>
-                    <h3 class="content-lang" data-lang="en">License</h3>
-                    <h3 class="content-lang" data-lang="ja">ライセンス</h3>
-                    <a href="LICENSE_Vi.txt" rel="license" class="content-lang active" data-lang="vi">CSVEditor Software License v1.0</a>
-                    <a href="LICENSE.txt" rel="license" class="content-lang" data-lang="en">CSVEditor Software License v1.0</a>
-                    <a href="LICENSE.txt" rel="license" class="content-lang" data-lang="ja">CSVEditor Software License v1.0</a>
-                    <p class="content-lang active" data-lang="vi">© 2025 CSV Editor - Bảo lưu mọi quyền</p>
-                    <p class="content-lang" data-lang="en">© 2025 CSV Editor - All Rights Reserved</p>
-                    <p class="content-lang" data-lang="ja">© 2025 CSV Editor - 全著作権所有</p>
-                </div>
-            </div>
-            <div class="copyright">
-                <p class="content-lang active" data-lang="vi">Được tạo bởi <a href="https://github.com/tnkbang" style="color: var(--primary-color);">@tnkbang</a></p>
-                <p class="content-lang" data-lang="en">Created by <a href="https://github.com/tnkbang" style="color: var(--primary-color);">@tnkbang</a></p>
-                <p class="content-lang" data-lang="ja"><a href="https://github.com/tnkbang" style="color: var(--primary-color);">@tnkbang</a> が作成</p>
-            </div>
-        </div>
-    </footer>
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-bottom" style="border-top:none; padding-top:0;">
+        <span>© CSV Editor v3.1.0.0 · <a href="https://github.com/tnkbang/CSVEditor" target="_blank" rel="noopener">GitHub</a> · <a href="LICENSE_Vi.txt" rel="license" class="lang-inline" data-lang="vi">Giấy phép v1.0</a><a href="LICENSE.txt" rel="license" class="lang-inline" data-lang="en">License v1.0</a><a href="LICENSE.txt" rel="license" class="lang-inline" data-lang="ja">ライセンス v1.0</a></span>
+        <span><a href="docs.html">Documentation</a> · <a href="index.html">Home</a></span>
+      </div>
+    </div>
+  </footer>
 
-    <script src="script.js"></script>
+  <script src="assets/app.js"></script>
 </body>
 </html>

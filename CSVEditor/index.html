@@ -1,1186 +1,700 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="vi" data-lang="vi" data-theme="light">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="CSV Editor - Ứng dụng chỉnh sửa file CSV mạnh mẽ được xây dựng bằng .NET 8">
-    <meta name="keywords" content="CSV Editor, .NET 8, Windows, CSV, Excel, Data Editor">
-    <title>CSV Editor - Powerful CSV File Editor for Windows</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="CSV Editor v3.1.0.0 — Ứng dụng desktop chỉnh sửa file CSV, TSV, TXT chuyên nghiệp trên Windows (.NET 8) với lưới HyperSheet, Auto Fill, SQL/Regex Find, 64 bảng mã và lưu file an toàn.">
+  <meta property="og:title" content="CSV Editor — Desktop CSV, TSV &amp; Text Table Editor for Windows">
+  <meta property="og:description" content="Native .NET 8 Windows CSV editor with HyperSheet grid, Excel-style Auto Fill &amp; Filtering, 64 encodings, Data Validation, Light/Dark themes, and crash-safe atomic saving.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://tnkbang.github.io/CSVEditor/">
+  <link rel="canonical" href="https://tnkbang.github.io/CSVEditor/">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%232563eb'/%3E%3Cpath d='M7 10h18M7 16h18M7 22h18M13 10v12M20 10v12' stroke='%23fff' stroke-width='2.2' stroke-linecap='round'/%3E%3C/svg%3E">
+  <title>CSV Editor — Modern CSV &amp; Tabular Data Editor for Windows</title>
+  <link rel="stylesheet" href="assets/design-system.css">
+  <link rel="stylesheet" href="assets/home.css">
 </head>
 <body>
-    <!-- Header -->
-    <header>
-        <nav class="container">
-            <div class="logo">
-                <i class="fas fa-file-csv"></i>
-                CSV Editor
-            </div>
-            <button class="mobile-menu-toggle" onclick="toggleMobileMenu()" aria-label="Toggle menu">
-                <i class="fas fa-bars"></i>
-            </button>
-            <ul class="nav-links">
-                <li><a href="#features" onclick="closeMobileMenu()">Tính Năng</a></li>
-                <li><a href="#shortcuts" onclick="closeMobileMenu()">Phím Tắt</a></li>
-                <li><a href="#details" onclick="closeMobileMenu()">Chi Tiết</a></li>
-                <li><a href="#download" onclick="closeMobileMenu()">Tải Xuống</a></li>
-                <li><a href="docs.html" onclick="closeMobileMenu()">
-                    <i class="fas fa-book"></i> Tài Liệu
-                </a></li>
-                <li><a href="changelog.html" onclick="closeMobileMenu()">
-                    <i class="fas fa-history"></i> Changelog
-                </a></li>
-                <li class="lang-selector">
-                    <button class="lang-btn active" data-lang="vi">VI</button>
-                    <button class="lang-btn" data-lang="en">EN</button>
-                    <button class="lang-btn" data-lang="ja">JA</button>
-                </li>
-                <li><button class="theme-toggle" onclick="toggleTheme()"><i class="fas fa-moon"></i></button></li>
-            </ul>
-        </nav>
-    </header>
+  <a class="skip-link" href="#main-content">Skip to content</a>
 
+  <!-- Top Navigation -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="brand">
+        <span class="brand-mark" aria-hidden="true">
+          <svg class="icon" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 10h18M3 15h18M9 4v16M15 4v16"/></svg>
+        </span>
+        <span>CSV Editor</span>
+        <span class="brand-version">v3.1.0.0</span>
+      </a>
+
+      <nav class="nav-primary" aria-label="Main navigation">
+        <a href="#features" class="nav-link">
+          <span class="lang-inline" data-lang="vi">Tính năng</span>
+          <span class="lang-inline" data-lang="en">Features</span>
+          <span class="lang-inline" data-lang="ja">機能</span>
+        </a>
+        <a href="#interface" class="nav-link">
+          <span class="lang-inline" data-lang="vi">Giao diện</span>
+          <span class="lang-inline" data-lang="en">Interface</span>
+          <span class="lang-inline" data-lang="ja">インターフェース</span>
+        </a>
+        <a href="#download" class="nav-link">
+          <span class="lang-inline" data-lang="vi">Tải xuống</span>
+          <span class="lang-inline" data-lang="en">Download</span>
+          <span class="lang-inline" data-lang="ja">ダウンロード</span>
+        </a>
+        <a href="docs.html" class="nav-link">
+          <span class="lang-inline" data-lang="vi">Tài liệu</span>
+          <span class="lang-inline" data-lang="en">Documentation</span>
+          <span class="lang-inline" data-lang="ja">ドキュメント</span>
+        </a>
+        <a href="changelog.html" class="nav-link">
+          <span class="lang-inline" data-lang="vi">Changelog</span>
+          <span class="lang-inline" data-lang="en">Changelog</span>
+          <span class="lang-inline" data-lang="ja">更新履歴</span>
+        </a>
+      </nav>
+
+      <div class="header-actions">
+        <div class="lang-switcher" role="group" aria-label="Language switcher">
+          <button type="button" class="lang-btn active" data-lang="vi">VI</button>
+          <button type="button" class="lang-btn" data-lang="en">EN</button>
+          <button type="button" class="lang-btn" data-lang="ja">JA</button>
+        </div>
+        <button type="button" class="icon-btn theme-toggle" aria-label="Toggle color theme"></button>
+        <button type="button" class="icon-btn mobile-menu-btn" aria-label="Toggle navigation menu" aria-expanded="false">
+          <svg class="icon" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Navigation Drawer -->
+  <nav class="mobile-nav" aria-label="Mobile navigation">
+    <a href="#features" class="nav-link">
+      <span class="lang-inline" data-lang="vi">Tính năng</span>
+      <span class="lang-inline" data-lang="en">Features</span>
+      <span class="lang-inline" data-lang="ja">機能</span>
+    </a>
+    <a href="#interface" class="nav-link">
+      <span class="lang-inline" data-lang="vi">Giao diện</span>
+      <span class="lang-inline" data-lang="en">Interface</span>
+      <span class="lang-inline" data-lang="ja">インターフェース</span>
+    </a>
+    <a href="#download" class="nav-link">
+      <span class="lang-inline" data-lang="vi">Tải xuống</span>
+      <span class="lang-inline" data-lang="en">Download</span>
+      <span class="lang-inline" data-lang="ja">ダウンロード</span>
+    </a>
+    <a href="docs.html" class="nav-link">
+      <span class="lang-inline" data-lang="vi">Tài liệu hướng dẫn</span>
+      <span class="lang-inline" data-lang="en">Documentation</span>
+      <span class="lang-inline" data-lang="ja">ドキュメント</span>
+    </a>
+    <a href="changelog.html" class="nav-link">
+      <span class="lang-inline" data-lang="vi">Lịch sử cập nhật</span>
+      <span class="lang-inline" data-lang="en">Changelog</span>
+      <span class="lang-inline" data-lang="ja">更新履歴</span>
+    </a>
+  </nav>
+
+  <main id="main-content">
     <!-- Hero Section -->
     <section class="hero">
-        <div class="container">
-            <h1><i class="fas fa-table"></i> CSV Editor</h1>
-            <p class="subtitle content-lang active" data-lang="vi">Ứng dụng chỉnh sửa file CSV mạnh mẽ và đầy đủ tính năng</p>
-            <p class="subtitle content-lang" data-lang="en">Powerful, feature-rich CSV file editor</p>
-            <p class="subtitle content-lang" data-lang="ja">強力で機能豊富なCSVファイルエディタ</p>
-            
-            <div class="badges">
-                <span class="badge"><i class="fas fa-code"></i> .NET 8</span>
-                <span class="badge"><i class="fab fa-windows"></i> Windows</span>
-                <span class="badge">
-                    <i class="fas fa-certificate"></i>
-                    <a href="LICENSE_Vi.txt" rel="license" class="content-lang active" data-lang="vi" style="color:inherit;text-decoration:none;">Giấy Phép Tùy Chỉnh</a>
-                    <a href="LICENSE.txt" rel="license" class="content-lang" data-lang="en" style="color:inherit;text-decoration:none;">Custom License</a>
-                    <a href="LICENSE.txt" rel="license" class="content-lang" data-lang="ja" style="color:inherit;text-decoration:none;">カスタムライセンス</a>
-                </span>
-                <span class="badge">
-                    <i class="fas fa-language"></i>
-                    <span class="content-lang active" data-lang="vi">Đa Ngôn Ngữ</span>
-                    <span class="content-lang" data-lang="en">Multi-language</span>
-                    <span class="content-lang" data-lang="ja">多言語対応</span>
-                </span>
-            </div>
-            
-            <div class="cta-buttons">
-                <a href="data/CSVEditor-portable.zip" class="btn btn-primary">
-                    <i class="fas fa-download"></i>
-                    <span class="content-lang active" data-lang="vi">Tải Bản Portable</span>
-                    <span class="content-lang" data-lang="en">Download Portable</span>
-                    <span class="content-lang" data-lang="ja">ポータブル版をダウンロード</span>
-                </a>
-                <a href="data/CSVEditor Setup.exe" class="btn btn-primary">
-                    <i class="fas fa-download"></i>
-                    <span class="content-lang active" data-lang="vi">Tải Bản Cài Đặt</span>
-                    <span class="content-lang" data-lang="en">Download Setup</span>
-                    <span class="content-lang" data-lang="ja">インストーラーをダウンロード</span>
-                </a>
-                <a href="https://github.com/tnkbang/CSVEditor" class="btn btn-secondary">
-                    <i class="fab fa-github"></i> GitHub
-                </a>
-            </div>
+      <div class="container hero-grid">
+        <div>
+          <div class="hero-eyebrow">
+            <span class="pill-badge accent">v3.1.0.0</span>
+            <span class="pill-badge">.NET 8 · Windows</span>
+            <span class="pill-badge emerald">
+              <span class="lang-inline" data-lang="vi">Không phụ thuộc thư viện ngoài</span>
+              <span class="lang-inline" data-lang="en">Zero External Dependencies</span>
+              <span class="lang-inline" data-lang="ja">外部依存なし</span>
+            </span>
+          </div>
+
+          <h1>
+            <span class="lang-inline" data-lang="vi">Chỉnh sửa dữ liệu CSV chính xác, mượt mà và an toàn</span>
+            <span class="lang-inline" data-lang="en">Precision CSV &amp; Tabular Editing for Windows</span>
+            <span class="lang-inline" data-lang="ja">Windows向けの正確で快適なCSVエディタ</span>
+          </h1>
+
+          <p class="hero-lead">
+            <span class="lang-inline" data-lang="vi">CSV Editor được xây dựng riêng cho tệp CSV, TSV và văn bản phân cách trên Windows. Tích hợp lưới <strong>HyperSheet</strong>, kéo điền Auto Fill, lọc kiểu Excel, tìm kiếm Regex/SQL, 64 bảng mã, kiểm tra lỗi thời gian thực và cơ chế lưu file an toàn.</span>
+            <span class="lang-inline" data-lang="en">Purpose-built for CSV, TSV, and delimited text files on Windows. Powered by the custom <strong>HyperSheet</strong> grid with Excel-style Auto Fill and filtering, Regex/SQL search, 64 encodings, real-time validation, and crash-safe atomic saving.</span>
+            <span class="lang-inline" data-lang="ja">Windows向けに設計されたCSV・TSV・区切りテキスト専用エディタ。独自の<strong>HyperSheet</strong>グリッド、Excel風のオートフィル・フィルタ、正規表現/SQL検索、64種類の文字コード、リアルタイム検証、安全なアトミック保存を備えています。</span>
+          </p>
+
+          <div class="hero-actions">
+            <a href="docs.html" class="btn btn-primary">
+              <svg class="icon icon-sm" viewBox="0 0 24 24"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/></svg>
+              <span class="lang-inline" data-lang="vi">Đọc tài liệu hướng dẫn</span>
+              <span class="lang-inline" data-lang="en">Read Documentation</span>
+              <span class="lang-inline" data-lang="ja">ドキュメントを読む</span>
+            </a>
+            <a href="#download" class="btn btn-secondary">
+              <svg class="icon icon-sm" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+              <span class="lang-inline" data-lang="vi">Tải xuống v3.1</span>
+              <span class="lang-inline" data-lang="en">Download v3.1</span>
+              <span class="lang-inline" data-lang="ja">v3.1をダウンロード</span>
+            </a>
+            <a href="https://github.com/tnkbang/CSVEditor" class="btn btn-ghost" target="_blank" rel="noopener">
+              <svg class="icon icon-sm" viewBox="0 0 24 24"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.4 5.4 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
+              <span>GitHub</span>
+            </a>
+          </div>
+
+          <div class="hero-meta">
+            <span>
+              <svg class="icon icon-sm" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+              <span class="lang-inline" data-lang="vi">Portable &amp; Bộ cài đặt</span>
+              <span class="lang-inline" data-lang="en">Portable &amp; Installer</span>
+              <span class="lang-inline" data-lang="ja">ポータブル＆インストーラー</span>
+            </span>
+            <span>
+              <svg class="icon icon-sm" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+              <span class="lang-inline" data-lang="vi">Đa ngôn ngữ (VI / EN / JA)</span>
+              <span class="lang-inline" data-lang="en">Trilingual (VI / EN / JA)</span>
+              <span class="lang-inline" data-lang="ja">多言語対応 (VI / EN / JA)</span>
+            </span>
+            <span>
+              <svg class="icon icon-sm" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+              <span class="lang-inline" data-lang="vi">Light &amp; Dark Mode</span>
+              <span class="lang-inline" data-lang="en">Light &amp; Dark Mode</span>
+              <span class="lang-inline" data-lang="ja">ライト＆ダークモード</span>
+            </span>
+          </div>
         </div>
+
+        <div class="hero-preview">
+          <div class="window-frame" data-lightbox="images/filter.png" data-caption="CSV Editor — HyperSheet Grid &amp; Excel-style Column Filter">
+            <div class="window-bar">
+              <span class="window-dots" aria-hidden="true"><i></i><i></i><i></i></span>
+              <span>CSV Editor · HyperSheet</span>
+            </div>
+            <img src="images/filter.png" alt="CSV Editor main spreadsheet grid with multi-tab bar and Excel-style column filter popup">
+          </div>
+        </div>
+      </div>
     </section>
 
-    <!-- Screenshots Section -->
-    <section id="screenshots" class="section" style="background: var(--surface-color);">
-        <div class="container">
-            <h2 class="section-title">
-                <i class="fas fa-images"></i>
-                <span class="content-lang active" data-lang="vi">Ảnh Demo & Giao Diện</span>
-                <span class="content-lang" data-lang="en">Screenshots & Interface</span>
-                <span class="content-lang" data-lang="ja">スクリーンショット＆インターフェース</span>
-            </h2>
-            <p class="section-subtitle">
-                <span class="content-lang active" data-lang="vi">Khám phá giao diện trực quan và các tính năng mạnh mẽ của CSV Editor</span>
-                <span class="content-lang" data-lang="en">Explore the intuitive interface and powerful features of CSV Editor</span>
-                <span class="content-lang" data-lang="ja">CSV Editorの直感的なインターフェースと強力な機能をご覧ください</span>
+    <!-- Feature Highlights -->
+    <section id="features" class="home-section">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-kicker">
+            <span class="lang-inline" data-lang="vi">Tính năng cốt lõi</span>
+            <span class="lang-inline" data-lang="en">Core Capabilities</span>
+            <span class="lang-inline" data-lang="ja">主な機能</span>
+          </div>
+          <h2>
+            <span class="lang-inline" data-lang="vi">Được thiết kế cho quy trình làm việc CSV thực tế</span>
+            <span class="lang-inline" data-lang="en">Built for real-world CSV workflows</span>
+            <span class="lang-inline" data-lang="ja">実務のCSV編集ワークフローに最適化</span>
+          </h2>
+          <p>
+            <span class="lang-inline" data-lang="vi">Thay vì làm biến dạng số 0 ở đầu, ngày tháng hay bảng mã như trình bảng tính thông thường, CSV Editor giữ nguyên cấu trúc tệp văn bản trong khi vẫn mang lại thao tác bảng tính hiện đại.</span>
+            <span class="lang-inline" data-lang="en">Instead of silently corrupting leading zeros, dates, or character encodings, CSV Editor preserves raw file integrity while giving you modern spreadsheet ergonomics.</span>
+            <span class="lang-inline" data-lang="ja">先頭ゼロや日付・文字コードを意図せず変換することなく、元データの整合性を保ちながらモダンな表計算操作を提供します。</span>
+          </p>
+        </div>
+
+        <div class="features-grid">
+          <!-- Card 1 -->
+          <article class="feature-card">
+            <div class="feature-icon" aria-hidden="true">
+              <svg class="icon" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M3 15h18M9 3v18M15 3v18"/></svg>
+            </div>
+            <h3>
+              <span class="lang-inline" data-lang="vi">Lưới HyperSheet &amp; Auto Fill</span>
+              <span class="lang-inline" data-lang="en">HyperSheet Grid &amp; Auto Fill</span>
+              <span class="lang-inline" data-lang="ja">HyperSheetグリッド＆オートフィル</span>
+            </h3>
+            <p>
+              <span class="lang-inline" data-lang="vi">Hỗ trợ chọn nhiều vùng (Ctrl/Shift), chỉnh sửa nhiều dòng (Alt+Enter), đề xuất nhập liệu Auto-Suggest, kéo thả Fill Handle với 9 chiến lược điền chuỗi và hoàn tác/làm lại có kiểm soát bộ nhớ.</span>
+              <span class="lang-inline" data-lang="en">Multi-selection (Ctrl/Shift), multiline editing (Alt+Enter), inline Auto-Suggest, Excel-style Fill Handle with 9 fill strategies (including Japanese dates), and memory-budgeted Undo/Redo.</span>
+              <span class="lang-inline" data-lang="ja">複数範囲選択（Ctrl/Shift）、複数行編集（Alt+Enter）、入力候補サジェスト、和暦日付を含む9種のオートフィル戦略、メモリ上限管理付きUndo/Redoに対応。</span>
             </p>
-            
-            <div class="screenshots-grid">
-                <div class="screenshot-item">
-                    <img src="images/default-open.png" alt="CSV Editor Interface" loading="lazy">
-                    <div class="screenshot-caption">
-                        <h4>
-                            <span class="content-lang active" data-lang="vi">Giao Diện Chính</span>
-                            <span class="content-lang" data-lang="en">Main Interface</span>
-                            <span class="content-lang" data-lang="ja">メインインターフェース</span>
-                        </h4>
-                        <p>
-                            <span class="content-lang active" data-lang="vi">Giao diện hiện đại với DataGrid tối ưu hiệu suất cao</span>
-                            <span class="content-lang" data-lang="en">Modern interface with high-performance optimized DataGrid</span>
-                            <span class="content-lang" data-lang="ja">高性能最適化されたDataGridを備えたモダンなインターフェース</span>
-                        </p>
-                    </div>
-                </div>
+            <a href="docs.html#autofill" class="feature-link">
+              <span class="lang-inline" data-lang="vi">Xem hướng dẫn Auto Fill →</span>
+              <span class="lang-inline" data-lang="en">Explore Auto Fill →</span>
+              <span class="lang-inline" data-lang="ja">オートフィルを見る →</span>
+            </a>
+          </article>
 
-                <div class="screenshot-item">
-                    <img src="images/menu-file.png" alt="File Menu" loading="lazy">
-                    <div class="screenshot-caption">
-                        <h4>
-                            <span class="content-lang active" data-lang="vi">Menu File</span>
-                            <span class="content-lang" data-lang="en">File Menu</span>
-                            <span class="content-lang" data-lang="ja">ファイルメニュー</span>
-                        </h4>
-                        <p>
-                            <span class="content-lang active" data-lang="vi">Đầy đủ tính năng: Tạo mới, Mở, Lưu, Xuất Excel, Gộp file và nhiều hơn</span>
-                            <span class="content-lang" data-lang="en">Full features: New, Open, Save, Export to Excel, Merge files and more</span>
-                            <span class="content-lang" data-lang="ja">フル機能：新規作成、開く、保存、Excelエクスポート、ファイル結合など</span>
-                        </p>
-                    </div>
-                </div>
-
-                <div class="screenshot-item">
-                    <img src="images/find-and-replace.png" alt="Find and Replace" loading="lazy">
-                    <div class="screenshot-caption">
-                        <h4>
-                            <span class="content-lang active" data-lang="vi">Tìm & Thay Thế</span>
-                            <span class="content-lang" data-lang="en">Find & Replace</span>
-                            <span class="content-lang" data-lang="ja">検索と置換</span>
-                        </h4>
-                        <p>
-                            <span class="content-lang active" data-lang="vi">Tìm kiếm mạnh mẽ với nhiều tùy chọn và thay thế nhanh chóng</span>
-                            <span class="content-lang" data-lang="en">Powerful search with multiple options and quick replacement</span>
-                            <span class="content-lang" data-lang="ja">複数のオプションと高速置換を備えた強力な検索</span>
-                        </p>
-                    </div>
-                </div>
-
-                <div class="screenshot-item">
-                    <img src="images/filter.png" alt="Filter Feature" loading="lazy">
-                    <div class="screenshot-caption">
-                        <h4>
-                            <span class="content-lang active" data-lang="vi">Bộ Lọc Dữ Liệu</span>
-                            <span class="content-lang" data-lang="en">Data Filter</span>
-                            <span class="content-lang" data-lang="ja">データフィルタ</span>
-                        </h4>
-                        <p>
-                            <span class="content-lang active" data-lang="vi">Lọc dữ liệu kiểu Excel với tìm kiếm và chọn nhiều giá trị</span>
-                            <span class="content-lang" data-lang="en">Excel-style data filtering with search and multi-select</span>
-                            <span class="content-lang" data-lang="ja">Excel形式のデータフィルタリング、検索と複数選択対応</span>
-                        </p>
-                    </div>
-                </div>
-
-                <div class="screenshot-item">
-                    <img src="images/custom-styles.png" alt="Custom Styles" loading="lazy">
-                    <div class="screenshot-caption">
-                        <h4>
-                            <span class="content-lang active" data-lang="vi">Tùy Chỉnh Giao Diện</span>
-                            <span class="content-lang" data-lang="en">Custom Styles</span>
-                            <span class="content-lang" data-lang="ja">カスタムスタイル</span>
-                        </h4>
-                        <p>
-                            <span class="content-lang active" data-lang="vi">Tùy chỉnh màu sắc, font chữ, kích thước và nhiều tùy chọn khác</span>
-                            <span class="content-lang" data-lang="en">Customize colors, fonts, sizes and many other options</span>
-                            <span class="content-lang" data-lang="ja">色、フォント、サイズなど多くのオプションをカスタマイズ</span>
-                        </p>
-                    </div>
-                </div>
+          <!-- Card 2 -->
+          <article class="feature-card">
+            <div class="feature-icon" aria-hidden="true">
+              <svg class="icon" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
             </div>
+            <h3>
+              <span class="lang-inline" data-lang="vi">Tìm kiếm Regex, SQL &amp; Lọc cột</span>
+              <span class="lang-inline" data-lang="en">Regex, SQL Search &amp; Column Filter</span>
+              <span class="lang-inline" data-lang="ja">正規表現・SQL検索＆列フィルタ</span>
+            </h3>
+            <p>
+              <span class="lang-inline" data-lang="vi">6 chế độ tìm &amp; thay thế gồm chứa, chính xác, bắt đầu/kết thúc, Regex và truy vấn kiểu SQL WHERE (hỗ trợ lọc trực tiếp trên lưới). Kết hợp lọc nhiều cột và sắp xếp tự nhiên (Natural Sort).</span>
+              <span class="lang-inline" data-lang="en">6 Find &amp; Replace modes including Exact, Contains, Regex, and SQL WHERE queries that can filter matching rows directly, alongside multi-column value filtering and Natural sorting.</span>
+              <span class="lang-inline" data-lang="ja">部分一致・完全一致・正規表現・SQL WHEREクエリ（一致行のフィルタ表示対応）の6モード検索と、複数列の値チェックフィルタ・自然順ソートを搭載。</span>
+            </p>
+            <a href="docs.html#find-replace" class="feature-link">
+              <span class="lang-inline" data-lang="vi">Xem hướng dẫn Tìm &amp; Lọc →</span>
+              <span class="lang-inline" data-lang="en">Explore Search &amp; Filter →</span>
+              <span class="lang-inline" data-lang="ja">検索とフィルタを見る →</span>
+            </a>
+          </article>
+
+          <!-- Card 3 -->
+          <article class="feature-card">
+            <div class="feature-icon" aria-hidden="true">
+              <svg class="icon" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
+            </div>
+            <h3>
+              <span class="lang-inline" data-lang="vi">Kiểm tra lỗi CSV theo thời gian thực</span>
+              <span class="lang-inline" data-lang="en">Real-Time Data Validation</span>
+              <span class="lang-inline" data-lang="ja">リアルタイムデータ検証</span>
+            </h3>
+            <p>
+              <span class="lang-inline" data-lang="vi">Tích hợp 8 quy tắc phát hiện lỗi (dấu ngoặc kép lệch, khoảng trắng thừa, xuống dòng/dấu phân cách chưa quote, số 0 đầu...) kèm bảng Error Panel và sửa nhanh (Quick Fix) từng ô hoặc hàng loạt.</span>
+              <span class="lang-inline" data-lang="en">8 configurable rules detect unbalanced quotes, trailing spaces, unquoted delimiters/newlines, leading zeros, and special characters—complete with Error Panel navigation and Quick Fixes.</span>
+              <span class="lang-inline" data-lang="ja">引用符の不整合、末尾スペース、未クォート改行・区切り文字、先頭ゼロなどを8つの設定可能ルールで検出し、エラーパネルとクイック修正を提供します。</span>
+            </p>
+            <a href="docs.html#validation" class="feature-link">
+              <span class="lang-inline" data-lang="vi">Xem 8 quy tắc kiểm tra →</span>
+              <span class="lang-inline" data-lang="en">See Validation Rules →</span>
+              <span class="lang-inline" data-lang="ja">検証ルールを見る →</span>
+            </a>
+          </article>
+
+          <!-- Card 4 -->
+          <article class="feature-card">
+            <div class="feature-icon" aria-hidden="true">
+              <svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+            </div>
+            <h3>
+              <span class="lang-inline" data-lang="vi">64 bảng mã &amp; Xuất Excel (.xlsx)</span>
+              <span class="lang-inline" data-lang="en">64 Encodings &amp; Native Excel Export</span>
+              <span class="lang-inline" data-lang="ja">64文字コード＆ネイティブExcel出力</span>
+            </h3>
+            <p>
+              <span class="lang-inline" data-lang="vi">Tự động nhận diện bảng mã (UTF-8/16/32, Shift-JIS, EUC-JP, ISO-2022-JP và 5 bảng mã tiếng Việt như TCVN3, VNI, Windows-1258). Hỗ trợ cột hiển thị ký tự xuống dòng và xuất .xlsx không cần cài Excel.</span>
+              <span class="lang-inline" data-lang="en">Automatic encoding detection across Unicode, Japanese, Chinese, Korean, European, and 5 Vietnamese encodings. Includes a per-row Newline column and native OpenXML .xlsx export.</span>
+              <span class="lang-inline" data-lang="ja">Unicode、日本語（Shift-JIS/EUC-JP/ISO-2022-JP）、中国語、韓国語、ベトナム語など64文字コードを自動判定。改行文字表示列やExcel不要の.xlsx出力も搭載。</span>
+            </p>
+            <a href="docs.html#import-export" class="feature-link">
+              <span class="lang-inline" data-lang="vi">Xem bảng mã &amp; định dạng →</span>
+              <span class="lang-inline" data-lang="en">Encodings &amp; Formats →</span>
+              <span class="lang-inline" data-lang="ja">文字コードと形式 →</span>
+            </a>
+          </article>
+
+          <!-- Card 5 -->
+          <article class="feature-card">
+            <div class="feature-icon" aria-hidden="true">
+              <svg class="icon" viewBox="0 0 24 24"><path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"/></svg>
+            </div>
+            <h3>
+              <span class="lang-inline" data-lang="vi">Bảo vệ bộ nhớ &amp; Lưu file an toàn</span>
+              <span class="lang-inline" data-lang="en">Memory Safeguards &amp; Atomic Save</span>
+              <span class="lang-inline" data-lang="ja">メモリ保護＆安全なアトミック保存</span>
+            </h3>
+            <p>
+              <span class="lang-inline" data-lang="vi">Lưu trữ phân khối (DataChunk), StringPool, Utf8ByteArena và ánh xạ hàng/cột ảo. Hệ thống MemoryManager kiểm tra tài nguyên trước thao tác nặng, kết hợp SafeFileWriter chống hỏng file khi lưu.</span>
+              <span class="lang-inline" data-lang="en">Built on chunked storage, StringPool, Utf8ByteArena, and virtual row/column mapping. MemoryManager checks available RAM before heavy operations, while SafeFileWriter prevents corrupted saves.</span>
+              <span class="lang-inline" data-lang="ja">チャンク格納・StringPool・Utf8ByteArena・仮想行列マッピングを採用。操作前のメモリ監視と一時ファイル経由の安全な置換保存でデータ破損を防ぎます。</span>
+            </p>
+            <a href="docs.html#architecture" class="feature-link">
+              <span class="lang-inline" data-lang="vi">Tìm hiểu kiến trúc dữ liệu →</span>
+              <span class="lang-inline" data-lang="en">Read Architecture Guide →</span>
+              <span class="lang-inline" data-lang="ja">アーキテクチャを見る →</span>
+            </a>
+          </article>
+
+          <!-- Card 6 -->
+          <article class="feature-card">
+            <div class="feature-icon" aria-hidden="true">
+              <svg class="icon" viewBox="0 0 24 24"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/></svg>
+            </div>
+            <h3>
+              <span class="lang-inline" data-lang="vi">Giao diện Sáng/Tối &amp; 8 trang Cài đặt</span>
+              <span class="lang-inline" data-lang="en">Light/Dark Themes &amp; 8-Page Settings</span>
+              <span class="lang-inline" data-lang="ja">ライト/ダークテーマ＆8ページ設定</span>
+            </h3>
+            <p>
+              <span class="lang-inline" data-lang="vi">Hỗ trợ Dark Mode, xem trước trực tiếp lưới dữ liệu, tìm kiếm nhanh trong cài đặt, 26 tùy chọn màu lưới, định dạng theo kiểu dữ liệu, cùng công cụ gộp file, mã hóa file và chụp ảnh vùng nhìn.</span>
+              <span class="lang-inline" data-lang="en">Switch between Light and Dark themes with live grid preview, searchable settings, 26 customizable grid colors, plus built-in Merge Files, file encryption, Viewport Capture, and Stopwatch tools.</span>
+              <span class="lang-inline" data-lang="ja">リアルタイムプレビュー・検索付きの設定画面でダークモードや26項目のグリッド配色をカスタマイズ可能。ファイル結合、暗号化、ビューポート撮影、ストップウォッチも内蔵。</span>
+            </p>
+            <a href="docs.html#settings-overview" class="feature-link">
+              <span class="lang-inline" data-lang="vi">Khám phá trung tâm cài đặt →</span>
+              <span class="lang-inline" data-lang="en">Explore Settings Center →</span>
+              <span class="lang-inline" data-lang="ja">設定センターを見る →</span>
+            </a>
+          </article>
         </div>
+      </div>
     </section>
 
-    <!-- Vietnamese Content -->
-    <div class="content-lang active" data-lang="vi">
-        <!-- Features Section -->
-        <section id="features" class="section">
-            <div class="container">
-                <h2 class="section-title">✨ Điểm Mạnh Nổi Bật</h2>
-                <div class="features-grid">
-                    <div class="feature-card">
-                        <div class="feature-icon"><i class="fas fa-rocket"></i></div>
-                        <h3>Hiệu Suất Cao</h3>
-                        <p>Tối ưu hóa để xử lý các bộ dữ liệu lớn (hàng triệu ô) với quản lý bộ nhớ hiệu quả và xử lý song song</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon"><i class="fas fa-th"></i></div>
-                        <h3>DataGrid Nâng Cao</h3>
-                        <p>Triển khai DataGrid tùy chỉnh với chế độ ảo hóa cho cuộn và chỉnh sửa mượt mà</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon"><i class="fas fa-memory"></i></div>
-                        <h3>Quản Lý Bộ Nhớ Thông Minh</h3>
-                        <p>StringPool và PooledStringTable để khử trùng lặp chuỗi hiệu quả về bộ nhớ</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon"><i class="fas fa-undo"></i></div>
-                        <h3>Hoàn Tác/Làm Lại Hoàn Chỉnh</h3>
-                        <p>Triển khai mẫu lệnh đầy đủ với lịch sử hoàn tác/làm lại không giới hạn (lên đến 10000 bước)</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon"><i class="fas fa-language"></i></div>
-                        <h3>Hỗ Trợ Đa Ngôn Ngữ</h3>
-                        <p>Bản địa hóa tích hợp (Tiếng Việt, Tiếng Anh & Tiếng Nhật)</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon"><i class="fas fa-paint-brush"></i></div>
-                        <h3>Giao Diện Hiện Đại</h3>
-                        <p>Giao diện sạch sẽ, trực quan với nhận thức DPI và khả năng thu phóng</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon"><i class="fas fa-check-circle"></i></div>
-                        <h3>Kiểm Tra Dữ Liệu</h3>
-                        <p>Kiểm tra lỗi CSV theo thời gian thực với bảng lỗi hiển thị các vấn đề và sửa nhanh</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon"><i class="fas fa-sync-alt"></i></div>
-                        <h3>Tự Động Cập Nhật</h3>
-                        <p>Tự động kiểm tra và cài đặt phiên bản mới nhất, giữ ứng dụng luôn cập nhật</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Keyboard Shortcuts -->
-        <section id="shortcuts" class="section" style="background: var(--surface-color);">
-            <div class="container">
-                <h2 class="section-title">⌨️ Phím Tắt</h2>
-                <div class="shortcuts-grid">
-                    <div class="shortcut-category">
-                        <h3><i class="fas fa-file"></i> Thao Tác File</h3>
-                        <div class="shortcut-item">
-                            <span>Tạo File Mới</span>
-                            <span class="shortcut-key">Ctrl + N</span>
-                        </div>
-                        <div class="shortcut-item">
-                            <span>Mở File</span>
-                            <span class="shortcut-key">Ctrl + O</span>
-                        </div>
-                        <div class="shortcut-item">
-                            <span>Lưu</span>
-                            <span class="shortcut-key">Ctrl + S</span>
-                        </div>
-                        <div class="shortcut-item">
-                            <span>Lưu Thành</span>
-                            <span class="shortcut-key">Ctrl + Shift + S</span>
-                        </div>
-                        <div class="shortcut-item">
-                            <span>Xuất Excel</span>
-                            <span class="shortcut-key">Ctrl + E</span>
-                        </div>
-                        <div class="shortcut-item">
-                            <span>Đóng File</span>
-                            <span class="shortcut-key">Ctrl + W</span>
-                        </div>
-                    </div>
-
-                    <div class="shortcut-category">
-                        <h3><i class="fas fa-edit"></i> Chỉnh Sửa</h3>
-                        <div class="shortcut-item">
-                            <span>Hoàn Tác</span>
-                            <span class="shortcut-key">Ctrl + Z</span>
-                        </div>
-                        <div class="shortcut-item">
-                            <span>Làm Lại</span>
-                            <span class="shortcut-key">Ctrl + Y</span>
-                        </div>
-                        <div class="shortcut-item">
-                            <span>Sao Chép</span>
-                            <span class="shortcut-key">Ctrl + C</span>
-                        </div>
-                        <div class="shortcut-item">
-                            <span>Cắt</span>
-                            <span class="shortcut-key">Ctrl + X</span>
-                        </div>
-                        <div class="shortcut-item">
-                            <span>Dán</span>
-                            <span class="shortcut-key">Ctrl + V</span>
-                        </div>
-                        <div class="shortcut-item">
-                            <span>Xóa</span>
-                            <span class="shortcut-key">Delete</span>
-                        </div>
-                    </div>
-
-                    <div class="shortcut-category">
-                        <h3><i class="fas fa-search"></i> Xem & Tìm</h3>
-                        <div class="shortcut-item">
-                            <span>Tìm & Thay Thế</span>
-                            <span class="shortcut-key">Ctrl + F</span>
-                        </div>
-                        <div class="shortcut-item">
-                            <span>Tìm Tiếp</span>
-                            <span class="shortcut-key">F3</span>
-                        </div>
-                        <div class="shortcut-item">
-                            <span>Tự Động Điều Chỉnh Cột</span>
-                            <span class="shortcut-key">Ctrl + R</span>
-                        </div>
-                        <div class="shortcut-item">
-                            <span>Dấu Ngoặc Kép</span>
-                            <span class="shortcut-key">Ctrl + Q</span>
-                        </div>
-                    </div>
-
-                    <div class="shortcut-category">
-                        <h3><i class="fas fa-search-plus"></i> Thu Phóng</h3>
-                        <div class="shortcut-item">
-                            <span>Phóng To</span>
-                            <span class="shortcut-key">Ctrl + +</span>
-                        </div>
-                        <div class="shortcut-item">
-                            <span>Thu Nhỏ</span>
-                            <span class="shortcut-key">Ctrl + -</span>
-                        </div>
-                        <div class="shortcut-item">
-                            <span>Đặt Lại</span>
-                            <span class="shortcut-key">Ctrl + 0</span>
-                        </div>
-                    </div>
-
-                    <div class="shortcut-category">
-                        <h3><i class="fas fa-arrows-alt"></i> Điều Hướng</h3>
-                        <div class="shortcut-item">
-                            <span>Di Chuyển Ô</span>
-                            <span class="shortcut-key">Arrow Keys</span>
-                        </div>
-                        <div class="shortcut-item">
-                            <span>Ô Đầu Tiên</span>
-                            <span class="shortcut-key">Ctrl + Home</span>
-                        </div>
-                        <div class="shortcut-item">
-                            <span>Ô Cuối Cùng</span>
-                            <span class="shortcut-key">Ctrl + End</span>
-                        </div>
-                        <div class="shortcut-item">
-                            <span>Page Up/Down</span>
-                            <span class="shortcut-key">PgUp / PgDn</span>
-                        </div>
-                    </div>
-
-                    <div class="shortcut-category">
-                        <h3><i class="fas fa-table-cells"></i> Hàng & Cột</h3>
-                        <div class="shortcut-item">
-                            <span>Chèn Hàng</span>
-                            <span class="shortcut-key">Ctrl + Insert</span>
-                        </div>
-                        <div class="shortcut-item">
-                            <span>Ẩn Hàng</span>
-                            <span class="shortcut-key">Ctrl + H</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Detailed Features -->
-        <section id="details" class="section">
-            <div class="container">
-                <h2 class="section-title">🚀 Tính Năng Chi Tiết</h2>
-                
-                <div class="details-grid">
-                    <div class="feature-detail">
-                        <h3><i class="fas fa-file-alt"></i> Thao Tác File</h3>
-                        <h4>Các tính năng:</h4>
-                        <ul>
-                            <li>Tạo file CSV mới với kích thước tùy chỉnh</li>
-                            <li>Mở file với tự động phát hiện mã hóa (UTF-8, Shift-JIS, v.v.)</li>
-                            <li>Mở file trực tiếp từ URL (HTTP/HTTPS)</li>
-                            <li>Danh sách file gần đây (Ctrl+1-9 để truy cập nhanh)</li>
-                            <li>Hỗ trợ nhiều định dạng: CSV, TSV, và dấu phân cách tùy chỉnh</li>
-                            <li>Xuất ra Excel (.xlsx) với độ rộng cột tối ưu</li>
-                            <li>Gộp nhiều file CSV thành một với căn chỉnh cột tự động</li>
-                            <li>Mã hóa file với bảo vệ mật khẩu</li>
-                            <li>Kéo và thả file để mở nhanh</li>
-                            <li>Phát hiện thay đổi file từ bên ngoài và tự động nhắc tải lại</li>
-                        </ul>
-                    </div>
-
-                    <div class="feature-detail">
-                        <h3><i class="fas fa-table"></i> Thao Tác Dữ Liệu</h3>
-                        <h4>Tìm và Thay Thế:</h4>
-                        <ul>
-                            <li>Tìm kiếm chính xác, chứa, bắt đầu với, hoặc kết thúc với</li>
-                            <li>Tìm kiếm bằng Regex (biểu thức chính quy)</li>
-                            <li>Tìm kiếm kiểu SQL (VD: column1 = 'value' AND column2 > 10)</li>
-                            <li>Tìm chỉ trong cột hiện tại</li>
-                            <li>Đánh dấu tất cả kết quả</li>
-                            <li>Thay thế một hoặc tất cả</li>
-                            <li>Tìm kiếm song song nhanh cho dữ liệu lớn</li>
-                        </ul>
-                        <h4>Lọc và Sắp Xếp:</h4>
-                        <ul>
-                            <li>Lọc cột kiểu Excel với chọn nhiều</li>
-                            <li>Tìm kiếm trong giá trị lọc</li>
-                            <li>Sắp xếp tăng dần, giảm dần, tự nhiên, hoặc ngẫu nhiên</li>
-                            <li>Kết hợp bộ lọc trên nhiều cột</li>
-                        </ul>
-                        <h4>Kiểm Tra Dữ Liệu:</h4>
-                        <ul>
-                            <li>Phát hiện dấu ngoặc kép không cân bằng</li>
-                            <li>Phát hiện xuống dòng và dấu phân cách trong ô chưa được quote</li>
-                            <li>Phát hiện số có số 0 ở đầu, khoảng trắng thừa</li>
-                            <li>Bảng lỗi hiển thị theo thời gian thực với sửa nhanh</li>
-                        </ul>
-                    </div>
-
-                    <div class="feature-detail">
-                        <h3><i class="fas fa-columns"></i> Thao Tác Hàng & Cột</h3>
-                        <h4>Các tính năng:</h4>
-                        <ul>
-                            <li>Chèn/Xóa hàng và cột ở bất kỳ vị trí nào</li>
-                            <li>Ẩn/Hiện hàng và cột với undo/redo</li>
-                            <li>Đóng băng hàng và cột để cuộn dễ dàng</li>
-                            <li>Tự động điều chỉnh độ rộng cột theo nội dung</li>
-                            <li>Căn chỉnh cột: Trái, Giữa, Phải</li>
-                            <li>4 kiểu tiêu đề cột: Số, Excel (A, B, C...), CSV Header, hoặc Tùy chỉnh</li>
-                            <li>Chọn nhiều hàng/cột với Shift và Ctrl</li>
-                            <li>Đánh dấu ô quan trọng với màu nền (Highlight)</li>
-                        </ul>
-                    </div>
-
-                    <div class="feature-detail">
-                        <h3><i class="fas fa-cog"></i> Cài Đặt & Tùy Chỉnh</h3>
-                        <h4>Các tùy chọn:</h4>
-                        <ul>
-                            <li>Thu phóng từ 50% đến 500% (bước nhảy 25%)</li>
-                            <li>Chọn mã hóa: UTF-8, Shift-JIS, v.v.</li>
-                            <li>Dấu phân cách: Phẩy, Tab, Chấm phẩy, Gạch đứng, hoặc tùy chỉnh</li>
-                            <li>Đa ngôn ngữ: Tiếng Việt, Tiếng Anh, Tiếng Nhật</li>
-                            <li>Tùy chỉnh màu sắc theo kiểu dữ liệu (Số, Văn bản, Ngày)</li>
-                            <li>Tùy chỉnh màu nền, màu chữ, lưới, vùng đóng băng</li>
-                            <li>Thêm/Xóa dấu ngoặc kép</li>
-                            <li>Tự động kiểm tra cập nhật khi khởi động</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- System Requirements -->
-        <section id="download" class="section" style="background: var(--surface-color);">
-            <div class="container">
-                <div class="requirements">
-                    <h3>🛠️ Yêu Cầu Hệ Thống</h3>
-                    <div class="requirements-grid">
-                        <div class="requirement-item">
-                            <i class="fab fa-windows"></i>
-                            <h4>Hệ Điều Hành</h4>
-                            <p>Windows 10 trở lên</p>
-                        </div>
-                        <div class="requirement-item">
-                            <i class="fas fa-code"></i>
-                            <h4>Framework</h4>
-                            <p>.NET 8.0 Runtime</p>
-                        </div>
-                        <div class="requirement-item">
-                            <i class="fas fa-memory"></i>
-                            <h4>RAM</h4>
-                            <p>4 GB (8 GB khuyến nghị)</p>
-                        </div>
-                        <div class="requirement-item">
-                            <i class="fas fa-hdd"></i>
-                            <h4>Dung Lượng</h4>
-                            <p>50 MB</p>
-                        </div>
-                    </div>
-                    <div style="margin-top: 3rem;">
-                        <a href="data/CSVEditor-portable.zip" class="btn btn-primary">
-                            <i class="fas fa-download"></i> Tải Bản Portable
-                        </a>
-                        <a href="data/CSVEditor Setup.exe" class="btn btn-primary" style="margin-left: 1rem;">
-                            <i class="fas fa-download"></i> Tải Bản Cài Đặt
-                        </a>
-                        <a href="changelog.html" class="btn btn-secondary" style="margin-left: 1rem;">
-                            <i class="fas fa-history"></i> Xem Lịch Sử Cập Nhật
-                        </a>
-                        <p style="margin-top: 1rem; opacity: 0.9;">Chọn bản Portable (không cần cài đặt) hoặc bản Setup (cài đặt tự động)</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </div>
-
-    <!-- English Content -->
-    <div class="content-lang" data-lang="en">
-        <!-- Features Section -->
-        <section id="features-en" class="section">
-            <div class="container">
-                <h2 class="section-title">✨ Key Strengths</h2>
-                <div class="features-grid">
-                    <div class="feature-card">
-                        <div class="feature-icon"><i class="fas fa-rocket"></i></div>
-                        <h3>High Performance</h3>
-                        <p>Optimized for handling large datasets (millions of cells) with efficient memory management and parallel processing</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon"><i class="fas fa-th"></i></div>
-                        <h3>Advanced Data Grid</h3>
-                        <p>Custom DataGrid implementation with virtual mode for smooth scrolling and editing</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon"><i class="fas fa-memory"></i></div>
-                        <h3>Intelligent Memory</h3>
-                        <p>StringPool and PooledStringTable for memory-efficient string deduplication</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon"><i class="fas fa-undo"></i></div>
-                        <h3>Complete Undo/Redo</h3>
-                        <p>Full command pattern implementation with unlimited undo/redo history (up to 10000 steps)</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon"><i class="fas fa-language"></i></div>
-                        <h3>Multi-language Support</h3>
-                        <p>Built-in localization (Vietnamese, English & Japanese)</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon"><i class="fas fa-paint-brush"></i></div>
-                        <h3>Modern UI</h3>
-                        <p>Clean, intuitive interface with DPI awareness and zoom capabilities</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon"><i class="fas fa-check-circle"></i></div>
-                        <h3>Data Validation</h3>
-                        <p>Real-time CSV validation with error panel showing issues and quick fixes</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon"><i class="fas fa-sync-alt"></i></div>
-                        <h3>Auto Update</h3>
-                        <p>Automatically check and install latest version to keep your app up to date</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Keyboard Shortcuts -->
-        <section id="shortcuts-en" class="section" style="background: var(--surface-color);">
-            <div class="container">
-                <h2 class="section-title">⌨️ Keyboard Shortcuts</h2>
-                <div class="shortcuts-grid">
-                    <div class="shortcut-category">
-                        <h3><i class="fas fa-file"></i> File Operations</h3>
-                        <div class="shortcut-item">
-                            <span>New File</span>
-                            <span class="shortcut-key">Ctrl + N</span>
-                        </div>
-                        <div class="shortcut-item">
-                            <span>Open File</span>
-                            <span class="shortcut-key">Ctrl + O</span>
-                        </div>
-                        <div class="shortcut-item">
-                            <span>Save</span>
-                            <span class="shortcut-key">Ctrl + S</span>
-                        </div>
-                        <div class="shortcut-item">
-                            <span>Save As</span>
-                            <span class="shortcut-key">Ctrl + Shift + S</span>
-                        </div>
-                        <div class="shortcut-item">
-                            <span>Export to Excel</span>
-                            <span class="shortcut-key">Ctrl + E</span>
-                        </div>
-                        <div class="shortcut-item">
-                            <span>Close File</span>
-                            <span class="shortcut-key">Ctrl + W</span>
-                        </div>
-                    </div>
-
-                    <div class="shortcut-category">
-                        <h3><i class="fas fa-edit"></i> Edit Operations</h3>
-                        <div class="shortcut-item">
-                            <span>Undo</span>
-                            <span class="shortcut-key">Ctrl + Z</span>
-                        </div>
-                        <div class="shortcut-item">
-                            <span>Redo</span>
-                            <span class="shortcut-key">Ctrl + Y</span>
-                        </div>
-                        <div class="shortcut-item">
-                            <span>Copy</span>
-                            <span class="shortcut-key">Ctrl + C</span>
-                        </div>
-                        <div class="shortcut-item">
-                            <span>Cut</span>
-                            <span class="shortcut-key">Ctrl + X</span>
-                        </div>
-                        <div class="shortcut-item">
-                            <span>Paste</span>
-                            <span class="shortcut-key">Ctrl + V</span>
-                        </div>
-                        <div class="shortcut-item">
-                            <span>Delete</span>
-                            <span class="shortcut-key">Delete</span>
-                        </div>
-                    </div>
-
-                    <div class="shortcut-category">
-                        <h3><i class="fas fa-search"></i> View & Find</h3>
-                        <div class="shortcut-item">
-                            <span>Find & Replace</span>
-                            <span class="shortcut-key">Ctrl + F</span>
-                        </div>
-                        <div class="shortcut-item">
-                            <span>Find Next</span>
-                            <span class="shortcut-key">F3</span>
-                        </div>
-                        <div class="shortcut-item">
-                            <span>Resize Columns</span>
-                            <span class="shortcut-key">Ctrl + R</span>
-                        </div>
-                        <div class="shortcut-item">
-                            <span>Quote Marks</span>
-                            <span class="shortcut-key">Ctrl + Q</span>
-                        </div>
-                    </div>
-
-                    <div class="shortcut-category">
-                        <h3><i class="fas fa-search-plus"></i> Zoom</h3>
-                        <div class="shortcut-item">
-                            <span>Zoom In</span>
-                            <span class="shortcut-key">Ctrl + +</span>
-                        </div>
-                        <div class="shortcut-item">
-                            <span>Zoom Out</span>
-                            <span class="shortcut-key">Ctrl + -</span>
-                        </div>
-                        <div class="shortcut-item">
-                            <span>Reset Zoom</span>
-                            <span class="shortcut-key">Ctrl + 0</span>
-                        </div>
-                    </div>
-
-                    <div class="shortcut-category">
-                        <h3><i class="fas fa-arrows-alt"></i> Navigation</h3>
-                        <div class="shortcut-item">
-                            <span>Navigate Cells</span>
-                            <span class="shortcut-key">Arrow Keys</span>
-                        </div>
-                        <div class="shortcut-item">
-                            <span>First Cell</span>
-                            <span class="shortcut-key">Ctrl + Home</span>
-                        </div>
-                        <div class="shortcut-item">
-                            <span>Last Cell</span>
-                            <span class="shortcut-key">Ctrl + End</span>
-                        </div>
-                        <div class="shortcut-item">
-                            <span>Page Up/Down</span>
-                            <span class="shortcut-key">PgUp / PgDn</span>
-                        </div>
-                    </div>
-
-                    <div class="shortcut-category">
-                        <h3><i class="fas fa-table-cells"></i> Row & Column</h3>
-                        <div class="shortcut-item">
-                            <span>Insert Row</span>
-                            <span class="shortcut-key">Ctrl + Insert</span>
-                        </div>
-                        <div class="shortcut-item">
-                            <span>Hide Row</span>
-                            <span class="shortcut-key">Ctrl + H</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Detailed Features -->
-        <section id="details-en" class="section">
-            <div class="container">
-                <h2 class="section-title">🚀 Detailed Features</h2>
-                
-                <div class="details-grid">
-                    <div class="feature-detail">
-                        <h3><i class="fas fa-file-alt"></i> File Operations</h3>
-                        <h4>Features:</h4>
-                        <ul>
-                            <li>Create new CSV files with custom dimensions</li>
-                            <li>Open files with automatic encoding detection (UTF-8, Shift-JIS, etc.)</li>
-                            <li>Open files directly from URL (HTTP/HTTPS)</li>
-                            <li>Recent files list (Ctrl+1-9 for quick access)</li>
-                            <li>Support for multiple formats: CSV, TSV, and custom delimiters</li>
-                            <li>Export to Excel (.xlsx) with optimal column widths</li>
-                            <li>Merge multiple CSV files with automatic column alignment</li>
-                            <li>File encryption with password protection</li>
-                            <li>Drag and drop files to open quickly</li>
-                            <li>External file change detection with auto-reload prompt</li>
-                        </ul>
-                    </div>
-
-                    <div class="feature-detail">
-                        <h3><i class="fas fa-table"></i> Data Operations</h3>
-                        <h4>Find and Replace:</h4>
-                        <ul>
-                            <li>Search modes: exact, contains, starts with, or ends with</li>
-                            <li>Regex search (regular expressions)</li>
-                            <li>SQL-like search (e.g., column1 = 'value' AND column2 > 10)</li>
-                            <li>Find only in current column</li>
-                            <li>Highlight all matches</li>
-                            <li>Replace single or all occurrences</li>
-                            <li>Fast parallel search for large datasets</li>
-                        </ul>
-                        <h4>Filter and Sort:</h4>
-                        <ul>
-                            <li>Excel-like column filtering with multi-select</li>
-                            <li>Search within filter values</li>
-                            <li>Sort ascending, descending, natural, or shuffle</li>
-                            <li>Combine filters on multiple columns</li>
-                        </ul>
-                        <h4>Data Validation:</h4>
-                        <ul>
-                            <li>Detect unbalanced quotes</li>
-                            <li>Detect unquoted newlines and delimiters</li>
-                            <li>Detect leading zeros and trailing spaces</li>
-                            <li>Real-time error panel with quick fixes</li>
-                        </ul>
-                    </div>
-
-                    <div class="feature-detail">
-                        <h3><i class="fas fa-columns"></i> Row & Column Operations</h3>
-                        <h4>Features:</h4>
-                        <ul>
-                            <li>Insert/Delete rows and columns at any position</li>
-                            <li>Hide/Unhide rows and columns with undo/redo</li>
-                            <li>Freeze rows and columns for easy scrolling</li>
-                            <li>Auto-resize column widths to fit content</li>
-                            <li>Column alignment: Left, Center, Right</li>
-                            <li>4 column header styles: Number, Excel (A, B, C...), CSV Header, or Customize</li>
-                            <li>Select multiple rows/columns with Shift and Ctrl</li>
-                            <li>Highlight important cells with background color</li>
-                        </ul>
-                    </div>
-
-                    <div class="feature-detail">
-                        <h3><i class="fas fa-cog"></i> Settings & Customization</h3>
-                        <h4>Options:</h4>
-                        <ul>
-                            <li>Zoom from 50% to 500% (25% increments)</li>
-                            <li>Choose encoding: UTF-8, Shift-JIS, etc.</li>
-                            <li>Delimiters: Comma, Tab, Semicolon, Pipe, or custom</li>
-                            <li>Multi-language: Vietnamese, English, Japanese</li>
-                            <li>Customize colors by data type (Number, Text, Date)</li>
-                            <li>Customize background, text, grid, and frozen area colors</li>
-                            <li>Add/Remove quote marks</li>
-                            <li>Auto-check for updates on startup</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- System Requirements -->
-        <section id="download-en" class="section" style="background: var(--surface-color);">
-            <div class="container">
-                <div class="requirements">
-                    <h3>🛠️ System Requirements</h3>
-                    <div class="requirements-grid">
-                        <div class="requirement-item">
-                            <i class="fab fa-windows"></i>
-                            <h4>Operating System</h4>
-                            <p>Windows 10 or later</p>
-                        </div>
-                        <div class="requirement-item">
-                            <i class="fas fa-code"></i>
-                            <h4>Framework</h4>
-                            <p>.NET 8.0 Runtime</p>
-                        </div>
-                        <div class="requirement-item">
-                            <i class="fas fa-memory"></i>
-                            <h4>RAM</h4>
-                            <p>4 GB (8 GB recommended)</p>
-                        </div>
-                        <div class="requirement-item">
-                            <i class="fas fa-hdd"></i>
-                            <h4>Disk Space</h4>
-                            <p>50 MB</p>
-                        </div>
-                    </div>
-                    <div style="margin-top: 3rem;">
-                        <a href="data/CSVEditor-portable.zip" class="btn btn-primary">
-                            <i class="fas fa-download"></i> Download Portable
-                        </a>
-                        <a href="data/CSVEditor Setup.exe" class="btn btn-primary" style="margin-left: 1rem;">
-                            <i class="fas fa-download"></i> Download Setup
-                        </a>
-                        <a href="changelog.html" class="btn btn-secondary" style="margin-left: 1rem;">
-                            <i class="fas fa-history"></i> View Changelog
-                        </a>
-                        <p style="margin-top: 1rem; opacity: 0.9;">Choose Portable (no installation) or Setup (auto-install)</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </div>
-
-    <!-- Japanese Content -->
-    <div class="content-lang" data-lang="ja">
-        <!-- Features Section -->
-        <section id="features-ja" class="section">
-            <div class="container">
-                <h2 class="section-title">✨ 主な強み</h2>
-                <div class="features-grid">
-                    <div class="feature-card">
-                        <div class="feature-icon"><i class="fas fa-rocket"></i></div>
-                        <h3>高性能</h3>
-                        <p>効率的なメモリ管理と並列処理により、大規模なデータセット（数百万セル）の処理に最適化</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon"><i class="fas fa-th"></i></div>
-                        <h3>高度なデータグリッド</h3>
-                        <p>スムーズなスクロールと編集のための仮想化モードを備えたカスタムDataGrid実装</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon"><i class="fas fa-memory"></i></div>
-                        <h3>インテリジェントメモリ</h3>
-                        <p>メモリ効率的な文字列重複排除のためのStringPoolとPooledStringTable</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon"><i class="fas fa-undo"></i></div>
-                        <h3>完全な元に戻す/やり直し</h3>
-                        <p>無制限の元に戻す/やり直し履歴（最大10000ステップ）を備えた完全なコマンドパターン実装</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon"><i class="fas fa-language"></i></div>
-                        <h3>多言語サポート</h3>
-                        <p>組み込みのローカライゼーション（ベトナム語、英語、日本語）</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon"><i class="fas fa-paint-brush"></i></div>
-                        <h3>モダンUI</h3>
-                        <p>DPI認識とズーム機能を備えたクリーンで直感的なインターフェイス</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon"><i class="fas fa-check-circle"></i></div>
-                        <h3>データ検証</h3>
-                        <p>リアルタイムCSV検証と問題とクイックフィックスを表示するエラーパネル</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon"><i class="fas fa-sync-alt"></i></div>
-                        <h3>自動更新</h3>
-                        <p>最新バージョンを自動的にチェックしてインストール、アプリを常に最新に保つ</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Keyboard Shortcuts -->
-        <section id="shortcuts-ja" class="section" style="background: var(--surface-color);">
-            <div class="container">
-                <h2 class="section-title">⌨️ キーボードショートカット</h2>
-                <div class="shortcuts-grid">
-                    <div class="shortcut-category">
-                        <h3><i class="fas fa-file"></i> ファイル操作</h3>
-                        <div class="shortcut-item">
-                            <span>新規ファイル</span>
-                            <span class="shortcut-key">Ctrl + N</span>
-                        </div>
-                        <div class="shortcut-item">
-                            <span>ファイルを開く</span>
-                            <span class="shortcut-key">Ctrl + O</span>
-                        </div>
-                        <div class="shortcut-item">
-                            <span>保存</span>
-                            <span class="shortcut-key">Ctrl + S</span>
-                        </div>
-                        <div class="shortcut-item">
-                            <span>名前を付けて保存</span>
-                            <span class="shortcut-key">Ctrl + Shift + S</span>
-                        </div>
-                        <div class="shortcut-item">
-                            <span>Excelにエクスポート</span>
-                            <span class="shortcut-key">Ctrl + E</span>
-                        </div>
-                        <div class="shortcut-item">
-                            <span>ファイルを閉じる</span>
-                            <span class="shortcut-key">Ctrl + W</span>
-                        </div>
-                    </div>
-
-                    <div class="shortcut-category">
-                        <h3><i class="fas fa-edit"></i> 編集操作</h3>
-                        <div class="shortcut-item">
-                            <span>元に戻す</span>
-                            <span class="shortcut-key">Ctrl + Z</span>
-                        </div>
-                        <div class="shortcut-item">
-                            <span>やり直し</span>
-                            <span class="shortcut-key">Ctrl + Y</span>
-                        </div>
-                        <div class="shortcut-item">
-                            <span>コピー</span>
-                            <span class="shortcut-key">Ctrl + C</span>
-                        </div>
-                        <div class="shortcut-item">
-                            <span>切り取り</span>
-                            <span class="shortcut-key">Ctrl + X</span>
-                        </div>
-                        <div class="shortcut-item">
-                            <span>貼り付け</span>
-                            <span class="shortcut-key">Ctrl + V</span>
-                        </div>
-                        <div class="shortcut-item">
-                            <span>削除</span>
-                            <span class="shortcut-key">Delete</span>
-                        </div>
-                    </div>
-
-                    <div class="shortcut-category">
-                        <h3><i class="fas fa-search"></i> 表示と検索</h3>
-                        <div class="shortcut-item">
-                            <span>検索と置換</span>
-                            <span class="shortcut-key">Ctrl + F</span>
-                        </div>
-                        <div class="shortcut-item">
-                            <span>次を検索</span>
-                            <span class="shortcut-key">F3</span>
-                        </div>
-                        <div class="shortcut-item">
-                            <span>列のリサイズ</span>
-                            <span class="shortcut-key">Ctrl + R</span>
-                        </div>
-                        <div class="shortcut-item">
-                            <span>引用符</span>
-                            <span class="shortcut-key">Ctrl + Q</span>
-                        </div>
-                    </div>
-
-                    <div class="shortcut-category">
-                        <h3><i class="fas fa-search-plus"></i> ズーム</h3>
-                        <div class="shortcut-item">
-                            <span>拡大</span>
-                            <span class="shortcut-key">Ctrl + +</span>
-                        </div>
-                        <div class="shortcut-item">
-                            <span>縮小</span>
-                            <span class="shortcut-key">Ctrl + -</span>
-                        </div>
-                        <div class="shortcut-item">
-                            <span>ズームリセット</span>
-                            <span class="shortcut-key">Ctrl + 0</span>
-                        </div>
-                    </div>
-
-                    <div class="shortcut-category">
-                        <h3><i class="fas fa-arrows-alt"></i> ナビゲーション</h3>
-                        <div class="shortcut-item">
-                            <span>セル移動</span>
-                            <span class="shortcut-key">Arrow Keys</span>
-                        </div>
-                        <div class="shortcut-item">
-                            <span>最初のセル</span>
-                            <span class="shortcut-key">Ctrl + Home</span>
-                        </div>
-                        <div class="shortcut-item">
-                            <span>最後のセル</span>
-                            <span class="shortcut-key">Ctrl + End</span>
-                        </div>
-                        <div class="shortcut-item">
-                            <span>ページ上下</span>
-                            <span class="shortcut-key">PgUp / PgDn</span>
-                        </div>
-                    </div>
-
-                    <div class="shortcut-category">
-                        <h3><i class="fas fa-table-cells"></i> 行と列</h3>
-                        <div class="shortcut-item">
-                            <span>行を挿入</span>
-                            <span class="shortcut-key">Ctrl + Insert</span>
-                        </div>
-                        <div class="shortcut-item">
-                            <span>行を非表示</span>
-                            <span class="shortcut-key">Ctrl + H</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Detailed Features -->
-        <section id="details-ja" class="section">
-            <div class="container">
-                <h2 class="section-title">🚀 詳細機能</h2>
-                
-                <div class="details-grid">
-                    <div class="feature-detail">
-                        <h3><i class="fas fa-file-alt"></i> ファイル操作</h3>
-                        <h4>機能:</h4>
-                        <ul>
-                            <li>カスタムサイズの新しいCSVファイルを作成</li>
-                            <li>自動エンコーディング検出でファイルを開く（UTF-8、Shift-JISなど）</li>
-                            <li>URLから直接ファイルを開く（HTTP/HTTPS）</li>
-                            <li>最近開いたファイルリスト（Ctrl+1-9でクイックアクセス）</li>
-                            <li>複数形式のサポート：CSV、TSV、カスタム区切り文字</li>
-                            <li>最適な列幅でExcel（.xlsx）にエクスポート</li>
-                            <li>自動列配置で複数のCSVファイルを結合</li>
-                            <li>パスワード保護付きファイル暗号化</li>
-                            <li>ドラッグ＆ドロップでファイルを素早く開く</li>
-                            <li>外部ファイル変更検出と自動再読み込みプロンプト</li>
-                        </ul>
-                    </div>
-
-                    <div class="feature-detail">
-                        <h3><i class="fas fa-table"></i> データ操作</h3>
-                        <h4>検索と置換:</h4>
-                        <ul>
-                            <li>検索モード：完全一致、部分一致、先頭一致、末尾一致</li>
-                            <li>Regex検索（正規表現）</li>
-                            <li>SQLライク検索（例：column1 = 'value' AND column2 > 10）</li>
-                            <li>現在の列のみで検索</li>
-                            <li>すべての一致をハイライト</li>
-                            <li>単一またはすべての出現を置換</li>
-                            <li>大規模なデータセットの高速並列検索</li>
-                        </ul>
-                        <h4>フィルタとソート:</h4>
-                        <ul>
-                            <li>複数選択可能なExcelライクな列フィルタリング</li>
-                            <li>フィルタ値内の検索</li>
-                            <li>昇順、降順、自然順、またはシャッフルでソート</li>
-                            <li>複数の列にフィルタを組み合わせ</li>
-                        </ul>
-                        <h4>データ検証:</h4>
-                        <ul>
-                            <li>アンバランスお重覆引用符を検出</li>
-                            <li>クォートされていない改行と区切り文字を検出</li>
-                            <li>先頭ゼロと末尾スペースを検出</li>
-                            <li>クイックフィックス付きリアルタイムエラーパネル</li>
-                        </ul>
-                    </div>
-
-                    <div class="feature-detail">
-                        <h3><i class="fas fa-columns"></i> 行と列の操作</h3>
-                        <h4>機能:</h4>
-                        <ul>
-                            <li>任意の位置で行と列を挿入/削除</li>
-                            <li>元に戻す/やり直し機能付きで行と列を非表示/再表示</li>
-                            <li>スクロールを簡単にするために行と列を固定</li>
-                            <li>内容に合わせて列幅を自動リサイズ</li>
-                            <li>列の配置：左、中央、右</li>
-                            <li>4つの列ヘッダースタイル：番号、Excel（A、B、C...）、CSVヘッダー、またはカスタマイズ</li>
-                            <li>ShiftとCtrlで複数の行/列を選択</li>
-                            <li>背景色で重要なセルをハイライト</li>
-                        </ul>
-                    </div>
-
-                    <div class="feature-detail">
-                        <h3><i class="fas fa-cog"></i> 設定とカスタマイズ</h3>
-                        <h4>オプション:</h4>
-                        <ul>
-                            <li>50%から500%までのズーム（25%刻み）</li>
-                            <li>エンコーディングの選択：UTF-8、Shift-JISなど</li>
-                            <li>区切り文字：カンマ、タブ、セミコロン、パイプ、またはカスタム</li>
-                            <li>多言語：ベトナム語、英語、日本語</li>
-                            <li>データタイプ別の色カスタマイズ（数値、テキスト、日付）</li>
-                            <li>背景、テキスト、グリッド、固定エリアの色カスタマイズ</li>
-                            <li>引用符の追加/削除</li>
-                            <li>起動時に更新を自動チェック</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- System Requirements -->
-        <section id="download-ja" class="section" style="background: var(--surface-color);">
-            <div class="container">
-                <div class="requirements">
-                    <h3>🛠️ システム要件</h3>
-                    <div class="requirements-grid">
-                        <div class="requirement-item">
-                            <i class="fab fa-windows"></i>
-                            <h4>オペレーティングシステム</h4>
-                            <p>Windows 10以降</p>
-                        </div>
-                        <div class="requirement-item">
-                            <i class="fas fa-code"></i>
-                            <h4>フレームワーク</h4>
-                            <p>.NET 8.0ランタイム</p>
-                        </div>
-                        <div class="requirement-item">
-                            <i class="fas fa-memory"></i>
-                            <h4>RAM</h4>
-                            <p>4 GB（8 GB推奨）</p>
-                        </div>
-                        <div class="requirement-item">
-                            <i class="fas fa-hdd"></i>
-                            <h4>ディスクスペース</h4>
-                            <p>50 MB</p>
-                        </div>
-                    </div>
-                    <div style="margin-top: 3rem;">
-                        <a href="data/CSVEditor-portable.zip" class="btn btn-primary">
-                            <i class="fas fa-download"></i> ポータブル版をダウンロード
-                        </a>
-                        <a href="data/CSVEditor Setup.exe" class="btn btn-primary" style="margin-left: 1rem;">
-                            <i class="fas fa-download"></i> インストーラーをダウンロード
-                        </a>
-                        <a href="changelog.html" class="btn btn-secondary" style="margin-left: 1rem;">
-                            <i class="fas fa-history"></i> 更新履歴を表示
-                        </a>
-                        <p style="margin-top: 1rem; opacity: 0.9;">ポータブル版（インストール不要）またはセットアップ版（自動インストール）を選択</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </div>
-
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <!-- Vietnamese Footer -->
-                <div class="footer-section">
-                    <h3>CSV Editor</h3>
-                    <p class="content-lang active" data-lang="vi">Ứng dụng chỉnh sửa CSV mạnh mẽ được xây dựng bằng .NET 8 cho Windows</p>
-                    <p class="content-lang" data-lang="en">Powerful CSV editor built with .NET 8 for Windows</p>
-                    <p class="content-lang" data-lang="ja">Windows用.NET 8で構築された強力なCSVエディタ</p>
-                    <div class="social-links">
-                        <a href="https://github.com/tnkbang/CSVEditor"><i class="fab fa-github"></i></a>
-                    </div>
-                </div>
-                <div class="footer-section">
-                    <h3 class="content-lang active" data-lang="vi">Liên Kết</h3>
-                    <h3 class="content-lang" data-lang="en">Links</h3>
-                    <h3 class="content-lang" data-lang="ja">リンク</h3>
-                    <a href="https://github.com/tnkbang/CSVEditor">GitHub Repository</a>
-                    <a href="https://github.com/tnkbang/CSVEditor/releases" class="content-lang active" data-lang="vi">Tải Xuống</a>
-                    <a href="https://github.com/tnkbang/CSVEditor/releases" class="content-lang" data-lang="en">Download</a>
-                    <a href="https://github.com/tnkbang/CSVEditor/releases" class="content-lang" data-lang="ja">ダウンロード</a>
-                    <a href="https://github.com/tnkbang/CSVEditor/issues" class="content-lang active" data-lang="vi">Báo Lỗi</a>
-                    <a href="https://github.com/tnkbang/CSVEditor/issues" class="content-lang" data-lang="en">Report Issues</a>
-                    <a href="https://github.com/tnkbang/CSVEditor/issues" class="content-lang" data-lang="ja">問題を報告</a>
-                    <a href="README.md" class="content-lang active" data-lang="vi">Tài liệu</a>
-                    <a href="README.md" class="content-lang" data-lang="en">Documentation</a>
-                    <a href="README.md" class="content-lang" data-lang="ja">書類</a>
-                </div>
-                <div class="footer-section">
-                    <h3 class="content-lang active" data-lang="vi">Tài Nguyên</h3>
-                    <h3 class="content-lang" data-lang="en">Resources</h3>
-                    <h3 class="content-lang" data-lang="ja">リソース</h3>
-                    <a href="README_Vi.md" class="content-lang active" data-lang="vi">Hướng Dẫn Tiếng Việt</a>
-                    <a href="README_Vi.md" class="content-lang" data-lang="en">Vietnamese Guide</a>
-                    <a href="README_Vi.md" class="content-lang" data-lang="ja">ベトナム語ガイド</a>
-                    <a href="README.md" class="content-lang active" data-lang="vi">English Guide</a>
-                    <a href="README.md" class="content-lang" data-lang="en">English Guide</a>
-                    <a href="README.md" class="content-lang" data-lang="ja">英語ガイド</a>
-                    <a href="README_Ja.md" class="content-lang active" data-lang="vi">日本語ガイド</a>
-                    <a href="README_Ja.md" class="content-lang" data-lang="en">Japanese Guide</a>
-                    <a href="README_Ja.md" class="content-lang" data-lang="ja">日本語ガイド</a>
-                </div>
-                <div class="footer-section">
-                    <h3 class="content-lang active" data-lang="vi">Giấy Phép</h3>
-                    <h3 class="content-lang" data-lang="en">License</h3>
-                    <h3 class="content-lang" data-lang="ja">ライセンス</h3>
-                    <a href="LICENSE_Vi.txt" rel="license" class="content-lang active" data-lang="vi">CSVEditor Software License v1.0</a>
-                    <a href="LICENSE.txt" rel="license" class="content-lang" data-lang="en">CSVEditor Software License v1.0</a>
-                    <a href="LICENSE.txt" rel="license" class="content-lang" data-lang="ja">CSVEditor Software License v1.0</a>
-                    <p class="content-lang active" data-lang="vi">© 2025 CSV Editor - Bảo lưu mọi quyền</p>
-                    <p class="content-lang" data-lang="en">© 2025 CSV Editor - All Rights Reserved</p>
-                    <p class="content-lang" data-lang="ja">© 2025 CSV Editor - 全著作権所有</p>
-                </div>
-            </div>
-            <div class="copyright">
-                <p class="content-lang active" data-lang="vi">Được tạo bởi <a href="https://github.com/tnkbang" style="color: var(--primary-color);">@tnkbang</a></p>
-                <p class="content-lang" data-lang="en">Created by <a href="https://github.com/tnkbang" style="color: var(--primary-color);">@tnkbang</a></p>
-                <p class="content-lang" data-lang="ja"><a href="https://github.com/tnkbang" style="color: var(--primary-color);">@tnkbang</a> が作成</p>
-            </div>
+    <!-- Screenshots / Interface Section -->
+    <section id="interface" class="home-section alt">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-kicker">
+            <span class="lang-inline" data-lang="vi">Giao diện thực tế</span>
+            <span class="lang-inline" data-lang="en">Real Application Interface</span>
+            <span class="lang-inline" data-lang="ja">実際のインターフェース</span>
+          </div>
+          <h2>
+            <span class="lang-inline" data-lang="vi">Ảnh chụp màn hình từ CSV Editor</span>
+            <span class="lang-inline" data-lang="en">Inside CSV Editor</span>
+            <span class="lang-inline" data-lang="ja">CSV Editorの画面紹介</span>
+          </h2>
+          <p>
+            <span class="lang-inline" data-lang="vi">Nhấp vào bất kỳ ảnh nào để phóng to và xem chi tiết.</span>
+            <span class="lang-inline" data-lang="en">Click any screenshot to inspect it full-size with zoom controls.</span>
+            <span class="lang-inline" data-lang="ja">画像をクリックすると拡大表示できます。</span>
+          </p>
         </div>
-    </footer>
 
-    <script src="script.js"></script>
+        <div class="gallery-grid">
+          <article class="shot-card">
+            <div class="shot-media" data-lightbox="images/default-open.png" data-caption="Main Window — Empty workspace with Drag &amp; Drop support, Toolbar, and Status Bar">
+              <img src="images/default-open.png" alt="CSV Editor main window with empty drag and drop zone" loading="lazy">
+            </div>
+            <div class="shot-body">
+              <h3>
+                <span class="lang-inline" data-lang="vi">Cửa sổ chính &amp; Kéo thả mở nhanh</span>
+                <span class="lang-inline" data-lang="en">Main Window &amp; Drag-and-Drop</span>
+                <span class="lang-inline" data-lang="ja">メインウィンドウ＆ドラッグ＆ドロップ</span>
+              </h3>
+              <p>
+                <span class="lang-inline" data-lang="vi">Thanh công cụ trực quan, giao diện đa tab, thanh trạng thái hiển thị kiểu xuống dòng và bảng mã.</span>
+                <span class="lang-inline" data-lang="en">Clean toolbar, multi-tab workspace, drag-and-drop landing area, and live newline/encoding status bar.</span>
+                <span class="lang-inline" data-lang="ja">直感的なツールバー、マルチタブ、ドラッグ＆ドロップ対応エリア、改行・文字コード表示ステータスバー。</span>
+              </p>
+            </div>
+          </article>
+
+          <article class="shot-card">
+            <div class="shot-media" data-lightbox="images/menu-file.png" data-caption="File Menu — Open, Open from URL, New, Save, Save As, Export to Excel, Recent Files">
+              <img src="images/menu-file.png" alt="CSV Editor File menu showing Open, Open from URL, Save, and Export to Excel" loading="lazy">
+            </div>
+            <div class="shot-body">
+              <h3>
+                <span class="lang-inline" data-lang="vi">Menu Tệp &amp; Mở từ URL / Xuất Excel</span>
+                <span class="lang-inline" data-lang="en">File Menu, URL Load &amp; Excel Export</span>
+                <span class="lang-inline" data-lang="ja">ファイルメニュー・URL読み込み・Excel出力</span>
+              </h3>
+              <p>
+                <span class="lang-inline" data-lang="vi">Truy cập nhanh tạo mới, mở file cục bộ hoặc từ HTTP/HTTPS URL, danh sách file gần đây và xuất .xlsx.</span>
+                <span class="lang-inline" data-lang="en">Quick access to local files, HTTP/HTTPS URLs, recent files (Ctrl+1–9), and native .xlsx export.</span>
+                <span class="lang-inline" data-lang="ja">ローカルファイル、HTTP/HTTPS URL、最近使ったファイル（Ctrl+1〜9）、.xlsx出力に素早くアクセス。</span>
+              </p>
+            </div>
+          </article>
+
+          <article class="shot-card">
+            <div class="shot-media" data-lightbox="images/find-and-replace.png" data-caption="Find and Replace — 6 search modes, match counter, column scope, and live grid highlighting">
+              <img src="images/find-and-replace.png" alt="CSV Editor Find and Replace dialog highlighting matches in the grid" loading="lazy">
+            </div>
+            <div class="shot-body">
+              <h3>
+                <span class="lang-inline" data-lang="vi">Tìm &amp; Thay thế (Hỗ trợ Regex &amp; SQL)</span>
+                <span class="lang-inline" data-lang="en">Find &amp; Replace (Regex &amp; SQL)</span>
+                <span class="lang-inline" data-lang="ja">検索と置換（正規表現・SQL対応）</span>
+              </h3>
+              <p>
+                <span class="lang-inline" data-lang="vi">Tô sáng kết quả khớp trực tiếp trên lưới, đếm số lượng kết quả, giới hạn phạm vi cột và thay thế hàng loạt.</span>
+                <span class="lang-inline" data-lang="en">Live match highlighting on the grid, match counter, single-column scope, and single or batch replacement.</span>
+                <span class="lang-inline" data-lang="ja">一致セルのハイライト、件数表示、現在の列のみの検索、単一・一括置換に対応。</span>
+              </p>
+            </div>
+          </article>
+
+          <article class="shot-card">
+            <div class="shot-media" data-lightbox="images/filter.png" data-caption="Excel-Style Column Filter — Searchable checklist with value counts and sort controls">
+              <img src="images/filter.png" alt="CSV Editor column filter popup with search box and value checklist" loading="lazy">
+            </div>
+            <div class="shot-body">
+              <h3>
+                <span class="lang-inline" data-lang="vi">Bộ lọc cột kiểu Excel</span>
+                <span class="lang-inline" data-lang="en">Excel-Style Column Filter</span>
+                <span class="lang-inline" data-lang="ja">Excel風の列フィルタ</span>
+              </h3>
+              <p>
+                <span class="lang-inline" data-lang="vi">Tìm nhanh giá trị lọc, sắp xếp theo tên hoặc tần suất xuất hiện và kết hợp bộ lọc trên nhiều cột.</span>
+                <span class="lang-inline" data-lang="en">Search within unique values, sort by name or count, and combine filters across multiple columns.</span>
+                <span class="lang-inline" data-lang="ja">値リスト内検索、名前順・件数順ソート、複数列の組み合わせフィルタに対応。</span>
+              </p>
+            </div>
+          </article>
+
+          <div class="shot-placeholder">
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg>
+            <div>
+              <strong class="lang-inline" data-lang="vi">Ghi chú cập nhật ảnh chụp phiên bản v3.1:</strong>
+              <strong class="lang-inline" data-lang="en">v3.1 Screenshot Update Note:</strong>
+              <strong class="lang-inline" data-lang="ja">v3.1スクリーンショット更新メモ:</strong>
+              <span class="lang-inline" data-lang="vi"> Ảnh chụp màn hình Cài đặt 8 trang mới, giao diện Dark Mode, cột hiển thị ký tự xuống dòng và Error Panel sẽ được bổ sung từ ứng dụng thực tế (ảnh dialog tùy chỉnh cũ đã được gỡ bỏ để tránh gây nhầm lẫn).</span>
+              <span class="lang-inline" data-lang="en"> Captures of the redesigned 8-page Settings dialog, Dark Mode, Newline Viewport Column, and Error Panel are queued for live capture (the legacy 3-tab style dialog screenshot was intentionally retired).</span>
+              <span class="lang-inline" data-lang="ja"> 新設計の8ページ設定画面、ダークモード、改行文字表示列、エラーパネルの実機スクリーンショットは順次追加予定です（旧3タブ設定画面の画像は混乱を防ぐため非表示にしました）。</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Quick Start -->
+    <section class="home-section">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-kicker">
+            <span class="lang-inline" data-lang="vi">Bắt đầu nhanh</span>
+            <span class="lang-inline" data-lang="en">Quick Start</span>
+            <span class="lang-inline" data-lang="ja">クイックスタート</span>
+          </div>
+          <h2>
+            <span class="lang-inline" data-lang="vi">3 bước để bắt đầu làm việc với CSV Editor</span>
+            <span class="lang-inline" data-lang="en">Up and running in three steps</span>
+            <span class="lang-inline" data-lang="ja">3ステップで使い始める</span>
+          </h2>
+        </div>
+
+        <div class="steps-grid">
+          <div class="step-card">
+            <span class="step-num">1</span>
+            <h3>
+              <span class="lang-inline" data-lang="vi">Mở hoặc kéo thả tệp</span>
+              <span class="lang-inline" data-lang="en">Open or Drop Your File</span>
+              <span class="lang-inline" data-lang="ja">ファイルを開く・ドロップ</span>
+            </h3>
+            <p>
+              <span class="lang-inline" data-lang="vi">Kéo thả tệp <code>.csv</code>, <code>.tsv</code>, <code>.txt</code>, <code>.uke</code>, <code>.tab</code>, <code>.dat</code> vào cửa sổ, nhấn <kbd>Ctrl</kbd>+<kbd>O</kbd>, hoặc mở trực tiếp từ URL (<kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>O</kbd>).</span>
+              <span class="lang-inline" data-lang="en">Drag and drop <code>.csv</code>, <code>.tsv</code>, <code>.txt</code>, <code>.uke</code>, <code>.tab</code>, or <code>.dat</code> files, press <kbd>Ctrl</kbd>+<kbd>O</kbd>, or load from an HTTP/HTTPS URL (<kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>O</kbd>).</span>
+              <span class="lang-inline" data-lang="ja"><code>.csv</code>・<code>.tsv</code>・<code>.txt</code>・<code>.uke</code>・<code>.tab</code>・<code>.dat</code>をドラッグ＆ドロップするか、<kbd>Ctrl</kbd>+<kbd>O</kbd>またはURL（<kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>O</kbd>）から開きます。</span>
+            </p>
+          </div>
+
+          <div class="step-card">
+            <span class="step-num">2</span>
+            <h3>
+              <span class="lang-inline" data-lang="vi">Chỉnh sửa, lọc &amp; kiểm tra lỗi</span>
+              <span class="lang-inline" data-lang="en">Edit, Filter &amp; Validate</span>
+              <span class="lang-inline" data-lang="ja">編集・フィルタ・検証</span>
+            </h3>
+            <p>
+              <span class="lang-inline" data-lang="vi">Chỉnh sửa trực tiếp với <kbd>F2</kbd>, kéo Fill Handle, lọc theo cột, tìm bằng Regex/SQL (<kbd>Ctrl</kbd>+<kbd>F</kbd>) và xử lý nhanh cảnh báo CSV trong Error Panel.</span>
+              <span class="lang-inline" data-lang="en">Edit inline with <kbd>F2</kbd>, drag the Fill Handle, filter columns, run Regex/SQL search (<kbd>Ctrl</kbd>+<kbd>F</kbd>), and resolve CSV issues from the Error Panel.</span>
+              <span class="lang-inline" data-lang="ja"><kbd>F2</kbd>でセル編集、オートフィル、列フィルタ、正規表現/SQL検索（<kbd>Ctrl</kbd>+<kbd>F</kbd>）、エラーパネルでのクイック修正を活用できます。</span>
+            </p>
+          </div>
+
+          <div class="step-card">
+            <span class="step-num">3</span>
+            <h3>
+              <span class="lang-inline" data-lang="vi">Lưu an toàn hoặc xuất Excel</span>
+              <span class="lang-inline" data-lang="en">Save Safely or Export Excel</span>
+              <span class="lang-inline" data-lang="ja">安全に保存・Excel出力</span>
+            </h3>
+            <p>
+              <span class="lang-inline" data-lang="vi">Nhấn <kbd>Ctrl</kbd>+<kbd>S</kbd> để lưu nguyên tử (SafeFileWriter) với đúng bảng mã và ký tự xuống dòng, hoặc <kbd>Ctrl</kbd>+<kbd>E</kbd> để xuất ra <code>.xlsx</code>.</span>
+              <span class="lang-inline" data-lang="en">Press <kbd>Ctrl</kbd>+<kbd>S</kbd> for crash-safe atomic saving preserving encoding and line endings, or press <kbd>Ctrl</kbd>+<kbd>E</kbd> to export to <code>.xlsx</code>.</span>
+              <span class="lang-inline" data-lang="ja"><kbd>Ctrl</kbd>+<kbd>S</kbd>で文字コード・改行を保持したまま安全に保存し、<kbd>Ctrl</kbd>+<kbd>E</kbd>で<code>.xlsx</code>へ出力できます。</span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Download & About Section -->
+    <section id="download" class="home-section alt">
+      <div class="container download-grid">
+        <div class="download-panel">
+          <h3>
+            <span class="lang-inline" data-lang="vi">Tải xuống CSV Editor v3.1.0.0</span>
+            <span class="lang-inline" data-lang="en">Download CSV Editor v3.1.0.0</span>
+            <span class="lang-inline" data-lang="ja">CSV Editor v3.1.0.0 をダウンロード</span>
+          </h3>
+          <p>
+            <span class="lang-inline" data-lang="vi">Chọn bản <strong>Portable</strong> (chạy ngay không cần cài đặt, lưu cấu hình trong thư mục ứng dụng) hoặc bản <strong>Setup</strong> (cài đặt chuẩn Windows).</span>
+            <span class="lang-inline" data-lang="en">Choose <strong>Portable</strong> (no installation required; stores config alongside the executable) or <strong>Setup</strong> (standard Windows installer).</span>
+            <span class="lang-inline" data-lang="ja">インストール不要の<strong>ポータブル版</strong>（アプリフォルダに設定保存）または標準<strong>インストーラー版</strong>を選択できます。</span>
+          </p>
+
+          <div class="download-buttons">
+            <a href="data/CSVEditor-portable.zip" class="btn btn-primary">
+              <svg class="icon icon-sm" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+              <span class="lang-inline" data-lang="vi">Tải bản Portable (.zip)</span>
+              <span class="lang-inline" data-lang="en">Download Portable (.zip)</span>
+              <span class="lang-inline" data-lang="ja">ポータブル版 (.zip)</span>
+            </a>
+            <a href="data/CSVEditor Setup.exe" class="btn btn-secondary">
+              <svg class="icon icon-sm" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+              <span class="lang-inline" data-lang="vi">Tải bản Cài đặt (.exe)</span>
+              <span class="lang-inline" data-lang="en">Download Installer (.exe)</span>
+              <span class="lang-inline" data-lang="ja">インストーラー (.exe)</span>
+            </a>
+          </div>
+
+          <div class="req-list">
+            <div class="req-item">
+              <strong>OS</strong>
+              <span>Windows 10 / 11</span>
+            </div>
+            <div class="req-item">
+              <strong>Runtime</strong>
+              <span>.NET 8.0 Desktop Runtime</span>
+            </div>
+            <div class="req-item">
+              <strong>
+                <span class="lang-inline" data-lang="vi">Cập nhật</span>
+                <span class="lang-inline" data-lang="en">Updates</span>
+                <span class="lang-inline" data-lang="ja">アップデート</span>
+              </strong>
+              <span>
+                <span class="lang-inline" data-lang="vi">Kiểm tra tự động qua update.xml</span>
+                <span class="lang-inline" data-lang="en">Built-in updater via update.xml</span>
+                <span class="lang-inline" data-lang="ja">update.xmlによる自動確認</span>
+              </span>
+            </div>
+            <div class="req-item">
+              <strong>
+                <span class="lang-inline" data-lang="vi">Phiên bản</span>
+                <span class="lang-inline" data-lang="en">Release</span>
+                <span class="lang-inline" data-lang="ja">リリース</span>
+              </strong>
+              <a href="changelog.html">v3.1.0.0 (2026/11/06)</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="about-panel">
+          <h3>
+            <span class="lang-inline" data-lang="vi">Thông tin sản phẩm</span>
+            <span class="lang-inline" data-lang="en">About CSV Editor</span>
+            <span class="lang-inline" data-lang="ja">製品情報</span>
+          </h3>
+          <ul class="about-facts">
+            <li>
+              <span>
+                <span class="lang-inline" data-lang="vi">Phiên bản hiện tại</span>
+                <span class="lang-inline" data-lang="en">Current Version</span>
+                <span class="lang-inline" data-lang="ja">最新バージョン</span>
+              </span>
+              <strong>3.1.0.0</strong>
+            </li>
+            <li>
+              <span>
+                <span class="lang-inline" data-lang="vi">Nền tảng</span>
+                <span class="lang-inline" data-lang="en">Platform</span>
+                <span class="lang-inline" data-lang="ja">プラットフォーム</span>
+              </span>
+              <strong>.NET 8 · WinForms</strong>
+            </li>
+            <li>
+              <span>
+                <span class="lang-inline" data-lang="vi">Giấy phép</span>
+                <span class="lang-inline" data-lang="en">License</span>
+                <span class="lang-inline" data-lang="ja">ライセンス</span>
+              </span>
+              <strong>
+                <a href="LICENSE_Vi.txt" rel="license" class="lang-inline" data-lang="vi">CSVEditor License v1.0</a>
+                <a href="LICENSE.txt" rel="license" class="lang-inline" data-lang="en">CSVEditor License v1.0</a>
+                <a href="LICENSE.txt" rel="license" class="lang-inline" data-lang="ja">CSVEditor License v1.0</a>
+              </strong>
+            </li>
+            <li>
+              <span>
+                <span class="lang-inline" data-lang="vi">Tác giả</span>
+                <span class="lang-inline" data-lang="en">Author</span>
+                <span class="lang-inline" data-lang="ja">作者</span>
+              </span>
+              <strong><a href="https://github.com/tnkbang" target="_blank" rel="noopener">@tnkbang</a></strong>
+            </li>
+          </ul>
+          <p>
+            <span class="lang-inline" data-lang="vi">Miễn phí cho sử dụng cá nhân, học tập và sử dụng nội bộ doanh nghiệp. Người dùng sở hữu hoàn toàn mọi tệp đầu ra. Không thu thập dữ liệu người dùng.</span>
+            <span class="lang-inline" data-lang="en">Free for personal, educational, and internal commercial use. You retain full ownership of all output files. Local-first with zero telemetry.</span>
+            <span class="lang-inline" data-lang="ja">個人・教育・社内業務利用は無料。出力ファイルの権利はすべてユーザーに帰属します。テレメトリなしのローカル完結型です。</span>
+          </p>
+          <a href="docs.html" class="btn btn-secondary" style="width:100%;">
+            <span class="lang-inline" data-lang="vi">Mở trung tâm tài liệu →</span>
+            <span class="lang-inline" data-lang="en">Open Documentation Hub →</span>
+            <span class="lang-inline" data-lang="ja">ドキュメントハブを開く →</span>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="brand">
+            <span class="brand-mark" aria-hidden="true">
+              <svg class="icon" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 10h18M3 15h18M9 4v16M15 4v16"/></svg>
+            </span>
+            <span>CSV Editor</span>
+          </a>
+          <p>
+            <span class="lang-inline" data-lang="vi">Ứng dụng desktop chỉnh sửa CSV, TSV và văn bản phân cách trên Windows (.NET 8).</span>
+            <span class="lang-inline" data-lang="en">Desktop CSV, TSV, and delimited text editor built with .NET 8 for Windows.</span>
+            <span class="lang-inline" data-lang="ja">Windows用.NET 8で構築されたCSV・TSV・区切りテキストエディタ。</span>
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <h4>
+            <span class="lang-inline" data-lang="vi">Tài liệu</span>
+            <span class="lang-inline" data-lang="en">Documentation</span>
+            <span class="lang-inline" data-lang="ja">ドキュメント</span>
+          </h4>
+          <ul>
+            <li><a href="docs.html#overview"><span class="lang-inline" data-lang="vi">Tổng quan</span><span class="lang-inline" data-lang="en">Overview</span><span class="lang-inline" data-lang="ja">概要</span></a></li>
+            <li><a href="docs.html#quickstart"><span class="lang-inline" data-lang="vi">Bắt đầu nhanh</span><span class="lang-inline" data-lang="en">Quick Start</span><span class="lang-inline" data-lang="ja">クイックスタート</span></a></li>
+            <li><a href="docs.html#shortcuts"><span class="lang-inline" data-lang="vi">Phím tắt</span><span class="lang-inline" data-lang="en">Keyboard Shortcuts</span><span class="lang-inline" data-lang="ja">ショートカット</span></a></li>
+            <li><a href="docs.html#troubleshooting"><span class="lang-inline" data-lang="vi">Xử lý sự cố</span><span class="lang-inline" data-lang="en">Troubleshooting</span><span class="lang-inline" data-lang="ja">トラブルシューティング</span></a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>
+            <span class="lang-inline" data-lang="vi">Sản phẩm</span>
+            <span class="lang-inline" data-lang="en">Product</span>
+            <span class="lang-inline" data-lang="ja">製品</span>
+          </h4>
+          <ul>
+            <li><a href="#download"><span class="lang-inline" data-lang="vi">Tải xuống</span><span class="lang-inline" data-lang="en">Download</span><span class="lang-inline" data-lang="ja">ダウンロード</span></a></li>
+            <li><a href="changelog.html"><span class="lang-inline" data-lang="vi">Lịch sử cập nhật</span><span class="lang-inline" data-lang="en">Changelog</span><span class="lang-inline" data-lang="ja">更新履歴</span></a></li>
+            <li><a href="https://github.com/tnkbang/CSVEditor" target="_blank" rel="noopener">GitHub Repository</a></li>
+            <li><a href="https://github.com/tnkbang/CSVEditor/issues" target="_blank" rel="noopener"><span class="lang-inline" data-lang="vi">Báo lỗi</span><span class="lang-inline" data-lang="en">Report Issues</span><span class="lang-inline" data-lang="ja">問題を報告</span></a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>
+            <span class="lang-inline" data-lang="vi">Pháp lý</span>
+            <span class="lang-inline" data-lang="en">Legal</span>
+            <span class="lang-inline" data-lang="ja">ライセンス</span>
+          </h4>
+          <ul>
+            <li><a href="LICENSE_Vi.txt" rel="license">License (Tiếng Việt)</a></li>
+            <li><a href="LICENSE.txt" rel="license">License (English)</a></li>
+            <li><a href="mailto:tnkbang.dev@gmail.com">tnkbang.dev@gmail.com</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>© CSV Editor · <a href="https://github.com/tnkbang" target="_blank" rel="noopener">@tnkbang</a></span>
+        <span>v3.1.0.0 · .NET 8</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/app.js"></script>
 </body>
 </html>

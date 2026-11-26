@@ -1,0 +1,158 @@
+/* ==========================================================================
+   CSV Editor — Changelog Page Styles
+   ========================================================================== */
+
+.changelog-hero {
+  padding: 52px 0 40px;
+  border-bottom: 1px solid var(--border-subtle);
+  background:
+    radial-gradient(ellipse 70% 60% at 50% -20%, var(--accent-soft), transparent 70%),
+    var(--bg-canvas);
+}
+
+.changelog-hero h1 {
+  font-size: clamp(1.8rem, 3vw, 2.4rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  margin-bottom: 10px;
+}
+
+.changelog-hero p {
+  color: var(--text-secondary);
+  font-size: 1rem;
+  max-width: 600px;
+}
+
+.changelog-main {
+  max-width: 920px;
+  margin: 0 auto;
+  padding: 40px 24px 72px;
+}
+
+.version-card {
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: 28px;
+  margin-bottom: 24px;
+  transition: border-color var(--transition), box-shadow var(--transition);
+}
+
+.version-card:hover {
+  border-color: var(--border-strong);
+  box-shadow: var(--shadow-sm);
+}
+
+.version-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  padding-bottom: 16px;
+  margin-bottom: 18px;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.version-number {
+  font-size: 1.35rem;
+  font-weight: 750;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.version-date {
+  margin-left: auto;
+  font-size: 0.85rem;
+  font-family: var(--font-mono);
+  color: var(--text-muted);
+}
+
+.version-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 10px;
+  border-radius: 999px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  background: var(--accent-soft);
+  color: var(--accent);
+  border: 1px solid var(--accent-border);
+}
+
+.version-badge.latest-badge {
+  background: var(--emerald-soft);
+  color: var(--emerald);
+  border-color: color-mix(in srgb, var(--emerald) 35%, transparent);
+}
+
+.changes-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.changes-list li {
+  position: relative;
+  padding-left: 22px;
+  color: var(--text-secondary);
+  font-size: 0.94rem;
+  line-height: 1.6;
+}
+
+.changes-list li::before {
+  content: "";
+  position: absolute;
+  left: 4px;
+  top: 10px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+.changes-list li strong {
+  color: var(--text-primary);
+}
+
+/* Support legacy .content-lang inside changelog.html */
+.content-lang {
+  display: none !important;
+}
+
+html[data-lang="vi"] .content-lang[data-lang="vi"],
+html[data-lang="en"] .content-lang[data-lang="en"],
+html[data-lang="ja"] .content-lang[data-lang="ja"] {
+  display: inline !important;
+}
+
+html[data-lang="vi"] li.content-lang[data-lang="vi"],
+html[data-lang="en"] li.content-lang[data-lang="en"],
+html[data-lang="ja"] li.content-lang[data-lang="ja"],
+html[data-lang="vi"] p.content-lang[data-lang="vi"],
+html[data-lang="en"] p.content-lang[data-lang="en"],
+html[data-lang="ja"] p.content-lang[data-lang="ja"],
+html[data-lang="vi"] div.content-lang[data-lang="vi"],
+html[data-lang="en"] div.content-lang[data-lang="en"],
+html[data-lang="ja"] div.content-lang[data-lang="ja"] {
+  display: block !important;
+}
+
+@media (max-width: 640px) {
+  .changelog-main {
+    padding: 28px 16px 56px;
+  }
+
+  .version-card {
+    padding: 20px;
+  }
+
+  .version-date {
+    margin-left: 0;
+    width: 100%;
+  }
+}
