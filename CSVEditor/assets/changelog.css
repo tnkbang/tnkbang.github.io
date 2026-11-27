@@ -20,7 +20,6 @@
 .changelog-hero p {
   color: var(--text-secondary);
   font-size: 1rem;
-  max-width: 600px;
 }
 
 .changelog-main {
