@@ -225,6 +225,39 @@
   }
 
   /* ------------------------------------------------------------------
+     Release Metadata Auto-Population (from assets/release.js)
+     ------------------------------------------------------------------ */
+  function applyReleaseInfo() {
+    const release = window.APP_RELEASE;
+    if (!release) return;
+
+    const map = {
+      version: release.version,
+      'v-version': `v${release.version}`,
+      short: release.shortVersion,
+      'v-short': `v${release.shortVersion}`,
+      date: release.date,
+      'v-version-date': `v${release.version} (${release.date})`
+    };
+
+    document.querySelectorAll('[data-release]').forEach((el) => {
+      const key = el.getAttribute('data-release');
+      if (Object.prototype.hasOwnProperty.call(map, key)) {
+        el.textContent = map[key];
+      }
+    });
+
+    const titleEl = document.querySelector('title[data-title-template]');
+    if (titleEl) {
+      const tpl = titleEl.getAttribute('data-title-template');
+      document.title = tpl
+        .replace(/\{version\}/g, release.version)
+        .replace(/\{short\}/g, release.shortVersion)
+        .replace(/\{date\}/g, release.date);
+    }
+  }
+
+  /* ------------------------------------------------------------------
      Bootstrap
      ------------------------------------------------------------------ */
   // Apply theme & language immediately to prevent flash
@@ -232,6 +265,7 @@
   applyLanguage(getInitialLang());
 
   document.addEventListener('DOMContentLoaded', () => {
+    applyReleaseInfo();
     applyTheme(getInitialTheme());
     applyLanguage(getInitialLang());
 

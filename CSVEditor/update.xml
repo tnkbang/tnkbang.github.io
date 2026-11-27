@@ -1,18 +1,20 @@
 <item>
   <title>CSVEditor</title>
-  <version>3.1.0.0</version>
+  <version>3.2.0.0</version>
   <develop-version>3.0.0.3</develop-version>
   <installUrl>https://tnkbang.github.io/CSVEditor/data/CSVEditor%20Setup.exe</installUrl>
   <portableUrl>https://tnkbang.github.io/CSVEditor/data/CSVEditor-portable.zip</portableUrl>
   <developmentUrl>https://tnkbang.github.io/CSVEditor/data/CSVEditor-develop.zip</developmentUrl>
   <changelog>Các thay đổi sau:
-  - Thêm tính năng bảo vệ, kiểm tra tài nguyên khả dụng trước khi thực hiện các thao tác tránh việc tràm ram khi thực hiện gây hư hao dữ liệu và máy tính.
-  - Thêm xử lý ảo hóa cột dữ liệu để các thao tác được tối ưu tốc độ và ram.
-  - Thêm cột hiển thị ký tự xuống dòng của file, có thể bật tắt cột này trong cấu hình.
-  - Triển khai cơ chế lưu file an toàn trong trường hợp luồng stream bị đứt ngẽn.
-  - Thay đổi vị trí gọi màn hình cài đặt, đặt ra bên ngoài navi để thuận tiện hơn.
-  - Sửa lỗi NewLine khi chèn hàng.
-  - Sửa lỗi undo khi kết hợp xóa dòng/cột gây mất dữ liệu.
+  - Thêm tính năng thay đổi loại ký tự xuống dòng tại status bar bên dưới màn hình.
+  - Thêm hỗ trợ nhiều encoding.
+  - Thêm tính năng cho phép chụp ảnh phần dữ liệu đang hiển thị trên màn hình.
+  - Tối ưu xử lý bộ lọc file, thêm hỗ trợ các file có thể đọc và hiển thị để người dùng chọn file được dễ dàng hơn.
+  - Tối ưu xử lý quản lý dữ liệu (bổ sung kiến trúc cells chunk để tiết kiệm ram).
+  - Tối ưu xử lý vẽ giao diện trên màn hình lớn giúp hiển thị mượt mà hơn khi thao tác trên màn hình có kích thước lớn.
+  - Tối ưu giao diện tối.
+  - Nâng cấp clipboard, cho phép sao chép định dạng và tạo ảnh khi sao chép vùng chọn (hoạt động tương tự wps khi sao chép vùng).
+  - Vẽ lại bộ icon cho các biểu tượng trên ứng dụng.
   Xem chi tiết tại: https://tnkbang.github.io/CSVEditor/changelog.html</changelog>
   <mandatory>false</mandatory>
   <minVersion>3.0.0.0</minVersion>

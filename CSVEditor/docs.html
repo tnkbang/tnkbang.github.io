@@ -3,14 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Tài liệu hướng dẫn sử dụng chính thức CSV Editor v3.1.0.0 — Hướng dẫn chi tiết thao tác HyperSheet, Auto Fill, SQL/Regex Find, Filter, Validation, 64 bảng mã, Settings và phím tắt.">
-  <meta property="og:title" content="CSV Editor Documentation — Official User Guide (v3.1.0.0)">
-  <meta property="og:description" content="Official user documentation for CSV Editor v3.1.0.0 on Windows (.NET 8).">
+  <meta name="robots" content="noindex, nofollow, noarchive">
+  <meta name="googlebot" content="noindex, nofollow, noarchive">
+  <meta name="description" content="Tài liệu hướng dẫn sử dụng chính thức CSV Editor — Hướng dẫn chi tiết thao tác HyperSheet, Auto Fill, SQL/Regex Find, Filter, Validation, 64 bảng mã, Settings và phím tắt.">
+  <meta property="og:title" content="CSV Editor Documentation — Official User Guide">
+  <meta property="og:description" content="Official user documentation for CSV Editor on Windows (.NET 8).">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://tnkbang.github.io/CSVEditor/docs.html">
   <link rel="canonical" href="https://tnkbang.github.io/CSVEditor/docs.html">
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%232563eb'/%3E%3Cpath d='M7 10h18M7 16h18M7 22h18M13 10v12M20 10v12' stroke='%23fff' stroke-width='2.2' stroke-linecap='round'/%3E%3C/svg%3E">
-  <title>Documentation — CSV Editor v3.1.0.0</title>
+  <title data-title-template="Documentation — CSV Editor v{version}">Documentation — CSV Editor</title>
   <link rel="stylesheet" href="assets/design-system.css">
   <link rel="stylesheet" href="assets/docs.css">
 </head>
@@ -26,7 +28,7 @@
           <svg class="icon" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 10h18M3 15h18M9 4v16M15 4v16"/></svg>
         </span>
         <span>CSV Editor</span>
-        <span class="brand-version">v3.1.0.0</span>
+        <span class="brand-version" data-release="v-version"></span>
       </a>
 
       <nav class="nav-primary" aria-label="Main navigation">
@@ -243,9 +245,9 @@
           <span class="lang-inline" data-lang="ja">CSV Editor ユーザーガイド</span>
         </h1>
         <p>
-          <span class="lang-inline" data-lang="vi">Hướng dẫn chính thức phản ánh đúng các tính năng đã triển khai trong phiên bản <strong>v3.1.0.0</strong> (.NET 8, Windows). Nhấn <kbd>Ctrl</kbd>+<kbd>K</kbd> bất cứ lúc nào để tìm nhanh.</span>
-          <span class="lang-inline" data-lang="en">Official user guide reflecting the implemented features of <strong>v3.1.0.0</strong> (.NET 8, Windows). Press <kbd>Ctrl</kbd>+<kbd>K</kbd> anytime to search.</span>
-          <span class="lang-inline" data-lang="ja"><strong>v3.1.0.0</strong>（.NET 8・Windows）に実装されている機能を正確に反映した公式ガイドです。<kbd>Ctrl</kbd>+<kbd>K</kbd>でいつでも検索できます。</span>
+          <span class="lang-inline" data-lang="vi">Hướng dẫn chính thức phản ánh đúng các tính năng đã triển khai trong phiên bản <strong data-release="v-version"></strong> (.NET 8, Windows). Nhấn <kbd>Ctrl</kbd>+<kbd>K</kbd> bất cứ lúc nào để tìm nhanh.</span>
+          <span class="lang-inline" data-lang="en">Official user guide reflecting the implemented features of <strong data-release="v-version"></strong> (.NET 8, Windows). Press <kbd>Ctrl</kbd>+<kbd>K</kbd> anytime to search.</span>
+          <span class="lang-inline" data-lang="ja"><strong data-release="v-version"></strong>（.NET 8・Windows）に実装されている機能を正確に反映した公式ガイドです。<kbd>Ctrl</kbd>+<kbd>K</kbd>でいつでも検索できます。</span>
         </p>
       </header>
 
@@ -262,7 +264,7 @@
         <div class="lang-block" data-lang="vi">
           <p><strong>CSV Editor</strong> là ứng dụng Windows desktop viết bằng <code>.NET 8</code> và Windows Forms (không sử dụng thư viện NuGet bên ngoài), chuyên dùng để mở, kiểm tra và chỉnh sửa tệp <code>.csv</code>, <code>.tsv</code> và các tệp văn bản phân cách khác mà không làm biến dạng dữ liệu gốc.</p>
           <ul>
-            <li><strong>Phiên bản hiện tại:</strong> <code>3.1.0.0</code></li>
+            <li><strong>Phiên bản hiện tại:</strong> <code data-release="version"></code></li>
             <li><strong>Nền tảng:</strong> Windows 10 / 11 với .NET 8.0 Desktop Runtime.</li>
             <li><strong>Chế độ triển khai:</strong> Bản <strong>Portable</strong> (lưu tệp cấu hình <code>CSVEditor.config</code> đã mã hóa ngay cạnh file chạy) và bản <strong>Install</strong> (lưu cấu hình trong thư mục Roaming AppData).</li>
             <li><strong>Chính sách &amp; Bản quyền:</strong> Áp dụng <a href="LICENSE_Vi.txt" rel="license">CSVEditor Software License v1.0</a>. Ứng dụng hiển thị màn hình xác nhận điều khoản ở lần chạy đầu tiên (hoặc khi phiên bản giấy phép thay đổi).</li>
@@ -273,7 +275,7 @@
         <div class="lang-block" data-lang="en">
           <p><strong>CSV Editor</strong> is a native Windows desktop application built with <code>.NET 8</code> and Windows Forms (zero external NuGet dependencies), designed to open, inspect, validate, and edit <code>.csv</code>, <code>.tsv</code>, and other delimited text files without silently altering raw data.</p>
           <ul>
-            <li><strong>Current Version:</strong> <code>3.1.0.0</code></li>
+            <li><strong>Current Version:</strong> <code data-release="version"></code></li>
             <li><strong>Platform:</strong> Windows 10 / 11 with .NET 8.0 Desktop Runtime.</li>
             <li><strong>Deployment Modes:</strong> <strong>Portable</strong> (stores encrypted <code>CSVEditor.config</code> in the application directory) and <strong>Install</strong> (stores config in Roaming AppData).</li>
             <li><strong>License:</strong> Governed by <a href="LICENSE.txt" rel="license">CSVEditor Software License v1.0</a>. A one-time acceptance dialog is shown on first launch (or when the license version changes).</li>
@@ -284,7 +286,7 @@
         <div class="lang-block" data-lang="ja">
           <p><strong>CSV Editor</strong>は<code>.NET 8</code>とWindows Formsで構築された（外部NuGet依存なしの）Windowsデスクトップアプリです。<code>.csv</code>・<code>.tsv</code>などの区切りテキストを元データを損なわずに閲覧・検証・編集できます。</p>
           <ul>
-            <li><strong>現在のバージョン:</strong> <code>3.1.0.0</code></li>
+            <li><strong>現在のバージョン:</strong> <code data-release="version"></code></li>
             <li><strong>プラットフォーム:</strong> Windows 10 / 11（.NET 8.0 Desktop Runtime）</li>
             <li><strong>配布形態:</strong> <strong>ポータブル版</strong>（実行フォルダ内に暗号化された<code>CSVEditor.config</code>を保存）と<strong>インストーラー版</strong>（Roaming AppDataに保存）。</li>
             <li><strong>ライセンス:</strong> <a href="LICENSE.txt" rel="license">CSVEditor Software License v1.0</a>。初回起動時（または規約更新時）に同意画面が表示されます。</li>
@@ -1018,9 +1020,6 @@ $2 LIKE '%Nguyen%' AND $4 IS NOT NULL OR $5 = 'Active'</code></pre>
               </tbody>
             </table>
           </div>
-          <div class="capture-note">
-            <strong>Vị trí bổ sung ảnh chụp màn hình:</strong> Màn hình Cài đặt 8 trang mới (chế độ Sáng &amp; Tối) kèm vùng xem trước lưới trực tiếp cần được chụp mới từ ứng dụng v3.1.0.0.
-          </div>
         </div>
 
         <div class="lang-block" data-lang="en">
@@ -1042,9 +1041,6 @@ $2 LIKE '%Nguyen%' AND $4 IS NOT NULL OR $5 = 'Active'</code></pre>
               </tbody>
             </table>
           </div>
-          <div class="capture-note">
-            <strong>Screenshot Capture Needed:</strong> Capture the v3.1.0.0 8-page Settings dialog (Light and Dark themes) with live grid preview.
-          </div>
         </div>
 
         <div class="lang-block" data-lang="ja">
@@ -1059,9 +1055,6 @@ $2 LIKE '%Nguyen%' AND $4 IS NOT NULL OR $5 = 'Active'</code></pre>
             <li><strong>7. 検証:</strong> データ検証の有効化と8ルール個別の重要度設定。</li>
             <li><strong>8. 詳細:</strong> 設定のリセットおよび詳細オプション。</li>
           </ul>
-          <div class="capture-note">
-            <strong>スクリーンショット追加予定:</strong> v3.1.0.0の8ページ設定画面（ライト/ダーク）の実機キャプチャ。
-          </div>
         </div>
       </section>
 
@@ -1145,6 +1138,7 @@ $2 LIKE '%Nguyen%' AND $4 IS NOT NULL OR $5 = 'Active'</code></pre>
             <li><strong>Lưu trữ chuỗi kép thích ứng:</strong> Tự động phân luồng giữa <code>StringPool</code> (khử trùng lặp chuỗi ngắn/lặp lại nhiều) và <code>Utf8ByteArena</code> (khối byte UTF-8 nối tiếp 1 MB cho chuỗi dài/duy nhất, kèm bộ đệm giải mã L1 4.096 khe).</li>
             <li><strong>Ánh xạ hàng &amp; cột ảo:</strong> Sử dụng <code>_rowMap</code> và <code>_columnMap</code> để thực hiện chèn, xóa, sắp xếp và lọc mà không phải sao chép lại toàn bộ khối dữ liệu.</li>
             <li><strong>Đọc luồng &amp; Lưu nguyên tử:</strong> Đọc CSV bằng bộ đệm luồng 128 KB (<code>CsvHelper</code>); lưu bằng <code>SafeFileWriter</code> (ghi ra tệp tạm cùng ổ đĩa, đẩy bộ đệm xuống đĩa rồi thay thế nguyên tử).</li>
+            <li><strong>Tối ưu vẽ giao diện trên màn hình lớn:</strong> Cải tiến quy trình vẽ lưới HyperSheet giúp hiển thị và cuộn mượt mà hơn khi thao tác trên các màn hình có kích thước và độ phân giải lớn.</li>
             <li><strong>Hệ thống bảo vệ tài nguyên (<code>MemoryManager</code>):</strong> Kiểm tra RAM khả dụng qua Win32 trước các thao tác tốn bộ nhớ với các ngưỡng áp lực (Elevated 80%, High 88%, Critical 92%, Emergency 94%), vùng đệm an toàn 128 MB và giới hạn 256 MB cho lịch sử Undo.</li>
           </ul>
         </div>
@@ -1156,6 +1150,7 @@ $2 LIKE '%Nguyen%' AND $4 IS NOT NULL OR $5 = 'Active'</code></pre>
             <li><strong>Adaptive Dual String Storage:</strong> Routes repeated/short values to <code>StringPool</code> (deduplicated) and high-uniqueness/long values to <code>Utf8ByteArena</code> (1 MB append-only UTF-8 blocks with a 4,096-slot L1 decode cache).</li>
             <li><strong>Virtual Row &amp; Column Mapping:</strong> Lazy <code>_rowMap</code> and <code>_columnMap</code> allow fast row/column inserts, deletes, sorts, and filters without copying underlying chunks.</li>
             <li><strong>Streaming Read &amp; Atomic Save:</strong> 128 KB buffered streaming CSV reader (<code>CsvHelper</code>) and crash-safe temp-then-replace writes (<code>SafeFileWriter</code>).</li>
+            <li><strong>Large-Screen Rendering Optimization:</strong> Optimized HyperSheet rendering pipeline for smoother drawing and scrolling on large or high-resolution monitors.</li>
             <li><strong>Memory Protection (<code>MemoryManager</code>):</strong> Checks available RAM via Win32 before heavy operations using pressure thresholds (80% / 88% / 92% / 94%), a 128 MB safety reserve, and a 256 MB Undo budget cap.</li>
           </ul>
         </div>
@@ -1166,6 +1161,7 @@ $2 LIKE '%Nguyen%' AND $4 IS NOT NULL OR $5 = 'Active'</code></pre>
             <li><strong>適応型デュアル文字列格納:</strong> 重複の多い短い文字列は<code>StringPool</code>へ、長い固有文字列は<code>Utf8ByteArena</code>（1 MBブロック＋4,096スロットL1キャッシュ）へ自動振り分け。</li>
             <li><strong>仮想行・列マッピング:</strong> <code>_rowMap</code> / <code>_columnMap</code>により、データコピーなしで挿入・削除・ソート・フィルタを高速実行。</li>
             <li><strong>ストリーム読込＆アトミック保存:</strong> 128 KBバッファのストリーム読み込みと<code>SafeFileWriter</code>による安全な一時ファイル置換保存。</li>
+            <li><strong>大画面描画の最適化:</strong> 大型・高解像度ディスプレイでも快適に操作できるよう、HyperSheetの描画パイプラインを最適化。</li>
             <li><strong>メモリ保護（<code>MemoryManager</code>）:</strong> 操作前に空きメモリを確認し、段階的しきい値（80%〜94%）、128 MB安全枠、Undo履歴256 MB上限でメモリ不足クラッシュを防ぎます。</li>
           </ul>
         </div>
@@ -1182,7 +1178,7 @@ $2 LIKE '%Nguyen%' AND $4 IS NOT NULL OR $5 = 'Active'</code></pre>
         </h2>
 
         <div class="lang-block" data-lang="vi">
-          <p>Tất cả phím tắt dưới đây đều được đối chiếu trực tiếp từ mã nguồn phiên bản <code>v3.1.0.0</code>.</p>
+          <p>Tất cả phím tắt dưới đây đều được đối chiếu trực tiếp từ mã nguồn phiên bản <code data-release="v-version"></code>.</p>
           <div class="table-wrap">
             <table class="doc-table">
               <thead>
@@ -1209,7 +1205,7 @@ $2 LIKE '%Nguyen%' AND $4 IS NOT NULL OR $5 = 'Active'</code></pre>
         </div>
 
         <div class="lang-block" data-lang="en">
-          <p>All shortcuts below are verified directly against the <code>v3.1.0.0</code> source code.</p>
+          <p>All shortcuts below are verified directly against the <code data-release="v-version"></code> source code.</p>
           <div class="table-wrap">
             <table class="doc-table">
               <thead>
@@ -1236,7 +1232,7 @@ $2 LIKE '%Nguyen%' AND $4 IS NOT NULL OR $5 = 'Active'</code></pre>
         </div>
 
         <div class="lang-block" data-lang="ja">
-          <p>以下は<code>v3.1.0.0</code>の実装で確認されたショートカット一覧です。</p>
+          <p>以下は<code data-release="v-version"></code>の実装で確認されたショートカット一覧です。</p>
           <div class="table-wrap">
             <table class="doc-table">
               <thead>
@@ -1274,7 +1270,7 @@ $2 LIKE '%Nguyen%' AND $4 IS NOT NULL OR $5 = 'Active'</code></pre>
             <li><strong>Cảnh báo thiếu bộ nhớ khi thao tác dữ liệu rất lớn:</strong> <code>MemoryManager</code> chủ động chặn thao tác có nguy cơ gây tràn RAM. Hãy đóng bớt các tab không dùng hoặc các ứng dụng nặng khác trước khi thử lại.</li>
             <li><strong>Nhấn <kbd>Ctrl</kbd>+<kbd>H</kbd> lại mở Tìm &amp; Thay thế thay vì Ẩn hàng:</strong> Phím <kbd>Ctrl</kbd>+<kbd>H</kbd> được gán ở mức cửa sổ chính cho <em>Tìm &amp; Thay thế</em>. Để ẩn hàng, hãy nhấp chuột phải vào <strong>Tiêu đề hàng → Ẩn hàng đang chọn</strong>.</li>
           </ul>
-          <h3 id="ts-limits">Giới hạn đã biết ở phiên bản v3.1.0.0</h3>
+          <h3 id="ts-limits">Giới hạn đã biết ở phiên bản <span data-release="v-version"></span></h3>
           <ul>
             <li>Chưa hỗ trợ tự động lưu định kỳ (Auto Save) hoặc khôi phục phiên làm việc sau khi mất điện (Session Recovery).</li>
             <li>Chế độ tiêu đề cột <code>Customize</code> hiện đang tạm tắt (sử dụng <code>Number</code>, <code>ExcelStyle</code> hoặc <code>FirstDataRow</code>).</li>
@@ -1291,7 +1287,7 @@ $2 LIKE '%Nguyen%' AND $4 IS NOT NULL OR $5 = 'Active'</code></pre>
             <li><strong>Memory safeguard blocks an operation:</strong> <code>MemoryManager</code> prevents operations that risk exhausting system RAM. Close unused tabs or other memory-heavy applications and retry.</li>
             <li><strong><kbd>Ctrl</kbd>+<kbd>H</kbd> opens Find &amp; Replace instead of Hide Rows:</strong> <code>MainFrame</code> intercepts <kbd>Ctrl</kbd>+<kbd>H</kbd> for Find &amp; Replace. Use <strong>Row Header Right-Click → Hide Selected Rows</strong> instead.</li>
           </ul>
-          <h3 id="ts-limits-en">Known Limitations (v3.1.0.0)</h3>
+          <h3 id="ts-limits-en">Known Limitations (<span data-release="v-version"></span>)</h3>
           <ul>
             <li>No periodic Auto Save or crash Session Recovery.</li>
             <li><code>Customize</code> column header mode is currently disabled (use <code>Number</code>, <code>ExcelStyle</code>, or <code>FirstDataRow</code>).</li>
@@ -1301,7 +1297,7 @@ $2 LIKE '%Nguyen%' AND $4 IS NOT NULL OR $5 = 'Active'</code></pre>
         </div>
 
         <div class="lang-block" data-lang="ja">
-          <h3 id="ts-common-ja">よくある問題と既知の制限（v3.1.0.0）</h3>
+          <h3 id="ts-common-ja">よくある問題と既知の制限（<span data-release="v-version"></span>）</h3>
           <ul>
             <li><strong>1列にまとまって開かれる:</strong> 区切り文字の自動判定はないため、<code>オプション → 区切り文字</code>で適切な文字（タブやセミコロン等）を選んで再度開いてください。</li>
             <li><strong>文字化けする:</strong> ステータスバーの文字コード名をクリックして正しい文字コード（<code>Shift JIS</code>・<code>UTF8</code>等）を選択します。</li>
@@ -1318,7 +1314,7 @@ $2 LIKE '%Nguyen%' AND $4 IS NOT NULL OR $5 = 'Active'</code></pre>
         </a>
         <a href="changelog.html" class="pager-link next">
           <span class="pager-label"><span class="lang-inline" data-lang="vi">Cập nhật</span><span class="lang-inline" data-lang="en">Releases</span><span class="lang-inline" data-lang="ja">更新履歴</span> →</span>
-          <span class="pager-title">Changelog (v3.1.0.0)</span>
+          <span class="pager-title">Changelog (<span data-release="v-version"></span>)</span>
         </a>
       </nav>
     </main>
@@ -1355,12 +1351,13 @@ $2 LIKE '%Nguyen%' AND $4 IS NOT NULL OR $5 = 'Active'</code></pre>
   <footer class="site-footer">
     <div class="container">
       <div class="footer-bottom" style="border-top:none; padding-top:0;">
-        <span>© CSV Editor v3.1.0.0 · <a href="https://github.com/tnkbang/CSVEditor" target="_blank" rel="noopener">GitHub</a> · <a href="LICENSE_Vi.txt" rel="license" class="lang-inline" data-lang="vi">Giấy phép v1.0</a><a href="LICENSE.txt" rel="license" class="lang-inline" data-lang="en">License v1.0</a><a href="LICENSE.txt" rel="license" class="lang-inline" data-lang="ja">ライセンス v1.0</a></span>
+        <span>© CSV Editor <span data-release="v-version"></span> · <a href="https://github.com/tnkbang/CSVEditor" target="_blank" rel="noopener">GitHub</a> · <a href="LICENSE_Vi.txt" rel="license" class="lang-inline" data-lang="vi">Giấy phép v1.0</a><a href="LICENSE.txt" rel="license" class="lang-inline" data-lang="en">License v1.0</a><a href="LICENSE.txt" rel="license" class="lang-inline" data-lang="ja">ライセンス v1.0</a></span>
         <span><a href="changelog.html">Changelog</a> · <a href="mailto:tnkbang.dev@gmail.com">tnkbang.dev@gmail.com</a></span>
       </div>
     </div>
   </footer>
 
+  <script src="assets/release.js"></script>
   <script src="assets/app.js"></script>
   <script src="assets/docs-app.js"></script>
 </body>
